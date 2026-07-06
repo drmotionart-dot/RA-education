@@ -154,7 +154,10 @@
   - `GET /api/plan/history` — returns all plans (active/abandoned/completed) with lesson progress stats
   - PlanHistoryPage — shows each plan with status badge, progress bar, created date, restart indicator
   - StudyPlanPage — added History link alongside existing Assess/Restart buttons
-- [ ] Catalog auto-refresh flagging (stale content notifications)
+- [x] Catalog auto-refresh flagging (stale content notifications)
+  - Backend: `computeStaleness` helper marks items stale if `content_status === 'stub'` or `last_verified_at` > 6 months
+  - All catalog list/detail endpoints now include `is_stale` boolean
+  - Frontend: `StaleBadge` component (`AlertTriangle` + "Stub") shown on specialty/path cards and detail pages
 
 ### Content Work
 - [ ] Catalog entries are mostly stubs (`content_status: 'stub'`)

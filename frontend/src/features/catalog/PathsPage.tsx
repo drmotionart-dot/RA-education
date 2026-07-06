@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Globe, Search } from 'lucide-react';
+import { StaleBadge } from '../../components/ui/StaleBadge';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { api } from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
@@ -62,7 +63,10 @@ export function PathsPage() {
                     <Globe className="text-[var(--color-secondary)]" size={20} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold">{p.name as string}</h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-semibold">{p.name as string}</h3>
+                      <StaleBadge isStale={!!p.is_stale} />
+                    </div>
                     <p className="mt-0.5 text-sm text-[var(--color-text-secondary)]">{p.description as string}</p>
                     <div className="mt-2 flex gap-3 text-xs text-[var(--color-text-secondary)]">
                       <span>${String(p.total_estimated_cost_usd)}</span>

@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Stethoscope } from 'lucide-react';
+import { StaleBadge } from '../../components/ui/StaleBadge';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { api } from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
@@ -41,12 +42,15 @@ export function SpecialtiesPage() {
       <div className="grid gap-3">
         {filtered.map((s) => (
           <TiltCard key={s._id as string} onClick={() => navigate(`/explore/specialties/${s._id}`)}>
-            <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--color-primary)]/10">
                 <Stethoscope className="text-[var(--color-primary)]" size={20} />
               </div>
-              <div>
-                <h3 className="font-semibold">{s.name as string}</h3>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <h3 className="font-semibold">{s.name as string}</h3>
+                  <StaleBadge isStale={!!s.is_stale} />
+                </div>
                 <p className="mt-0.5 text-sm text-[var(--color-text-secondary)]">{s.description as string}</p>
               </div>
             </div>

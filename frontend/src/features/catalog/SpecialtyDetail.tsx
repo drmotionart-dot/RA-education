@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, BookOpen, GraduationCap } from 'lucide-react';
+import { StaleBadge } from '../../components/ui/StaleBadge';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 import { api } from '../../lib/api';
@@ -27,7 +28,10 @@ export function SpecialtyDetail() {
         <ArrowLeft size={16} /> Back
       </button>
       <div>
-        <h1 className="font-heading text-2xl font-bold">{specialty.name as string}</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="font-heading text-2xl font-bold">{specialty.name as string}</h1>
+          <StaleBadge isStale={!!specialty.is_stale} />
+        </div>
         <p className="mt-1 text-[var(--color-text-secondary)]">{specialty.description as string}</p>
       </div>
       <div className="flex gap-4 text-sm">

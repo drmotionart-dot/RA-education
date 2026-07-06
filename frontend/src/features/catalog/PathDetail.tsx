@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Globe, BookOpen, Languages, DollarSign, Clock } from 'lucide-react';
+import { StaleBadge } from '../../components/ui/StaleBadge';
 import { Button } from '../../components/ui/Button';
 import { api } from '../../lib/api';
 
@@ -28,7 +29,10 @@ const langTests = (path.required_language_tests || []) as Record<string, string>
       </button>
 
       <div>
-        <h1 className="font-heading text-2xl font-bold">{path.name as string}</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="font-heading text-2xl font-bold">{path.name as string}</h1>
+          <StaleBadge isStale={!!path.is_stale} />
+        </div>
         <p className="mt-1 text-[var(--color-text-secondary)]">{path.description as string}</p>
       </div>
 
