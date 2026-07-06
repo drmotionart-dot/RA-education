@@ -142,7 +142,10 @@
 
 ### Phase 5 — Companion & History
 - [ ] Companion/mentor system (buddy matching)
-- [ ] Plan restart history (track abandoned plans, compare progress)
+- [x] Plan restart history (track abandoned plans, compare progress)
+  - `GET /api/plan/history` — returns all plans (active/abandoned/completed) with lesson progress stats
+  - PlanHistoryPage — shows each plan with status badge, progress bar, created date, restart indicator
+  - StudyPlanPage — added History link alongside existing Assess/Restart buttons
 - [ ] Catalog auto-refresh flagging (stale content notifications)
 
 ### Content Work

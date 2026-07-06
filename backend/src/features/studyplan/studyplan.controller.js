@@ -27,3 +27,12 @@ export async function restartPlan(req, res, next) {
     next(err);
   }
 }
+
+export async function getPlanHistory(req, res, next) {
+  try {
+    const result = await studyplanService.getPlanHistory(req.user.mobile_number);
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+}

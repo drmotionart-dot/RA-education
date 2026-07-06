@@ -158,6 +158,41 @@ export async function restartPlan(mobileNumber) {
   return getPlanById(newPlan._id);
 }
 
+export async function getPlanHistory(mobileNumber) {
+  const user = await User.findOne({ mobile_number: mobileNumber });
+  if (!user) throw new ApiError(404, 'User not found');
+
+  const plans = await StudyPlan.find({ user_id: user._id })
+    .sort({ created_at: -1 })
+    .lean();
+
+  if (plans.length === 0) return [];
+
+  const planIds = plans.map(p => p._id);
+  const allLessons = await PlanLesson.find({ study_plan_id: { $in: planIds } })
+    .sort({ sequence_order: 1 })
+    .lean();
+
+  const lessonsByPlan = {};
+  for (const l of allLessons) {
+    const pid = String(l.study_plan_id);
+    if (!lessonsByPlan[pid]) lessonsByPlan[pid] = [];
+    lessonsByPlan[pid].push(l);
+  }
+
+  return plans.map(plan => {
+    const lessons = lessonsByPlan[String(plan._id)] || [];
+    const total = lessons.length;
+    const completed = lessons.filter(l => l.status === 'completed').length;
+    return {
+      ...plan,
+      lessons: undefined,
+      lesson_count: total,
+      completed_count: completed,
+    };
+  });
+}
+
 async function getPlanById(planId) {
   const plan = await StudyPlan.findById(planId).lean();
   if (!plan) throw new ApiError(404, 'Plan not found');

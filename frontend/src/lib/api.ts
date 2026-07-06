@@ -111,6 +111,8 @@ export const api = {
     current: () => request<Record<string, unknown>>('/plan/current'),
     restart: () =>
       request<Record<string, unknown>>('/plan/restart', { method: 'POST' }),
+    history: () =>
+      request<Record<string, unknown>[]>('/plan/history'),
   },
   survey: {
     start: (type: string, role: string) =>

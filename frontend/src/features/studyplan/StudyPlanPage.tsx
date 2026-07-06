@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { BookOpen, CheckCircle, Clock, Lock, RefreshCw, Brain, AlertTriangle } from 'lucide-react';
+import { BookOpen, CheckCircle, Clock, Lock, RefreshCw, Brain, AlertTriangle, History } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 import { ProgressBar } from '../../components/ui/ProgressBar';
@@ -63,6 +63,9 @@ export function StudyPlanPage() {
         <div className="flex items-center gap-2">
           <button onClick={() => navigate('/assessment')} className="flex cursor-pointer items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">
             <Brain size={14} /> Assess
+          </button>
+          <button onClick={() => navigate('/plan/history')} className="flex cursor-pointer items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">
+            <History size={14} /> History
           </button>
           <button onClick={async () => { setRestarting(true); try { await api.plan.restart(); await loadPlan(); } finally { setRestarting(false); } }} className="flex cursor-pointer items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">
             <RefreshCw size={14} className={restarting ? 'animate-spin' : ''} /> Restart

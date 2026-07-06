@@ -13,5 +13,6 @@ const generatePlanSchema = z.object({
 router.post('/generate', authenticate, validate(generatePlanSchema), studyplanController.generatePlan);
 router.get('/current', authenticate, studyplanController.getCurrentPlan);
 router.post('/restart', authenticate, studyplanController.restartPlan);
+router.get('/history', authenticate, studyplanController.getPlanHistory);
 
 export default router;
