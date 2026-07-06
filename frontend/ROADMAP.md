@@ -122,11 +122,23 @@
 - [x] DELETE /api/users/me — cascading delete across 8 collections: PlanLesson→StudyPlan, QuickPickSelection, SurveySession, TelegramLink, OtpRequest, AssessmentResponse→Assessment, User
 - [x] Navbar: Home (/dashboard), Profile (/user) icons added; brand link points to /dashboard
 
-### Phase 4 — Resource Curation & Lesson Exam Loop
-- [ ] Strapi admin panel for content curation
-- [ ] Lesson → exam → score → adaptive re-suggestion loop
-- [ ] Lesson completion triggers exam unlock
-- [ ] Exam score below threshold → suggest related lessons before advancing
+### Phase 4 — Resource Curation & Lesson Exam Loop ✅
+- [ ] Strapi admin panel for content curation (deferred)
+- [x] Lesson → exam → score → adaptive re-suggestion loop
+- [x] Lesson completion triggers exam unlock
+- [x] Exam score below threshold → suggest related lessons before advancing
+- [x] `plan_lesson_id` on Assessment — links exams to specific PlanLessons
+- [x] `exam_status`/`exam_score` on PlanLesson — tracks pending/passed/failed
+- [x] `min_pass_score` on Lesson — configurable pass threshold (default 60%)
+- [x] `POST /lessons/start-exam` — creates Assessment with branch-scoped questions
+- [x] `POST /lessons/complete` — validates exam, marks lesson done, unlocks next
+- [x] `POST /lessons/suggestions` — returns related lessons for retry
+- [x] `GET /lessons/:id` — full lesson detail with study resources
+- [x] `GET /lessons/:id/resources` — existing endpoint (retained)
+- [x] `GET /assessment/:id/next` — updated to filter by branch_id when `plan_lesson_id` is set
+- [x] LessonViewPage (`/plan/lessons/:planLessonId`) — lesson content, resources, exam status, Start Exam button
+- [x] LessonExamPage (`/plan/lessons/:planLessonId/exam/:assessmentId`) — question loop, pass/fail, retry, suggested lessons
+- [x] StudyPlanPage — lesson rows now link to LessonViewPage; shows exam_status; `failed_needs_retry` uses AlertTriangle icon
 
 ### Phase 5 — Companion & History
 - [ ] Companion/mentor system (buddy matching)
