@@ -5,3 +5,6 @@ node_modules/
 tmp_*.mjs
 _test*.mjs
 _verify*.mjs
+
+.vercel
+.env*

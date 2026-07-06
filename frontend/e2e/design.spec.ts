@@ -108,6 +108,53 @@ test.describe('Design System v2', () => {
     });
   });
 
+  test('dark mode: login page screenshot', async ({ page }) => {
+    await page.goto('/login');
+    await page.waitForLoadState('networkidle');
+
+    const darkToggle = page.locator('button:has([class*="lucide-moon"]), button:has([class*="lucide-sun"])');
+    if (await darkToggle.count() > 0) {
+      await darkToggle.click();
+      await page.waitForTimeout(500);
+    } else {
+      await page.evaluate(() => document.documentElement.classList.add('dark'));
+    }
+
+    await page.screenshot({
+      path: join(SCREENSHOT_DIR, 'login-dark.png'),
+      fullPage: true,
+    });
+  });
+
+  test('dark mode: survey question page screenshot', async ({
+    authedPage: page, authToken, request,
+  }) => {
+    const token = authToken;
+    const headers = { Authorization: `Bearer ${token}` };
+
+    const startRes = await request.post('http://localhost:3000/api/survey/start', {
+      headers, data: { type: 'specialty', role: 'doctor' },
+    });
+    expect(startRes.ok()).toBeTruthy();
+    const session = await startRes.json();
+
+    await page.goto(`/survey/${session.session_id}`);
+    await page.waitForTimeout(1000);
+
+    const darkToggle = page.locator('button:has([class*="lucide-moon"]), button:has([class*="lucide-sun"])');
+    if (await darkToggle.count() > 0) {
+      await darkToggle.click();
+      await page.waitForTimeout(500);
+    } else {
+      await page.evaluate(() => document.documentElement.classList.add('dark'));
+    }
+
+    await page.screenshot({
+      path: join(SCREENSHOT_DIR, 'survey-question-dark.png'),
+      fullPage: true,
+    });
+  });
+
   test('survey results page shows match cards with gold borders', async ({
     authedPage: page, authToken, request,
   }) => {

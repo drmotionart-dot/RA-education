@@ -18,6 +18,8 @@ import { AssessmentSession } from './features/assessment/AssessmentSession';
 import { SurveyLandingPage } from './features/survey/SurveyLandingPage';
 import { SurveySessionPage } from './features/survey/SurveySessionPage';
 import { SurveyResultsPage } from './features/survey/SurveyResultsPage';
+import { DashboardPage } from './features/dashboard/DashboardPage';
+import { ProfilePage } from './features/profile/ProfilePage';
 
 export default function App() {
   return (
@@ -31,6 +33,8 @@ export default function App() {
         <Route path="/onboard" element={<OnboardingPage />} />
         <Route element={<ProtectedRoute />}>
           <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/explore" element={<SpecialtiesPage />} />
             <Route path="/explore/specialties/:id" element={<SpecialtyDetail />} />
             <Route path="/paths" element={<PathsPage />} />

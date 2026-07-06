@@ -15,7 +15,14 @@ const onboardSchema = z.object({
   experience_years: z.number().int().min(0).optional(),
 });
 
+const updateMeSchema = z.object({
+  name: z.string().min(1, 'Name is required').optional(),
+  email: z.string().email('Invalid email').optional(),
+});
+
 router.post('/onboard', authenticate, validate(onboardSchema), usersController.onboard);
 router.get('/me', authenticate, usersController.getMe);
+router.put('/me', authenticate, validate(updateMeSchema), usersController.updateMe);
+router.delete('/me', authenticate, usersController.deleteMe);
 
 export default router;

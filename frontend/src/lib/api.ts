@@ -58,6 +58,13 @@ export const api = {
         body: JSON.stringify(data),
       }),
     me: () => request<Record<string, unknown>>('/users/me'),
+    update: (data: { name?: string; email?: string }) =>
+      request<Record<string, unknown>>('/users/me', {
+        method: 'PUT',
+        body: JSON.stringify(data),
+      }),
+    delete: () =>
+      request<{ message: string }>('/users/me', { method: 'DELETE' }),
   },
   catalog: {
     specialties: (category?: string) =>
