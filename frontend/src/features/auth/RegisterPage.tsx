@@ -22,7 +22,7 @@ const GOVERNORATES = [
 ];
 
 export function RegisterPage() {
-  const [form, setForm] = useState({ full_name: '', mobile_number: '', email: '', password: '', confirm_password: '', national_id: '', date_of_birth: '', gender: '', governorate: '', role: 'doctor' });
+  const [form, setForm] = useState({ full_name: '', mobile_number: '', country_code: '+20', email: '', password: '', confirm_password: '', national_id: '', date_of_birth: '', gender: '', governorate: '', role: 'doctor' });
   const [error, setError] = useState('');
   const [nidError, setNidError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -44,7 +44,7 @@ export function RegisterPage() {
     try {
       const res = await api.auth.register({
         full_name: form.full_name,
-        mobile_number: form.mobile_number,
+        mobile_number: form.country_code + form.mobile_number,
         email: form.email,
         password: form.password,
         national_id: form.national_id,
@@ -80,7 +80,8 @@ export function RegisterPage() {
             <label className="mb-1 block text-sm font-medium text-[var(--color-text-secondary)]">Mobile Number</label>
             <div className="flex gap-2">
               <select
-                value="+20"
+                value={form.country_code}
+                onChange={(e) => update('country_code', e.target.value)}
                 className="w-24 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-2 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]"
               >
                 <option value="+20">🇪🇬 +20</option>

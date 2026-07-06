@@ -123,8 +123,7 @@ export async function verifyOTPCode(mobileNumber, code) {
 }
 
 export async function register(data) {
-  const { full_name, mobile_number, email, password, national_id, date_of_birth, gender, governorate, role } = data;
-  const normalized = normalizeMobileNumber(mobile_number);
+  const { full_name, mobile_number: normalized, email, password, national_id, date_of_birth, gender, governorate, role } = data;
 
   const rateSince = new Date(Date.now() - RATE_LIMIT_WINDOW_MINUTES * 60 * 1000);
   const recentRegistrations = await OtpRequest.countDocuments({
