@@ -10,3 +10,5 @@ tsconfig.tsbuildinfo
 tmp_*.mjs
 _test*.mjs
 _verify*.mjs
+
+.vercel

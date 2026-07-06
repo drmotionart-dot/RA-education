@@ -108,7 +108,7 @@ export function SurveyResultsPage() {
       </div>
 
       {top_match && matches[0] && (
-        <Link to={matches[0].specialty_id ? `/explore/${result.type === 'path' ? 'paths' : 'specialties'}/${matches[0].specialty_id}` : '#'} className="block">
+        <Link to={matches[0].specialty_id ? `/${result.type === 'path' ? 'paths' : 'explore/specialties'}/${matches[0].specialty_id}` : '#'} className="block">
           <TiltCard className="border-[var(--color-accent-violet)] p-6 text-center">
             <Star size={32} className="mx-auto mb-2 text-[var(--color-secondary)]" />
             <h2 className="font-heading text-xl font-bold">{top_match}</h2>
@@ -155,7 +155,7 @@ export function SurveyResultsPage() {
             </TiltCard>
           );
           return m.specialty_id ? (
-            <Link key={m.specialty_name} to={`/explore/${result.type === 'path' ? 'paths' : 'specialties'}/${m.specialty_id}`}>{content}</Link>
+            <Link key={m.specialty_name} to={`/${result.type === 'path' ? 'paths' : 'explore/specialties'}/${m.specialty_id}`}>{content}</Link>
           ) : content;
         })}
       </div>
