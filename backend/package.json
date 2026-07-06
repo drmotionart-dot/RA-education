@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node --watch api/index.js",
     "seed": "node seed/run.js",
+    "seed:expand": "node seed/expand.js",
     "start": "node api/index.js"
   },
   "dependencies": {
