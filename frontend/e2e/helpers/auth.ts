@@ -2,7 +2,7 @@ import { test as base, type Page, type APIRequestContext } from '@playwright/tes
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'http://127.0.0.1:3000/api';
 const MOBILE_PREFIX = '+20100000';
 const OTP_FILE_BASE = (process.env.TMP || '/tmp') + '/otp_';
 

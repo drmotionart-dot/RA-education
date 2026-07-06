@@ -1,4 +1,4 @@
-import { test, expect } from './helpers/auth';
+import { test, expect, API_BASE } from './helpers/auth';
 import { mkdirSync } from 'fs';
 import { join } from 'path';
 
@@ -132,7 +132,7 @@ test.describe('Design System v2', () => {
     const token = authToken;
     const headers = { Authorization: `Bearer ${token}` };
 
-    const startRes = await request.post('http://localhost:3000/api/survey/start', {
+    const startRes = await request.post(`${API_BASE}/survey/start`, {
       headers, data: { type: 'specialty', role: 'doctor' },
     });
     expect(startRes.ok()).toBeTruthy();
@@ -162,7 +162,7 @@ test.describe('Design System v2', () => {
     const headers = { Authorization: `Bearer ${token}` };
 
     // Start and complete a survey via API for quick results
-    const startRes = await request.post('http://localhost:3000/api/survey/start', {
+    const startRes = await request.post(`${API_BASE}/survey/start`, {
       headers, data: { type: 'specialty', role: 'doctor' },
     });
     expect(startRes.ok()).toBeTruthy();
@@ -172,7 +172,7 @@ test.describe('Design System v2', () => {
     let nodeId = session.question.node_id;
     for (let i = 0; i < 35; i++) {
       const optIdx = session.question.options[0]?.index ?? 0;
-      const aRes = await request.post(`http://localhost:3000/api/survey/${session.session_id}/answer`, {
+      const aRes = await request.post(`${API_BASE}/survey/${session.session_id}/answer`, {
         headers, data: { node_id: nodeId, option_index: optIdx },
       });
       const after = await aRes.json();

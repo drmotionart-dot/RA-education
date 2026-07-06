@@ -108,17 +108,31 @@ export function SurveyResultsPage() {
       </div>
 
       {top_match && matches[0] && (
-        <Link to={matches[0].specialty_id ? `/${result.type === 'path' ? 'paths' : 'explore/specialties'}/${matches[0].specialty_id}` : '#'} className="block">
-          <TiltCard className="border-[var(--color-accent-violet)] p-6 text-center">
-            <Star size={32} className="mx-auto mb-2 text-[var(--color-secondary)]" />
-            <h2 className="font-heading text-xl font-bold">{top_match}</h2>
-            <div className="mt-2 flex items-center justify-center gap-2">
-              <ProgressBar value={confidence} max={100} className="w-40" />
-              <span className="text-sm font-bold text-[var(--color-primary)]">{confidence}%</span>
-            </div>
-            <p className="mt-1 text-xs text-[var(--color-text-secondary)]">Best match</p>
-          </TiltCard>
-        </Link>
+        matches[0].specialty_id ? (
+          <Link to={`/${result.type === 'path' ? 'paths' : 'explore/specialties'}/${matches[0].specialty_id}`} className="block">
+            <TiltCard className="border-[var(--color-accent-violet)] p-6 text-center">
+              <Star size={32} className="mx-auto mb-2 text-[var(--color-secondary)]" />
+              <h2 className="font-heading text-xl font-bold">{top_match}</h2>
+              <div className="mt-2 flex items-center justify-center gap-2">
+                <ProgressBar value={confidence} max={100} className="w-40" />
+                <span className="text-sm font-bold text-[var(--color-primary)]">{confidence}%</span>
+              </div>
+              <p className="mt-1 text-xs text-[var(--color-text-secondary)]">Best match</p>
+            </TiltCard>
+          </Link>
+        ) : (
+          <div className="block">
+            <TiltCard className="border-[var(--color-accent-violet)] p-6 text-center">
+              <Star size={32} className="mx-auto mb-2 text-[var(--color-secondary)]" />
+              <h2 className="font-heading text-xl font-bold">{top_match}</h2>
+              <div className="mt-2 flex items-center justify-center gap-2">
+                <ProgressBar value={confidence} max={100} className="w-40" />
+                <span className="text-sm font-bold text-[var(--color-primary)]">{confidence}%</span>
+              </div>
+              <p className="mt-1 text-xs text-[var(--color-text-secondary)]">Best match</p>
+            </TiltCard>
+          </div>
+        )
       )}
 
       <div className="space-y-3">

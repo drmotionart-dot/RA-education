@@ -1919,6 +1919,96 @@ export const doctor_path_graph = {
       "humanitarian_orientation": 0.3,
       "research_academic_orientation": 0.7
     }
+  },
+  {
+    "specialty_name": "UK — MRCP (Internal Medicine)",
+    "axes": {
+      "willingness_relocate": 0.75, "language_learning": 0.85, "exam_tolerance": 0.9,
+      "time_investment": 0.85, "cost_tolerance": 0.5, "income_expectation": 0.5,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.7, "humanitarian_orientation": 0.3, "research_academic_orientation": 0.6
+    }
+  },
+  {
+    "specialty_name": "UK — MRCS (Surgery)",
+    "axes": {
+      "willingness_relocate": 0.75, "language_learning": 0.85, "exam_tolerance": 0.85,
+      "time_investment": 0.9, "cost_tolerance": 0.5, "income_expectation": 0.6,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.8, "humanitarian_orientation": 0.25, "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "UK — MRCPCH (Paediatrics)",
+    "axes": {
+      "willingness_relocate": 0.7, "language_learning": 0.85, "exam_tolerance": 0.85,
+      "time_investment": 0.9, "cost_tolerance": 0.5, "income_expectation": 0.5,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.7, "humanitarian_orientation": 0.35, "research_academic_orientation": 0.4
+    }
+  },
+  {
+    "specialty_name": "UK — MRCGP (General Practice)",
+    "axes": {
+      "willingness_relocate": 0.7, "language_learning": 0.85, "exam_tolerance": 0.75,
+      "time_investment": 0.6, "cost_tolerance": 0.5, "income_expectation": 0.5,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.6, "humanitarian_orientation": 0.4, "research_academic_orientation": 0.2
+    }
+  },
+  {
+    "specialty_name": "UK — MRCPath (Pathology)",
+    "axes": {
+      "willingness_relocate": 0.7, "language_learning": 0.85, "exam_tolerance": 0.8,
+      "time_investment": 0.85, "cost_tolerance": 0.5, "income_expectation": 0.5,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.3, "humanitarian_orientation": 0.2, "research_academic_orientation": 0.7
+    }
+  },
+  {
+    "specialty_name": "UK — FRCR (Radiology)",
+    "axes": {
+      "willingness_relocate": 0.75, "language_learning": 0.85, "exam_tolerance": 0.85,
+      "time_investment": 0.9, "cost_tolerance": 0.55, "income_expectation": 0.6,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.5, "humanitarian_orientation": 0.2, "research_academic_orientation": 0.4
+    }
+  },
+  {
+    "specialty_name": "UK — FRCA (Anaesthetics)",
+    "axes": {
+      "willingness_relocate": 0.75, "language_learning": 0.85, "exam_tolerance": 0.9,
+      "time_investment": 0.9, "cost_tolerance": 0.5, "income_expectation": 0.55,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.8, "humanitarian_orientation": 0.2, "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "UK — MRCOG (Obstetrics & Gynaecology)",
+    "axes": {
+      "willingness_relocate": 0.7, "language_learning": 0.85, "exam_tolerance": 0.85,
+      "time_investment": 0.9, "cost_tolerance": 0.5, "income_expectation": 0.55,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.7, "humanitarian_orientation": 0.3, "research_academic_orientation": 0.4
+    }
+  },
+  {
+    "specialty_name": "UK — MFPH (Public Health)",
+    "axes": {
+      "willingness_relocate": 0.65, "language_learning": 0.8, "exam_tolerance": 0.7,
+      "time_investment": 0.65, "cost_tolerance": 0.4, "income_expectation": 0.45,
+      "gulf_preference": 0.15, "western_preference": 0.85, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.2, "humanitarian_orientation": 0.6, "research_academic_orientation": 0.8
+    }
+  },
+  {
+    "specialty_name": "UK — MRCPsych (Psychiatry)",
+    "axes": {
+      "willingness_relocate": 0.7, "language_learning": 0.85, "exam_tolerance": 0.8,
+      "time_investment": 0.85, "cost_tolerance": 0.5, "income_expectation": 0.5,
+      "gulf_preference": 0.15, "western_preference": 0.9, "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.6, "humanitarian_orientation": 0.5, "research_academic_orientation": 0.5
+    }
   }
 ],
 };

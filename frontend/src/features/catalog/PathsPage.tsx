@@ -13,6 +13,7 @@ export function PathsPage() {
   const [paths, setPaths] = useState<Record<string, unknown>[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [pathType, setPathType] = useState('all');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,13 +21,26 @@ export function PathsPage() {
   }, [category]);
 
   const filtered = useMemo(() => {
-    if (!search) return paths;
-    const q = search.toLowerCase();
-    return paths.filter((p) =>
-      (p.name as string)?.toLowerCase().includes(q) ||
-      (p.target_country as string)?.toLowerCase().includes(q)
-    );
-  }, [paths, search]);
+    let result = paths;
+    if (pathType !== 'all') {
+      result = result.filter((p) => (p.path_type as string) === pathType);
+    }
+    if (search) {
+      const q = search.toLowerCase();
+      result = result.filter((p) =>
+        (p.name as string)?.toLowerCase().includes(q) ||
+        (p.target_country as string)?.toLowerCase().includes(q)
+      );
+    }
+    return result;
+  }, [paths, search, pathType]);
+
+  const typeFilters = [
+    { value: 'all', label: 'All' },
+    { value: 'career', label: 'Career' },
+    { value: 'migration', label: 'Migration' },
+    { value: 'training', label: 'Training' },
+  ];
 
   const grouped = useMemo(() => {
     const map: Record<string, Record<string, unknown>[]> = {};
@@ -43,7 +57,22 @@ export function PathsPage() {
   return (
     <div className="space-y-4">
       <h1 className="font-heading text-2xl font-bold">Career Paths</h1>
-      <p className="text-sm text-[var(--color-text-secondary)]">Browse certification and migration paths.</p>
+      <p className="text-sm text-[var(--color-text-secondary)]">Browse certification, migration, and training paths.</p>
+      <div className="flex flex-wrap gap-2">
+        {typeFilters.map((f) => (
+          <button
+            key={f.value}
+            onClick={() => setPathType(f.value)}
+            className={`cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+              pathType === f.value
+                ? 'bg-[var(--color-primary)] text-white'
+                : 'border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
       <div className="relative">
         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]" />
         <input

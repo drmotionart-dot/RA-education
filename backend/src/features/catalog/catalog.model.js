@@ -30,11 +30,34 @@ specialtySchema.pre('save', function (next) {
   next();
 });
 
+const stageSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  type: { type: String, enum: ['exam', 'training_post', 'application', 'foundation'], required: true },
+  order: { type: Number, required: true },
+  duration_months: Number,
+  cost_usd: Number,
+  description: String,
+  prerequisites: [String],
+  exams: [{
+    name: String,
+    format: String,
+    cost_usd: Number,
+    official_link: String,
+  }],
+  language_tests: [{
+    language: String,
+    test_name: String,
+    min_score: String,
+  }],
+}, { _id: true });
+
 const pathSchema = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String, enum: ['doctor', 'nurse'], required: true },
+  path_type: { type: String, enum: ['career', 'migration', 'training'], default: 'migration' },
   target_country: String,
   description: String,
+  stages: [stageSchema],
   required_exams: [{
     name: String,
     official_link: String,

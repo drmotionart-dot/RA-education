@@ -106,7 +106,7 @@ export function QuickPickPage() {
       {step === 'path' && (
         <div className="space-y-3">
           <h2 className="font-heading text-lg font-semibold">Choose a Path</h2>
-          {paths.filter((p) => (p.category as string) === (specialties.find((s) => s._id === selSpecialty)?.category as string) || true).map((p) => (
+          {paths.filter((p) => (p.category as string) === ((specialties.find((s) => s._id === selSpecialty)?.category as string) || '')).map((p) => (
             <Card key={p._id as string} onClick={() => { setSelPath(p._id as string); setStep('duration'); }} className={selPath === p._id ? 'border-[var(--color-secondary)]' : ''}>
               <h3 className="font-semibold">{p.name as string}</h3>
               <p className="text-sm text-[var(--color-text-secondary)]">{p.description as string}</p>
