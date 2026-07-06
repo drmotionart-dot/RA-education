@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.DS_Store
+*.log
+test-results/
+e2e-screenshots/
+e2e-report/
+tsconfig.tsbuildinfo
+tmp_*.mjs
+_test*.mjs
+_verify*.mjs

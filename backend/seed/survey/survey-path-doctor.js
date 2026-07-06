@@ -1,0 +1,192 @@
+// Doctor Career Path Survey — branching tree covering all 27 doctor paths
+// 12 axes: willingness_relocate, language_learning, exam_tolerance,
+//   time_investment, cost_tolerance, income_expectation,
+//   gulf_preference, western_preference, egypt_stability,
+//   clinical_vs_admin, humanitarian_orientation,
+//   research_academic_orientation
+// Target vectors map to all 27 doctor career paths from §8.3
+
+export const doctorPathGraph = {
+  type: 'path',
+  role: 'doctor',
+  root_node_id: 'ROOT',
+  axes: [
+    'willingness_relocate', 'language_learning', 'exam_tolerance',
+    'time_investment', 'cost_tolerance', 'income_expectation',
+    'gulf_preference', 'western_preference', 'egypt_stability',
+    'clinical_vs_admin', 'humanitarian_orientation',
+    'research_academic_orientation',
+  ],
+  nodes: [
+    {
+      node_id: 'ROOT', order: 1, is_universal: false,
+      question_text: "What's your primary motivation for your next career step?",
+      options: [
+        { option_text: 'Build my career abroad — higher income and global experience', next_node_id: 'ABROAD_PATH',
+          axis_deltas: { willingness_relocate: 3, income_expectation: 2, egypt_stability: -2 } },
+        { option_text: 'Establish myself in Egypt first — stability and roots', next_node_id: 'EGYPT_PATH',
+          axis_deltas: { egypt_stability: 3, willingness_relocate: -2 } },
+        { option_text: 'Explore non-clinical, global health, or humanitarian work', next_node_id: 'NON_CLINICAL_PATH',
+          axis_deltas: { clinical_vs_admin: -2, humanitarian_orientation: 2, research_academic_orientation: 1 } },
+      ],
+    },
+    {
+      node_id: 'ABROAD_PATH', order: 2, is_universal: false,
+      question_text: 'Which region most attracts you for practice?',
+      options: [
+        { option_text: 'Gulf / Arab world — close to home, culturally familiar', next_node_id: 'GULF_FOCUS',
+          axis_deltas: { gulf_preference: 3, willingness_relocate: 1 } },
+        { option_text: 'Europe — history, travel, and balanced lifestyle', next_node_id: 'EUROPE_FOCUS',
+          axis_deltas: { western_preference: 2, language_learning: 1 } },
+        { option_text: 'North America — highest income and cutting-edge medicine', next_node_id: 'NA_FOCUS',
+          axis_deltas: { western_preference: 3, income_expectation: 2 } },
+        { option_text: 'Oceania — sunshine, outdoors, and growing healthcare system', next_node_id: 'OCEANIA_FOCUS',
+          axis_deltas: { western_preference: 2, language_learning: 0 } },
+      ],
+    },
+    {
+      node_id: 'GULF_FOCUS', order: 3, is_universal: false,
+      question_text: 'Gulf pathway — what is your top priority?',
+      options: [
+        { option_text: 'Fastest and most straightforward process — Saudi Prometric', next_node_id: null,
+          axis_deltas: { gulf_preference: 2, exam_tolerance: 1, time_investment: -1 } },
+        { option_text: 'Highest earning potential and prestige — Qatar or UAE', next_node_id: null,
+          axis_deltas: { income_expectation: 2, gulf_preference: 2 } },
+        { option_text: 'Better lifestyle and stability — UAE, Bahrain, or Oman', next_node_id: null,
+          axis_deltas: { gulf_preference: 1, time_investment: 1 } },
+        { option_text: 'I have specific connections or family — Kuwait', next_node_id: null,
+          axis_deltas: { gulf_preference: 2, egypt_stability: -1 } },
+      ],
+    },
+    {
+      node_id: 'EUROPE_FOCUS', order: 3, is_universal: false,
+      question_text: 'Europe — how do you feel about language requirements?',
+      options: [
+        { option_text: 'I only speak English — UK or Ireland are my options', next_node_id: null,
+          axis_deltas: { western_preference: 2, language_learning: 0, exam_tolerance: 2 } },
+        { option_text: 'I am willing to learn a language — Germany is worth the effort', next_node_id: null,
+          axis_deltas: { language_learning: 3, time_investment: 2, income_expectation: 1 } },
+        { option_text: 'English-friendly with faster process — Malta', next_node_id: null,
+          axis_deltas: { western_preference: 1, language_learning: 0, time_investment: -1 } },
+      ],
+    },
+    {
+      node_id: 'NA_FOCUS', order: 3, is_universal: false,
+      question_text: 'North America — which destination?',
+      options: [
+        { option_text: 'USA — highest stakes, highest reward, most opportunities', next_node_id: null,
+          axis_deltas: { western_preference: 3, exam_tolerance: 3, cost_tolerance: 3, income_expectation: 3, time_investment: 3 } },
+        { option_text: 'Canada — good income, better work-life balance, IMG-friendly provinces', next_node_id: null,
+          axis_deltas: { western_preference: 3, exam_tolerance: 2, cost_tolerance: 2, income_expectation: 2, time_investment: 2 } },
+      ],
+    },
+    {
+      node_id: 'OCEANIA_FOCUS', order: 3, is_universal: false,
+      question_text: 'Oceania — which appeals?',
+      options: [
+        { option_text: 'Australia — larger market, specialist pathway, beach lifestyle', next_node_id: null,
+          axis_deltas: { western_preference: 2, exam_tolerance: 2, time_investment: 2, income_expectation: 2 } },
+        { option_text: 'New Zealand — smaller, quieter, streamlined process', next_node_id: null,
+          axis_deltas: { western_preference: 2, exam_tolerance: 1, time_investment: 1, income_expectation: 1 } },
+      ],
+    },
+    {
+      node_id: 'EGYPT_PATH', order: 2, is_universal: false,
+      question_text: 'Staying in Egypt — what is your preferred setting?',
+      options: [
+        { option_text: 'Government MOH hospital — job security, pension, structured career', next_node_id: null,
+          axis_deltas: { egypt_stability: 3, income_expectation: -1, clinical_vs_admin: 1 } },
+        { option_text: 'University hospital — academic career, research, teaching', next_node_id: null,
+          axis_deltas: { egypt_stability: 2, research_academic_orientation: 3, income_expectation: -1 } },
+        { option_text: 'Private sector — higher income, more autonomy, less security', next_node_id: null,
+          axis_deltas: { egypt_stability: 1, income_expectation: 2, clinical_vs_admin: 1 } },
+        { option_text: 'Military or Police medical services — distinct benefits and track', next_node_id: null,
+          axis_deltas: { egypt_stability: 2, income_expectation: 1 } },
+        { option_text: 'Pursue a postgraduate degree (Masters/MD) first', next_node_id: null,
+          axis_deltas: { egypt_stability: 1, research_academic_orientation: 2, time_investment: 2 } },
+        { option_text: 'Work with international NGOs operating in Egypt', next_node_id: null,
+          axis_deltas: { egypt_stability: 1, humanitarian_orientation: 3, clinical_vs_admin: -1 } },
+      ],
+    },
+    {
+      node_id: 'NON_CLINICAL_PATH', order: 2, is_universal: false,
+      question_text: 'Non-clinical path — what kind of impact do you want?',
+      options: [
+        { option_text: 'Global health policy and programs — WHO, UN agencies', next_node_id: null,
+          axis_deltas: { humanitarian_orientation: 3, clinical_vs_admin: -2, research_academic_orientation: 1 } },
+        { option_text: 'Humanitarian field work — MSF, Red Cross, crisis response', next_node_id: null,
+          axis_deltas: { humanitarian_orientation: 3, clinical_vs_admin: 0, willingness_relocate: 2 } },
+        { option_text: 'Global health research — publications, academia, think tanks', next_node_id: null,
+          axis_deltas: { research_academic_orientation: 3, clinical_vs_admin: -1, language_learning: 1 } },
+        { option_text: 'Health-tech and digital health — innovation and product roles', next_node_id: null,
+          axis_deltas: { clinical_vs_admin: -2, income_expectation: 2, research_academic_orientation: 1 } },
+        { option_text: 'Pharmaceutical industry — clinical development, medical affairs', next_node_id: null,
+          axis_deltas: { clinical_vs_admin: -2, income_expectation: 3, research_academic_orientation: 2 } },
+      ],
+    },
+    // Universal calibration questions
+    {
+      node_id: 'CALIB_EXAMS', order: 5, is_universal: true,
+      question_text: 'How many standardized exams are you willing to sit for your career move?',
+      options: [
+        { option_text: '0 — I want minimal or no exams', next_node_id: 'CALIB_COST', axis_deltas: { exam_tolerance: 0 } },
+        { option_text: '1-2 exams — manageable', next_node_id: 'CALIB_COST', axis_deltas: { exam_tolerance: 2 } },
+        { option_text: '3+ exams — I will do whatever it takes', next_node_id: 'CALIB_COST', axis_deltas: { exam_tolerance: 4 } },
+      ],
+    },
+    {
+      node_id: 'CALIB_COST', order: 6, is_universal: true,
+      question_text: 'How much are you willing to invest financially? (1 = as little as possible, 5 = whatever it costs)',
+      options: [
+        { option_text: '1 — As little as possible', next_node_id: 'CALIB_TIME', axis_deltas: { cost_tolerance: 0 } },
+        { option_text: '2 — Up to $1,000', next_node_id: 'CALIB_TIME', axis_deltas: { cost_tolerance: 1 } },
+        { option_text: '3 — Up to $4,000', next_node_id: 'CALIB_TIME', axis_deltas: { cost_tolerance: 2 } },
+        { option_text: '4 — Up to $8,000', next_node_id: 'CALIB_TIME', axis_deltas: { cost_tolerance: 3 } },
+        { option_text: '5 — Whatever it costs', next_node_id: 'CALIB_TIME', axis_deltas: { cost_tolerance: 4 } },
+      ],
+    },
+    {
+      node_id: 'CALIB_TIME', order: 7, is_universal: true,
+      question_text: 'How much time are you willing to invest in this pathway?',
+      options: [
+        { option_text: '6-12 months — I want to move quickly', next_node_id: null, axis_deltas: { time_investment: 1 } },
+        { option_text: '1-2 years — reasonable timeframe', next_node_id: null, axis_deltas: { time_investment: 2 } },
+        { option_text: '2-4 years — I am in it for the long haul', next_node_id: null, axis_deltas: { time_investment: 3 } },
+      ],
+    },
+  ],
+  target_vectors: [
+    // Egypt National Tracks
+    { specialty_name: 'Stay-Egypt (MOH Government Track)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.3, gulf_preference: 0.2, western_preference: 0.2, egypt_stability: 0.95, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
+    { specialty_name: 'Stay-Egypt (University Hospital Track)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.2, time_investment: 0.5, cost_tolerance: 0.2, income_expectation: 0.3, gulf_preference: 0.2, western_preference: 0.3, egypt_stability: 0.9, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.9 } },
+    { specialty_name: 'Stay-Egypt (Private Sector Practice)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.2, time_investment: 0.2, cost_tolerance: 0.3, income_expectation: 0.8, gulf_preference: 0.2, western_preference: 0.2, egypt_stability: 0.8, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.2 } },
+    { specialty_name: 'Stay-Egypt (Military/Police Medical Services)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.3, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.4, gulf_preference: 0.2, western_preference: 0.2, egypt_stability: 0.9, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.2 } },
+    { specialty_name: 'Stay-Egypt (Postgraduate Degree Track)', axes: { willingness_relocate: 0.2, language_learning: 0.2, exam_tolerance: 0.4, time_investment: 0.6, cost_tolerance: 0.3, income_expectation: 0.3, gulf_preference: 0.2, western_preference: 0.3, egypt_stability: 0.7, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.9 } },
+    { specialty_name: 'Stay-Egypt (NGO/International Health In-Country)', axes: { willingness_relocate: 0.2, language_learning: 0.3, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.4, gulf_preference: 0.2, western_preference: 0.3, egypt_stability: 0.6, clinical_vs_admin: 0.3, humanitarian_orientation: 0.9, research_academic_orientation: 0.4 } },
+    // Gulf
+    { specialty_name: 'Saudi Arabia — Prometric/SCFHS', axes: { willingness_relocate: 0.8, language_learning: 0.2, exam_tolerance: 0.6, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.8, gulf_preference: 0.95, western_preference: 0.2, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
+    { specialty_name: 'UAE — DHA (Dubai)', axes: { willingness_relocate: 0.8, language_learning: 0.2, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.9, gulf_preference: 0.85, western_preference: 0.4, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
+    { specialty_name: 'UAE — MOH/Haad (Abu Dhabi)', axes: { willingness_relocate: 0.8, language_learning: 0.2, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.85, gulf_preference: 0.85, western_preference: 0.35, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
+    { specialty_name: 'Qatar — QCHP', axes: { willingness_relocate: 0.8, language_learning: 0.2, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.85, gulf_preference: 0.9, western_preference: 0.3, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
+    { specialty_name: 'Kuwait — MOH Licensing', axes: { willingness_relocate: 0.75, language_learning: 0.2, exam_tolerance: 0.4, time_investment: 0.4, cost_tolerance: 0.4, income_expectation: 0.75, gulf_preference: 0.85, western_preference: 0.2, egypt_stability: 0.25, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
+    { specialty_name: 'Bahrain — NHRA', axes: { willingness_relocate: 0.7, language_learning: 0.2, exam_tolerance: 0.4, time_investment: 0.3, cost_tolerance: 0.4, income_expectation: 0.7, gulf_preference: 0.8, western_preference: 0.3, egypt_stability: 0.25, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
+    { specialty_name: 'Oman — MOH Licensing', axes: { willingness_relocate: 0.7, language_learning: 0.2, exam_tolerance: 0.4, time_investment: 0.3, cost_tolerance: 0.4, income_expectation: 0.65, gulf_preference: 0.8, western_preference: 0.25, egypt_stability: 0.25, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
+    // Europe
+    { specialty_name: 'UK — PLAB', axes: { willingness_relocate: 0.85, language_learning: 0.1, exam_tolerance: 0.7, time_investment: 0.5, cost_tolerance: 0.6, income_expectation: 0.6, gulf_preference: 0.2, western_preference: 0.9, egypt_stability: 0.15, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.4 } },
+    { specialty_name: 'Ireland — IMC Registration', axes: { willingness_relocate: 0.8, language_learning: 0.1, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.6, gulf_preference: 0.2, western_preference: 0.85, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.4 } },
+    { specialty_name: 'Germany — Approbation', axes: { willingness_relocate: 0.85, language_learning: 0.95, exam_tolerance: 0.6, time_investment: 0.6, cost_tolerance: 0.5, income_expectation: 0.7, gulf_preference: 0.15, western_preference: 0.9, egypt_stability: 0.1, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.4 } },
+    { specialty_name: 'Malta — Medical Council Registration', axes: { willingness_relocate: 0.7, language_learning: 0.1, exam_tolerance: 0.3, time_investment: 0.3, cost_tolerance: 0.4, income_expectation: 0.5, gulf_preference: 0.2, western_preference: 0.7, egypt_stability: 0.25, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
+    // North America
+    { specialty_name: 'USA — USMLE', axes: { willingness_relocate: 0.9, language_learning: 0.1, exam_tolerance: 0.95, time_investment: 0.9, cost_tolerance: 0.95, income_expectation: 0.95, gulf_preference: 0.1, western_preference: 0.95, egypt_stability: 0.1, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.5 } },
+    { specialty_name: 'Canada — NAC/MCCQE', axes: { willingness_relocate: 0.85, language_learning: 0.1, exam_tolerance: 0.7, time_investment: 0.6, cost_tolerance: 0.6, income_expectation: 0.7, gulf_preference: 0.1, western_preference: 0.9, egypt_stability: 0.15, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.5 } },
+    // Oceania
+    { specialty_name: 'Australia — AMC', axes: { willingness_relocate: 0.85, language_learning: 0.1, exam_tolerance: 0.6, time_investment: 0.6, cost_tolerance: 0.6, income_expectation: 0.75, gulf_preference: 0.1, western_preference: 0.85, egypt_stability: 0.15, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.4 } },
+    { specialty_name: 'New Zealand — NZREX', axes: { willingness_relocate: 0.8, language_learning: 0.1, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.6, gulf_preference: 0.1, western_preference: 0.85, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.4 } },
+    // Admin / Global Health
+    { specialty_name: 'International Organization Track (WHO/UN)', axes: { willingness_relocate: 0.6, language_learning: 0.4, exam_tolerance: 0.2, time_investment: 0.4, cost_tolerance: 0.3, income_expectation: 0.5, gulf_preference: 0.2, western_preference: 0.4, egypt_stability: 0.3, clinical_vs_admin: 0.15, humanitarian_orientation: 0.95, research_academic_orientation: 0.5 } },
+    { specialty_name: 'Humanitarian Field Track (MSF, IRC, Red Cross)', axes: { willingness_relocate: 0.9, language_learning: 0.5, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.3, gulf_preference: 0.3, western_preference: 0.3, egypt_stability: 0.2, clinical_vs_admin: 0.3, humanitarian_orientation: 0.95, research_academic_orientation: 0.3 } },
+    { specialty_name: 'Global Health Research Track', axes: { willingness_relocate: 0.5, language_learning: 0.4, exam_tolerance: 0.3, time_investment: 0.6, cost_tolerance: 0.3, income_expectation: 0.4, gulf_preference: 0.15, western_preference: 0.5, egypt_stability: 0.3, clinical_vs_admin: 0.15, humanitarian_orientation: 0.6, research_academic_orientation: 0.95 } },
+    { specialty_name: 'Health-Tech / Digital Health Industry Track', axes: { willingness_relocate: 0.4, language_learning: 0.2, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.3, income_expectation: 0.8, gulf_preference: 0.2, western_preference: 0.5, egypt_stability: 0.4, clinical_vs_admin: 0.1, humanitarian_orientation: 0.3, research_academic_orientation: 0.5 } },
+    { specialty_name: 'Pharmaceutical / Clinical Research Industry Track', axes: { willingness_relocate: 0.4, language_learning: 0.3, exam_tolerance: 0.3, time_investment: 0.3, cost_tolerance: 0.3, income_expectation: 0.85, gulf_preference: 0.3, western_preference: 0.4, egypt_stability: 0.4, clinical_vs_admin: 0.15, humanitarian_orientation: 0.3, research_academic_orientation: 0.7 } },
+  ],
+};
