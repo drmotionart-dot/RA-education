@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { BookOpen, CheckCircle, Clock, Lock, RefreshCw, Brain } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { BookOpen, CheckCircle, Clock, Lock, RefreshCw, Brain, AlertTriangle } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 import { ProgressBar } from '../../components/ui/ProgressBar';
@@ -51,6 +51,7 @@ export function StudyPlanPage() {
     switch (status) {
       case 'completed': return <CheckCircle size={16} className="text-[var(--color-success)]" />;
       case 'in_progress': return <Clock size={16} className="text-[var(--color-primary)]" />;
+      case 'failed_needs_retry': return <AlertTriangle size={16} className="text-[var(--color-error)]" />;
       default: return <Lock size={16} className="text-[var(--color-text-secondary)]" />;
     }
   };
@@ -85,17 +86,33 @@ export function StudyPlanPage() {
 
       <div className="space-y-2">
         <h2 className="font-heading text-lg font-semibold">Lessons</h2>
-        {lessons.map((l) => (
-          <Card key={l._id as string} className="flex items-center gap-3">
-            {statusIcon(l.status as string)}
-            <div className="flex-1 min-w-0">
-              <p className={`text-sm font-medium truncate ${l.status === 'locked' ? 'text-[var(--color-text-secondary)]' : ''}`}>
-                Lesson {String(l.sequence_order)}
-              </p>
-              <p className="text-xs text-[var(--color-text-secondary)]">{String(l.allocated_days)} days &middot; {l.status as string}</p>
-            </div>
-          </Card>
-        ))}
+        {lessons.map((l) => {
+          const status = l.status as string;
+          const linkable = status === 'in_progress' || status === 'completed' || status === 'failed_needs_retry';
+          const content = (
+            <Card key={l._id as string} className={`flex items-center gap-3 ${linkable ? 'cursor-pointer hover:border-[var(--color-secondary)]' : ''}`}>
+              {statusIcon(status)}
+              <div className="flex-1 min-w-0">
+                <p className={`text-sm font-medium truncate ${status === 'locked' ? 'text-[var(--color-text-secondary)]' : ''}`}>
+                  Lesson {String(l.sequence_order)}
+                </p>
+                <p className="text-xs text-[var(--color-text-secondary)]">
+                  {String(l.allocated_days)} days
+                  {l.exam_status === 'passed' ? ' &middot; Exam passed' : ''}
+                  {l.exam_status === 'failed' ? ' &middot; Exam failed' : ''}
+                  {status === 'failed_needs_retry' ? ' &middot; Needs retry' : ''}
+                  {status === 'locked' ? ' &middot; Locked' : ''}
+                </p>
+              </div>
+            </Card>
+          );
+
+          return linkable ? (
+            <Link key={l._id as string} to={`/plan/lessons/${l._id}`}>{content}</Link>
+          ) : (
+            content
+          );
+        })}
       </div>
     </div>
   );

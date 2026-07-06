@@ -61,10 +61,19 @@ export async function getNextQuestion(mobileNumber, assessmentId) {
     .find({ assessment_id: assessmentId })
     .distinct('question_id');
 
-  const nextQuestion = await Question.findOne({
-    specialty_id: assessment.specialty_id,
-    _id: { $nin: answeredIds },
-  }).sort({ difficulty: 1, _id: 1 });
+  let questionFilter;
+  if (assessment.plan_lesson_id) {
+    const planLesson = await PlanLesson.findById(assessment.plan_lesson_id);
+    if (planLesson) {
+      questionFilter = { branch_id: planLesson.branch_id, _id: { $nin: answeredIds } };
+    } else {
+      questionFilter = { specialty_id: assessment.specialty_id, _id: { $nin: answeredIds } };
+    }
+  } else {
+    questionFilter = { specialty_id: assessment.specialty_id, _id: { $nin: answeredIds } };
+  }
+
+  const nextQuestion = await Question.findOne(questionFilter).sort({ difficulty: 1, _id: 1 });
 
   if (!nextQuestion) {
     await autoCompleteAssessment(assessment);

@@ -23,6 +23,7 @@ const lessonSchema = new mongoose.Schema({
   order: { type: Number, default: 0 },
   tags: [String],
   resources: [resourceSchema],
+  min_pass_score: { type: Number, default: 60 },
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });

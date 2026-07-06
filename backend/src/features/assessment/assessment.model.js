@@ -42,6 +42,7 @@ const scoringEntrySchema = new mongoose.Schema({
 const assessmentSchema = new mongoose.Schema({
   user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   specialty_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Specialty', required: true },
+  plan_lesson_id: { type: mongoose.Schema.Types.ObjectId, ref: 'PlanLesson', default: null },
   status: { type: String, enum: ['in_progress', 'completed'], default: 'in_progress' },
   question_count: { type: Number, default: 0 },
   answered_count: { type: Number, default: 0 },

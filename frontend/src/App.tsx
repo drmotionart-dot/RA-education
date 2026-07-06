@@ -20,6 +20,8 @@ import { SurveySessionPage } from './features/survey/SurveySessionPage';
 import { SurveyResultsPage } from './features/survey/SurveyResultsPage';
 import { DashboardPage } from './features/dashboard/DashboardPage';
 import { ProfilePage } from './features/profile/ProfilePage';
+import { LessonViewPage } from './features/lessons/LessonViewPage';
+import { LessonExamPage } from './features/lessons/LessonExamPage';
 
 export default function App() {
   return (
@@ -41,6 +43,8 @@ export default function App() {
             <Route path="/paths/:id" element={<PathDetail />} />
             <Route path="/quick-pick" element={<QuickPickPage />} />
             <Route path="/plan" element={<StudyPlanPage />} />
+            <Route path="/plan/lessons/:planLessonId" element={<LessonViewPage />} />
+            <Route path="/plan/lessons/:planLessonId/exam/:assessmentId" element={<LessonExamPage />} />
             <Route path="/assessment" element={<AssessmentPage />} />
             <Route path="/assessment/:id" element={<AssessmentSession />} />
             <Route path="/survey" element={<SurveyLandingPage />} />

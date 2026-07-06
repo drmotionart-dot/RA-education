@@ -77,6 +77,12 @@ const planLessonSchema = new mongoose.Schema({
     enum: ['locked', 'in_progress', 'completed', 'failed_needs_retry'],
     default: 'locked',
   },
+  exam_status: {
+    type: String,
+    enum: ['pending', 'passed', 'failed'],
+    default: 'pending',
+  },
+  exam_score: { type: Number, default: null },
   completed_at: { type: Date, default: null },
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },

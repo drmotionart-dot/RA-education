@@ -19,6 +19,25 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 }
 
 export const api = {
+  lessons: {
+    get: (id: string) => request<Record<string, unknown>>(`/lessons/${id}`),
+    resources: (id: string) => request<Record<string, unknown>>(`/lessons/${id}/resources`),
+    startExam: (planLessonId: string) =>
+      request<{ assessment_id: string; lesson_id: string; lesson_title: string; question_count: number; status: string }>('/lessons/start-exam', {
+        method: 'POST',
+        body: JSON.stringify({ plan_lesson_id: planLessonId }),
+      }),
+    complete: (planLessonId: string, assessmentId?: string) =>
+      request<{ passed: boolean; next_lesson_id?: string; completed_lesson_id?: string; score?: number; min_pass_score?: number; suggestions?: { id: string; title: string; description: string; duration_minutes: number }[] }>('/lessons/complete', {
+        method: 'POST',
+        body: JSON.stringify({ plan_lesson_id: planLessonId, assessment_id: assessmentId }),
+      }),
+    suggestions: (planLessonId: string) =>
+      request<{ id: string; title: string; description: string; duration_minutes: number }[]>('/lessons/suggestions', {
+        method: 'POST',
+        body: JSON.stringify({ plan_lesson_id: planLessonId }),
+      }),
+  },
   auth: {
     register: (data: { full_name: string; mobile_number: string; email: string; password: string; national_id: string; date_of_birth: string; gender: string; governorate: string; role: string }) =>
       request<{ token: string; user: { mobile_number: string; name: string; role: string; email: string } }>('/auth/register', {
