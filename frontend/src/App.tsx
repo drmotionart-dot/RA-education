@@ -24,6 +24,7 @@ import { DashboardPage } from './features/dashboard/DashboardPage';
 import { ProfilePage } from './features/profile/ProfilePage';
 import { LessonViewPage } from './features/lessons/LessonViewPage';
 import { LessonExamPage } from './features/lessons/LessonExamPage';
+import { SurveyErrorBoundary } from './components/ui/SurveyErrorBoundary';
 
 export default function App() {
   return (
@@ -52,8 +53,8 @@ export default function App() {
             <Route path="/assessment" element={<AssessmentPage />} />
             <Route path="/assessment/:id" element={<AssessmentSession />} />
             <Route path="/survey" element={<SurveyLandingPage />} />
-            <Route path="/survey/:id" element={<SurveySessionPage />} />
-            <Route path="/survey/:id/results" element={<SurveyResultsPage />} />
+            <Route path="/survey/:id" element={<SurveyErrorBoundary><SurveySessionPage /></SurveyErrorBoundary>} />
+            <Route path="/survey/:id/results" element={<SurveyErrorBoundary><SurveyResultsPage /></SurveyErrorBoundary>} />
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -14,6 +14,7 @@ interface Match {
 }
 
 interface SurveyResult {
+  type?: 'specialty' | 'path';
   session_id: string;
   status: string;
   results: {
@@ -77,7 +78,20 @@ export function SurveyResultsPage() {
     );
   }
 
-  if (!result?.results?.matches) return null;
+  if (!result?.results?.matches?.length) {
+    return (
+      <div className="mx-auto max-w-2xl space-y-6 py-12 text-center">
+        <h2 className="font-heading text-xl font-bold">No matches found</h2>
+        <p className="text-sm text-[var(--color-text-secondary)]">
+          We could not find any specialty matches for your responses. Try taking the survey again with different answers.
+        </p>
+        <div className="flex justify-center gap-3 pt-2">
+          <Button onClick={() => navigate('/survey')}>Take Another Survey</Button>
+          <Button variant="ghost" onClick={() => navigate('/paths')}>View Recommended Paths</Button>
+        </div>
+      </div>
+    );
+  }
 
   const { matches, top_match, confidence } = result.results;
 
@@ -94,7 +108,7 @@ export function SurveyResultsPage() {
       </div>
 
       {top_match && matches[0] && (
-        <Link to={matches[0].specialty_id ? `/explore/specialties/${matches[0].specialty_id}` : '#'} className="block">
+        <Link to={matches[0].specialty_id ? `/explore/${result.type === 'path' ? 'paths' : 'specialties'}/${matches[0].specialty_id}` : '#'} className="block">
           <TiltCard className="border-[var(--color-accent-violet)] p-6 text-center">
             <Star size={32} className="mx-auto mb-2 text-[var(--color-secondary)]" />
             <h2 className="font-heading text-xl font-bold">{top_match}</h2>
@@ -126,11 +140,11 @@ export function SurveyResultsPage() {
                 </span>
               </div>
               <ProgressBar value={pct} max={100} className="mt-2" />
-              {isTop && m.axes_contributing.length > 0 && (
+              {isTop && (m.axes_contributing?.length ?? 0) > 0 && (
                 <div className="mt-3 space-y-1">
                   <p className="text-xs text-[var(--color-text-secondary)]">Why this matches:</p>
                   <ul className="space-y-0.5">
-                    {m.axes_contributing.map((ax) => (
+                    {(m.axes_contributing ?? []).map((ax) => (
                       <li key={ax} className="text-xs text-[var(--color-text-secondary)]">
                         &bull; Strong alignment in {ax.replace(/_/g, ' ')}
                       </li>
@@ -141,7 +155,7 @@ export function SurveyResultsPage() {
             </TiltCard>
           );
           return m.specialty_id ? (
-            <Link key={m.specialty_name} to={`/explore/specialties/${m.specialty_id}`}>{content}</Link>
+            <Link key={m.specialty_name} to={`/explore/${result.type === 'path' ? 'paths' : 'specialties'}/${m.specialty_id}`}>{content}</Link>
           ) : content;
         })}
       </div>

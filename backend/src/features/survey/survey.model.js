@@ -34,6 +34,7 @@ const graphSchema = new mongoose.Schema({
   target_vectors: { type: [targetVectorSchema], default: [] },
   axis_bounds: { type: [axisBoundSchema], default: [] },
   axes: { type: [String], required: true },
+  max_questions: { type: Number, default: 35 },
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });
@@ -56,9 +57,10 @@ const sessionSchema = new mongoose.Schema({
   started_at: { type: Date, default: Date.now },
   completed_at: Date,
   results: {
+    type: { type: String, enum: ['specialty', 'path', null], default: null },
     matches: [{
       specialty_name: String,
-      specialty_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Specialty', default: null },
+      specialty_id: { type: mongoose.Schema.Types.ObjectId, default: null },
       similarity: Number,
       axes_contributing: [String],
     }],

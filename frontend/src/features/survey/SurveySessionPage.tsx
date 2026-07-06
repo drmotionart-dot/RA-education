@@ -135,7 +135,7 @@ export function SurveySessionPage() {
         </div>
 
         <div className="space-y-2">
-          {question.options.map((o) => {
+          {(question.options ?? []).map((o) => {
             const isSelected = selectedIndex === o.index;
             return (
               <button

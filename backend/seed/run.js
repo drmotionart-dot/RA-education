@@ -5,7 +5,7 @@ import { Specialty, Path } from '../src/features/catalog/catalog.model.js';
 import { Question } from '../src/features/assessment/assessment.model.js';
 import { Lesson } from '../src/features/lessons/lessons.model.js';
 import { SurveyGraph } from '../src/features/survey/survey.model.js';
-import { computeAxisBounds } from '../src/utils/scoring.js';
+import { computeAxisBounds, computeMaxPathLength } from '../src/utils/scoring.js';
 import { specialties } from './specialties.js';
 import { paths } from './paths.js';
 import { seedQuestions } from './questions.js';
@@ -111,6 +111,7 @@ async function seed() {
 
   for (const { label, data } of graphs) {
     const axisBounds = computeAxisBounds(data.nodes, data.root_node_id);
+    const maxQuestions = computeMaxPathLength(data.nodes, data.root_node_id);
     const doc = await SurveyGraph.create({
       type: data.type,
       role: data.role,
@@ -119,8 +120,9 @@ async function seed() {
       nodes: data.nodes,
       target_vectors: data.target_vectors,
       axis_bounds: axisBounds,
+      max_questions: maxQuestions,
     });
-    console.log(`  Created ${label} SurveyGraph (${doc.nodes.length} nodes, ${axisBounds.length} axis bounds)`);
+    console.log(`  Created ${label} SurveyGraph (${doc.nodes.length} nodes, ${axisBounds.length} axis bounds, ${maxQuestions} max questions)`);
   }
 
   console.log(`Seed complete. ${questionCount} questions, ${lessonCount} lessons, ${graphs.length} survey graphs seeded.`);

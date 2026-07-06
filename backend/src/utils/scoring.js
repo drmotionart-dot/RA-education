@@ -29,7 +29,8 @@ export function computeEuclideanSimilarity(userVector, targetVector, axes) {
     sumSq += diff * diff;
   }
   const euclidean = Math.sqrt(sumSq);
-  const maxDist = Math.sqrt(axes.length);
+  const maxDist = Math.sqrt(axes?.length ?? 0);
+  if (maxDist === 0) return 0;
   return 1 - (euclidean / maxDist);
 }
 
@@ -47,6 +48,31 @@ export function generateWhySummary(userVector, targetVector, axes) {
   }
   diffs.sort((a, b) => a.absDiff - b.absDiff);
   return diffs.slice(0, 3).map(a => a.axis);
+}
+
+/*
+  computeMaxPathLength: finds the longest root-to-terminal path in the graph.
+*/
+export function computeMaxPathLength(nodes, rootNodeId) {
+  const nodeMap = {};
+  for (const node of nodes) nodeMap[node.node_id] = node;
+
+  const memo = {};
+  function dfs(nodeId) {
+    if (memo[nodeId] !== undefined) return memo[nodeId];
+    const node = nodeMap[nodeId];
+    if (!node || !node.options) return 0;
+    let maxLen = 0;
+    for (const opt of node.options) {
+      if (opt.next_node_id && nodeMap[opt.next_node_id]) {
+        maxLen = Math.max(maxLen, 1 + dfs(opt.next_node_id));
+      }
+    }
+    memo[nodeId] = maxLen;
+    return maxLen;
+  }
+  // count includes root node itself
+  return 1 + dfs(rootNodeId);
 }
 
 /*

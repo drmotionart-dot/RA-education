@@ -1,10 +1,10 @@
 import { SurveyGraph, SurveySession } from './survey.model.js';
 import { User } from '../users/users.model.js';
-import { Specialty } from '../catalog/catalog.model.js';
+import { Specialty, Path } from '../catalog/catalog.model.js';
 import { ApiError } from '../../utils/apiError.js';
 import { normalizeScores, computeEuclideanSimilarity, generateWhySummary } from '../../utils/scoring.js';
 
-const MAX_QUESTIONS = 35;
+const DEFAULT_MAX_QUESTIONS = 35;
 
 function getOrCreateGraph(type, role) {
   return SurveyGraph.findOne({ type, role }).lean();
@@ -23,7 +23,7 @@ export async function startSurvey(mobileNumber, { type, role }) {
   const existing = await SurveySession.findOne({ user_id: user._id, status: 'in_progress' });
   if (existing) {
     const currentNode = graph.nodes.find(n => n.node_id === existing.current_node_id);
-    return formatSurveyQuestion(graph, currentNode, existing);
+    return formatSurveyQuestion(graph, currentNode, existing, graph.max_questions);
   }
 
   const session = await SurveySession.create({
@@ -35,7 +35,7 @@ export async function startSurvey(mobileNumber, { type, role }) {
     response_count: 0,
   });
 
-  return formatSurveyQuestion(graph, rootNode, session);
+  return formatSurveyQuestion(graph, rootNode, session, graph.max_questions);
 }
 
 export async function answerQuestion(mobileNumber, sessionId, { node_id, option_index }) {
@@ -76,11 +76,16 @@ export async function answerQuestion(mobileNumber, sessionId, { node_id, option_
 
   const nextNodeId = option.next_node_id;
 
-  if (!nextNodeId || session.response_count >= MAX_QUESTIONS) {
+  if (!nextNodeId || session.response_count >= (graph.max_questions || DEFAULT_MAX_QUESTIONS)) {
     session.status = 'completed';
     session.completed_at = new Date();
     session.current_node_id = null;
-    session.results = computeResults(session.axis_scores, graph);
+    try {
+      session.results = computeResults(session.axis_scores, graph);
+    } catch (err) {
+      console.error('computeResults failed (terminal node), returning empty matches:', err);
+      session.results = { matches: [], top_match: null, confidence: 0 };
+    }
     await session.save();
     return await formatSurveyResults(session, graph);
   }
@@ -90,7 +95,12 @@ export async function answerQuestion(mobileNumber, sessionId, { node_id, option_
     session.status = 'completed';
     session.completed_at = new Date();
     session.current_node_id = null;
-    session.results = computeResults(session.axis_scores, graph);
+    try {
+      session.results = computeResults(session.axis_scores, graph);
+    } catch (err) {
+      console.error('computeResults failed (nextNode missing), returning empty matches:', err);
+      session.results = { matches: [], top_match: null, confidence: 0 };
+    }
     await session.save();
     return await formatSurveyResults(session, graph);
   }
@@ -98,7 +108,7 @@ export async function answerQuestion(mobileNumber, sessionId, { node_id, option_
   session.current_node_id = nextNodeId;
   await session.save();
 
-  return formatSurveyQuestion(graph, nextNode, session);
+  return formatSurveyQuestion(graph, nextNode, session, graph.max_questions);
 }
 
 export async function getSessionState(mobileNumber, sessionId) {
@@ -118,7 +128,7 @@ export async function getSessionState(mobileNumber, sessionId) {
 
   const graph = await SurveyGraph.findById(session.graph_id).lean();
   const currentNode = graph.nodes.find(n => n.node_id === session.current_node_id);
-  return formatSurveyQuestion(graph, currentNode, session);
+  return formatSurveyQuestion(graph, currentNode, session, graph.max_questions);
 }
 
 export async function completeSurvey(mobileNumber, sessionId) {
@@ -139,7 +149,12 @@ export async function completeSurvey(mobileNumber, sessionId) {
   session.status = 'completed';
   session.completed_at = new Date();
   session.current_node_id = null;
-  session.results = computeResults(session.axis_scores, graph);
+  try {
+    session.results = computeResults(session.axis_scores, graph);
+  } catch (err) {
+    console.error('computeResults failed (completeSurvey), returning empty matches:', err);
+    session.results = { matches: [], top_match: null, confidence: 0 };
+  }
   await session.save();
 
   return await formatSurveyResults(session, graph);
@@ -170,13 +185,14 @@ function computeResults(axisScores, graph) {
   const topMatch = top5[0];
 
   return {
+    type: graph.type,
     matches: top5,
     top_match: topMatch?.specialty_name || null,
     confidence: topMatch ? Math.round(topMatch.similarity * 100) : 0,
   };
 }
 
-function formatSurveyQuestion(graph, node, session) {
+function formatSurveyQuestion(graph, node, session, maxQuestions) {
   return {
     session_id: session._id,
     status: 'in_progress',
@@ -191,21 +207,23 @@ function formatSurveyQuestion(graph, node, session) {
     },
     progress: {
       answered: session.response_count,
-      total: MAX_QUESTIONS,
+      total: maxQuestions || DEFAULT_MAX_QUESTIONS,
     },
   };
 }
 
 async function formatSurveyResults(session, graph) {
-  const matches = (session.results?.matches || []).map(m => ({ ...m }));
+  const matches = (session.results?.matches || []).map(m => (m.toObject ? m.toObject() : { ...m }));
   const names = matches.map(m => m.specialty_name).filter(Boolean);
   if (names.length > 0) {
-    const specs = await Specialty.find({ name: { $in: names } }, { name: 1 }).lean();
-    const specMap = {};
-    for (const s of specs) specMap[s.name] = s._id;
-    for (const m of matches) m.specialty_id = specMap[m.specialty_name] || null;
+    const Model = graph.type === 'path' ? Path : Specialty;
+    const docs = await Model.find({ name: { $in: names } }, { name: 1 }).lean();
+    const docMap = {};
+    for (const d of docs) docMap[d.name] = d._id;
+    for (const m of matches) m.specialty_id = docMap[m.specialty_name] || null;
   }
   return {
+    type: graph.type,
     session_id: session._id,
     status: 'completed',
     results: { ...session.results, matches },
