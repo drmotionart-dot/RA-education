@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Brain, ClipboardList, Compass, Plus, User } from 'lucide-react';
+import { BookOpen, Brain, ClipboardList, Compass, Plus, User, Users } from 'lucide-react';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { Card } from '../../components/ui/Card';
 import { ProgressBar } from '../../components/ui/ProgressBar';
 import { Button } from '../../components/ui/Button';
 import { api } from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
+import { CompanionSection } from '../companion/CompanionSection';
 
 export function DashboardPage() {
   const user = useAuthStore((s) => s.user);
@@ -96,7 +97,20 @@ export function DashboardPage() {
             </div>
           </div>
         </TiltCard>
+        <TiltCard onClick={() => navigate('/companion')}>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--color-secondary)]/10">
+              <Users size={20} className="text-[var(--color-secondary)]" />
+            </div>
+            <div>
+              <p className="font-semibold">Companion</p>
+              <p className="text-xs text-[var(--color-text-secondary)]">Find a study buddy</p>
+            </div>
+          </div>
+        </TiltCard>
       </div>
+
+      <CompanionSection />
 
       {loading ? (
         <p className="text-center text-sm text-[var(--color-text-secondary)]">Loading your plan...</p>

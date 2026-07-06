@@ -14,6 +14,7 @@ import { PathsPage } from './features/catalog/PathsPage';
 import { QuickPickPage } from './features/quickpick/QuickPickPage';
 import { StudyPlanPage } from './features/studyplan/StudyPlanPage';
 import { PlanHistoryPage } from './features/studyplan/PlanHistoryPage';
+import { CompanionPage } from './features/companion/CompanionPage';
 import { AssessmentPage } from './features/assessment/AssessmentPage';
 import { AssessmentSession } from './features/assessment/AssessmentSession';
 import { SurveyLandingPage } from './features/survey/SurveyLandingPage';
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/quick-pick" element={<QuickPickPage />} />
             <Route path="/plan" element={<StudyPlanPage />} />
             <Route path="/plan/history" element={<PlanHistoryPage />} />
+            <Route path="/companion" element={<CompanionPage />} />
             <Route path="/plan/lessons/:planLessonId" element={<LessonViewPage />} />
             <Route path="/plan/lessons/:planLessonId/exam/:assessmentId" element={<LessonExamPage />} />
             <Route path="/assessment" element={<AssessmentPage />} />

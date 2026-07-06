@@ -141,7 +141,15 @@
 - [x] StudyPlanPage — lesson rows now link to LessonViewPage; shows exam_status; `failed_needs_retry` uses AlertTriangle icon
 
 ### Phase 5 — Companion & History
-- [ ] Companion/mentor system (buddy matching)
+- [x] Companion/mentor system (buddy matching)
+  - CompanionRequest model (from_user_id, to_user_id, status: pending/accepted/declined)
+  - `GET /api/companion/match` — finds same-specialty users with match score
+  - `POST /api/companion/request` — send companion request
+  - `POST /api/companion/respond` — accept/decline (sets companion_id on both users)
+  - `GET /api/companion` — current companion info with lesson progress
+  - `GET /api/companion/requests` — pending incoming/outgoing requests
+  - CompanionSection on dashboard — shows current companion or "Find" CTA
+  - CompanionPage (`/companion`) — 3-tab UI: My Companion / Find / Requests
 - [x] Plan restart history (track abandoned plans, compare progress)
   - `GET /api/plan/history` — returns all plans (active/abandoned/completed) with lesson progress stats
   - PlanHistoryPage — shows each plan with status badge, progress bar, created date, restart indicator

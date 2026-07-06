@@ -162,4 +162,24 @@ export const api = {
     reallocate: (id: string) =>
       request<Record<string, unknown>>(`/assessment/${id}/reallocate`, { method: 'POST' }),
   },
+  companion: {
+    match: () => request<{ user_id: string; name: string; role: string; same_path: boolean; match_score: number }[]>('/companion/match'),
+    request: (toUserId: string) =>
+      request<{ request_id: string; status: string }>('/companion/request', {
+        method: 'POST',
+        body: JSON.stringify({ to_user_id: toUserId }),
+      }),
+    respond: (requestId: string, action: 'accept' | 'decline') =>
+      request<{ status: string; companion_id?: string }>('/companion/respond', {
+        method: 'POST',
+        body: JSON.stringify({ request_id: requestId, action }),
+      }),
+    get: () =>
+      request<{ user_id: string; name: string; role: string; has_active_plan: boolean; lesson_progress: { total: number; completed: number } } | null>('/companion'),
+    requests: () =>
+      request<{
+        incoming: { request_id: string; user: { id: string; name: string; role: string }; created_at: string }[];
+        outgoing: { request_id: string; user: { id: string; name: string; role: string }; created_at: string }[];
+      }>('/companion/requests'),
+  },
 };
