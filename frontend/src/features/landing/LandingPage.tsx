@@ -69,7 +69,7 @@ export function LandingPage() {
         {pData.map((p) => (
           <div
             key={p.id}
-            className="absolute rounded-full bg-[#C9A227] pointer-events-none"
+            className="absolute rounded-full bg-[var(--color-secondary)] pointer-events-none"
             style={{
               left: `${p.left}%`,
               top: `${p.top}%`,
@@ -94,7 +94,7 @@ export function LandingPage() {
             <button onClick={() => navigate('/login')} className="rounded-lg px-3 py-1.5 text-sm font-medium text-white/80 transition-colors hover:text-white">
               Log In
             </button>
-            <button onClick={() => navigate('/register')} className="rounded-lg bg-[#C9A227] px-4 py-1.5 text-sm font-medium text-[#0A1428] transition-all hover:opacity-90">
+            <button onClick={() => navigate('/register')} className="rounded-lg bg-[var(--color-secondary)] px-4 py-1.5 text-sm font-medium text-[var(--color-primary)] transition-all hover:opacity-90">
               Get Started
             </button>
           </div>
@@ -106,9 +106,9 @@ export function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <div className="mb-2 inline-block border-b-2 border-[#C9A227] pb-2">
+            <div className="mb-2 inline-block border-b-2 border-[var(--color-secondary)] pb-2">
               <h1 className="font-heading text-5xl font-bold tracking-tight text-white md:text-7xl">
-                RA <span className="text-[#C9A227]">Education</span>
+                RA <span className="text-[var(--color-secondary)]">Education</span>
               </h1>
             </div>
           </motion.div>
@@ -155,13 +155,13 @@ export function LandingPage() {
           >
             <button
               onClick={() => navigate('/register')}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#C9A227] px-6 py-3 font-heading text-base font-semibold text-[#0A1428] transition-all hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-secondary)] px-6 py-3 font-heading text-base font-semibold text-[var(--color-primary)] transition-all hover:opacity-90"
             >
               Get Started <ArrowRight size={18} />
             </button>
             <button
               onClick={() => navigate('/login')}
-              className="inline-flex items-center gap-2 rounded-lg border border-[#C9A227] bg-transparent px-6 py-3 font-heading text-base font-medium text-white transition-all hover:bg-white/5"
+              className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-secondary)] bg-transparent px-6 py-3 font-heading text-base font-medium text-white transition-all hover:bg-white/5"
             >
               <LogIn size={18} /> Log In
             </button>
@@ -190,7 +190,7 @@ export function LandingPage() {
           <motion.path
             d="M0 60 Q 150 10, 300 60 T 600 60 T 900 60 T 1200 60"
             fill="none"
-            stroke="#C9A227"
+            stroke="var(--color-secondary)"
             strokeWidth="1"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -332,7 +332,7 @@ export function LandingPage() {
       </section>
 
       {/* ─── FINAL CTA BAND ─── */}
-      <section className="border-t-2 border-[var(--color-secondary)] bg-[var(--color-primary)] py-16 text-center md:py-20">
+       <section className="border-t-2 border-[var(--color-secondary)] bg-[#0A1428] py-16 text-center md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -345,7 +345,7 @@ export function LandingPage() {
           </p>
           <button
             onClick={() => navigate('/register')}
-            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#C9A227] px-8 py-3.5 font-heading text-base font-semibold text-[#0A1428] transition-all hover:opacity-90"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[var(--color-secondary)] px-8 py-3.5 font-heading text-base font-semibold text-[var(--color-primary)] transition-all hover:opacity-90"
           >
             Get Started <ArrowRight size={18} />
           </button>

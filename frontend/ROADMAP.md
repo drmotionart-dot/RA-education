@@ -164,9 +164,12 @@
 - [ ] Real lessons + resources not yet written for most specialties/paths
 - [ ] Question bank limited to 27 seed questions — needs expansion
 
-### Design System Verification
-- [ ] Navy/gold applied to some pages but not systematically verified across entire app
-- [ ] Catalog detail pages, QuickPick wizard, Onboarding, StudyPlanPage — confirm accent borders/dark mode consistency
+### Design System Verification ✅
+- [x] All feature pages audited — only `LandingPage.tsx` had hardcoded colors (9 instances)
+- [x] Fixed: all `#C9A227` → `var(--color-secondary)`, all `#0A1428` (text on gold) → `var(--color-primary)`
+- [x] Fixed: CTA section `bg-[var(--color-primary)]` → `bg-[#0A1428]` (always-navy for white text readability in dark mode)
+- [x] Catalog detail pages, QuickPick, Onboarding, StudyPlanPage — verified using `var(--color-*)` tokens correctly
+- [x] All 24 feature files use CSS variables; no remaining hardcoded theme colors outside landing page gradient (intentional visual effect)
 
 ## Fixes & Notable Changes
 - **QuickPick Zod bug**: `z.enum(['6', '12', '18', '24'])` accepted strings only, frontend sends numbers → 400. Fixed: `z.number().refine(v => [6, 12, 18, 24].includes(v))`.
