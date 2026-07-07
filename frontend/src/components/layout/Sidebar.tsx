@@ -234,7 +234,7 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onMobileClose
         transition={{ type: 'spring', stiffness: 200, damping: 30 }}
         className={`
           fixed md:relative inset-y-0 left-0 z-50
-          flex flex-col
+          flex flex-col md:h-full
           border-r border-[var(--color-border)]
           bg-white/80 dark:bg-[#14181F]/85 backdrop-blur-xl
           overflow-hidden

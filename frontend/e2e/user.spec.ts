@@ -11,8 +11,9 @@ test.describe('User Profile', () => {
     await page.goto('/profile');
     await page.waitForSelector('h1:has-text("Profile")');
 
-    await expect(page.getByText(user.name)).toBeVisible();
-    await expect(page.getByText(user.role, { exact: true })).toBeVisible();
+    const main = page.locator('main');
+    await expect(main.getByText(user.name)).toBeVisible();
+    await expect(main.getByText(user.role, { exact: true })).toBeVisible();
     const mobileText = page.getByText(user.mobile_number);
     if (await mobileText.count() > 0) {
       await expect(mobileText).toBeVisible();
