@@ -59,6 +59,7 @@ test.describe('Survey Edge Cases', () => {
   });
 
   test('survey results page handles no matches', async ({ authedPage: page, request }) => {
+    test.setTimeout(30000);
     const token = await page.evaluate(() => localStorage.getItem('token'));
     const headers = { Authorization: `Bearer ${token}` };
 

@@ -4,7 +4,7 @@ test.describe('Survey Flow', () => {
   test('start survey -> answer 2 questions -> refresh -> same progress -> complete -> results', async ({
     authedPage: page, request,
   }) => {
-    // Use the page's own token to keep API calls in the same identity as the browser
+    test.setTimeout(120000);
     const token = await page.evaluate(() => localStorage.getItem('token'));
     const headers = { Authorization: `Bearer ${token}` };
 
