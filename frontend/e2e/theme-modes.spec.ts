@@ -97,7 +97,7 @@ test.describe('Theme Modes', () => {
     await expect(page.getByText('Lessons Done')).toBeVisible();
     await expect(page.getByText('Plan Progress')).toBeVisible();
     await expect(page.getByText('Days Active')).toBeVisible();
-    await expect(page.getByText('Current Month')).toBeVisible();
+    await expect(page.getByText('This Month')).toBeVisible();
   });
 
   test('explore page renders in dark mode', async ({ authedPage: page }) => {

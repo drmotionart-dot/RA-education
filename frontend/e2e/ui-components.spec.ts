@@ -76,7 +76,7 @@ test.describe('UI Components', () => {
     await expect(page.getByText('Lessons Done')).toBeVisible();
     await expect(page.getByText('Plan Progress')).toBeVisible();
     await expect(page.getByText('Days Active')).toBeVisible();
-    await expect(page.getByText('Current Month')).toBeVisible();
+    await expect(page.getByText('This Month')).toBeVisible();
   });
 
   test('profile input fields are editable', async ({ authedPage: page }) => {
