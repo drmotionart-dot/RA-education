@@ -166,6 +166,14 @@ export const api = {
     reallocate: (id: string) =>
       request<Record<string, unknown>>(`/assessment/${id}/reallocate`, { method: 'POST' }),
   },
+  dashboard: {
+    stats: () => request<{
+      weeklyActivity: { label: string; value: number }[];
+      sparklineData: number[];
+      categoryBreakdown: { name: string; pct: number; color: string }[];
+      hoursThisWeek: number;
+    }>('/dashboard/stats'),
+  },
   companion: {
     match: () => request<{ user_id: string; name: string; role: string; same_path: boolean; match_score: number }[]>('/companion/match'),
     request: (toUserId: string) =>

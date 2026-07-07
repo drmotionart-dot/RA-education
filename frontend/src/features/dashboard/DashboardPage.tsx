@@ -12,24 +12,24 @@ import { api } from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
 import { CompanionSection } from '../companion/CompanionSection';
 
-const weeklyData = [
-  { label: 'M', value: 2 },
-  { label: 'T', value: 4 },
-  { label: 'W', value: 3 },
-  { label: 'T', value: 5 },
-  { label: 'F', value: 1 },
-  { label: 'S', value: 3 },
-  { label: 'S', value: 2 },
-];
+interface DashboardStats {
+  weeklyActivity: { label: string; value: number }[];
+  sparklineData: number[];
+  categoryBreakdown: { name: string; pct: number; color: string }[];
+  hoursThisWeek: number;
+}
 
-const sparklineData = [3, 5, 2, 6, 4, 7, 5];
-
-const categoryData = [
-  { name: 'Medicine', pct: 60, color: 'var(--color-secondary)' },
-  { name: 'Surgery', pct: 30, color: 'var(--color-success)' },
-  { name: 'Pediatrics', pct: 45, color: 'var(--color-accent-violet)' },
-  { name: 'ICU', pct: 20, color: 'var(--color-primary)' },
-];
+const defaultStats: DashboardStats = {
+  weeklyActivity: [
+    { label: 'M', value: 0 }, { label: 'T', value: 0 },
+    { label: 'W', value: 0 }, { label: 'T', value: 0 },
+    { label: 'F', value: 0 }, { label: 'S', value: 0 },
+    { label: 'S', value: 0 },
+  ],
+  sparklineData: [0, 0, 0, 0, 0, 0, 0],
+  categoryBreakdown: [],
+  hoursThisWeek: 0,
+};
 
 function SectionHeader({ title, action }: { title: string; action?: { label: string; onClick: () => void } }) {
   return (
@@ -54,15 +54,20 @@ export function DashboardPage() {
   const user = useAuthStore((s) => s.user);
   const [plan, setPlan] = useState<Record<string, unknown> | null>(null);
   const [lessons, setLessons] = useState<Record<string, unknown>[]>([]);
+  const [stats, setStats] = useState<DashboardStats>(defaultStats);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       try {
-        const p = await api.plan.current();
+        const [p, s] = await Promise.all([
+          api.plan.current(),
+          api.dashboard.stats(),
+        ]);
         setPlan(p);
         setLessons((p.lessons || []) as Record<string, unknown>[]);
+        setStats(s);
       } catch {
         setPlan(null);
       } finally {
@@ -146,9 +151,9 @@ export function DashboardPage() {
             icon={BookOpen}
             label="Lessons Done"
             value={`${completed}/${total}`}
-            trend="up"
-            trendValue="+2 this week"
-            sparklineData={sparklineData}
+            trend={stats.sparklineData.some((v) => v > 0) ? 'up' : undefined}
+            trendValue={`${stats.hoursThisWeek}h this week`}
+            sparklineData={stats.sparklineData}
             color="var(--color-primary)"
           />
           <StatCard
@@ -163,7 +168,7 @@ export function DashboardPage() {
             icon={TrendingUp}
             label="Days Active"
             value={`${daysSince}`}
-            sparklineData={sparklineData.map((v) => v + 1)}
+            sparklineData={stats.sparklineData.map((v) => v + 1)}
             color="var(--color-success)"
           />
           <StatCard
@@ -201,22 +206,24 @@ export function DashboardPage() {
                     </p>
                   </div>
                 </div>
-                <div className="border-t border-[var(--color-border)] pt-4">
-                  <p className="text-xs font-semibold text-[var(--color-text-secondary)] mb-3 uppercase tracking-wider">Category Breakdown</p>
-                  <div className="space-y-2.5">
-                    {categoryData.map((cat) => (
-                      <div key={cat.name}>
-                        <div className="flex justify-between text-xs mb-1">
-                          <span className="text-[var(--color-text-primary)]">{cat.name}</span>
-                          <span className="font-medium" style={{ color: cat.color }}>{cat.pct}%</span>
+                {stats.categoryBreakdown.length > 0 && (
+                  <div className="border-t border-[var(--color-border)] pt-4">
+                    <p className="text-xs font-semibold text-[var(--color-text-secondary)] mb-3 uppercase tracking-wider">Category Breakdown</p>
+                    <div className="space-y-2.5">
+                      {stats.categoryBreakdown.map((cat) => (
+                        <div key={cat.name}>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-[var(--color-text-primary)]">{cat.name}</span>
+                            <span className="font-medium" style={{ color: cat.color }}>{cat.pct}%</span>
+                          </div>
+                          <div className="h-1.5 rounded-full bg-[var(--color-border)] overflow-hidden">
+                            <div className="h-full rounded-full transition-all duration-700" style={{ width: `${cat.pct}%`, backgroundColor: cat.color }} />
+                          </div>
                         </div>
-                        <div className="h-1.5 rounded-full bg-[var(--color-border)] overflow-hidden">
-                          <div className="h-full rounded-full transition-all duration-700" style={{ width: `${cat.pct}%`, backgroundColor: cat.color }} />
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </Card>
           ) : !loading ? (
@@ -234,9 +241,9 @@ export function DashboardPage() {
           <Card className="!p-6">
             <div className="flex items-center justify-between mb-1">
               <h3 className="font-heading text-sm font-semibold text-[var(--color-text-primary)]">Weekly Activity</h3>
-              <span className="text-xs text-[var(--color-text-secondary)]">17 hrs this week</span>
+              <span className="text-xs text-[var(--color-text-secondary)]">{stats.hoursThisWeek} hrs this week</span>
             </div>
-            <BarChart data={weeklyData} height={110} barColor="var(--color-secondary)" className="mt-4" />
+            <BarChart data={stats.weeklyActivity} height={110} barColor="var(--color-secondary)" className="mt-4" />
           </Card>
         </div>
       </div>

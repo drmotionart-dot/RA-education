@@ -12,6 +12,7 @@ import studyplanRoutes from './features/studyplan/studyplan.routes.js';
 import assessmentRoutes from './features/assessment/assessment.routes.js';
 import surveyRoutes from './features/survey/survey.routes.js';
 import companionRoutes from './features/companion/companion.routes.js';
+import dashboardRoutes from './features/dashboard/dashboard.routes.js';
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/plan', studyplanRoutes);
 app.use('/api/assessment', assessmentRoutes);
 app.use('/api/survey', surveyRoutes);
 app.use('/api/companion', companionRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });
