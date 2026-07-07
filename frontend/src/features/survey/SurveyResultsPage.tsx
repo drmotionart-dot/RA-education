@@ -10,7 +10,8 @@ interface Match {
   specialty_name: string;
   specialty_id: string | null;
   similarity: number;
-  axes_contributing: string[];
+  strongest_axes: string[];
+  distinguishing_axes: string[];
 }
 
 interface SurveyResult {
@@ -21,6 +22,7 @@ interface SurveyResult {
     matches: Match[];
     top_match: string;
     confidence: number;
+    unhit_axes_warning?: string;
   };
 }
 
@@ -106,7 +108,7 @@ export function SurveyResultsPage() {
     );
   }
 
-  const { matches, top_match, confidence } = result.results;
+  const { matches, top_match, confidence, unhit_axes_warning } = result.results;
 
   return (
     <div className="mx-auto max-w-2xl space-y-8 py-8">
@@ -148,6 +150,12 @@ export function SurveyResultsPage() {
         )
       )}
 
+      {unhit_axes_warning && (
+        <div className="rounded-lg border border-[var(--color-border-accent)] bg-[var(--color-surface)] p-4">
+          <p className="text-xs text-[var(--color-text-secondary)]">{unhit_axes_warning}</p>
+        </div>
+      )}
+
       <div className="space-y-3">
         <h2 className="font-heading text-lg font-semibold">Top 5 Matches</h2>
         {matches.map((m, i) => {
@@ -167,13 +175,25 @@ export function SurveyResultsPage() {
                 </span>
               </div>
               <ProgressBar value={pct} max={100} className="mt-2" />
-              {isTop && (m.axes_contributing?.length ?? 0) > 0 && (
+              {isTop && (m.strongest_axes?.length ?? 0) > 0 && (
                 <div className="mt-3 space-y-1">
-                  <p className="text-xs text-[var(--color-text-secondary)]">Why this matches:</p>
+                  <p className="text-xs text-[var(--color-text-secondary)]">Strong alignment in:</p>
                   <ul className="space-y-0.5">
-                    {(m.axes_contributing ?? []).map((ax) => (
+                    {(m.strongest_axes ?? []).map((ax) => (
                       <li key={ax} className="text-xs text-[var(--color-text-secondary)]">
-                        &bull; Strong alignment in {ax.replace(/_/g, ' ')}
+                        &bull; {ax.replace(/_/g, ' ')}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {isTop && (m.distinguishing_axes?.length ?? 0) > 0 && (
+                <div className="mt-1 space-y-1">
+                  <p className="text-xs text-[var(--color-text-secondary)]">What sets it apart:</p>
+                  <ul className="space-y-0.5">
+                    {(m.distinguishing_axes ?? []).map((ax) => (
+                      <li key={ax} className="text-xs text-[var(--color-text-secondary)]">
+                        &bull; You lean {ax.replace(/_/g, ' ')} differently
                       </li>
                     ))}
                   </ul>

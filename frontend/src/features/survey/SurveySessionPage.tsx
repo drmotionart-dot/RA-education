@@ -24,9 +24,10 @@ interface SessionState {
   question?: Question;
   progress?: Progress;
   results?: {
-    matches: { specialty_name: string; similarity: number; axes_contributing: string[] }[];
+    matches: { specialty_name: string; similarity: number; strongest_axes: string[]; distinguishing_axes: string[] }[];
     top_match: string;
     confidence: number;
+    unhit_axes_warning?: string;
   };
 }
 

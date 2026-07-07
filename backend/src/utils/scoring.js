@@ -93,11 +93,11 @@ export function computeEuclideanSimilarity(userVector, targetVector, axes, weigh
 }
 
 /*
-  generateWhySummary: returns the 2-3 axis names with the smallest
-  absolute difference between user and target values — these are the
-  axes that most strongly drove the match.
+  generateAxisBreakdown: returns both the 2-3 axes with the smallest
+  absolute difference (strongest alignment) and the 1-2 axes with the
+  largest absolute difference (most distinguishing factors).
 */
-export function generateWhySummary(userVector, targetVector, axes) {
+export function generateAxisBreakdown(userVector, targetVector, axes) {
   const diffs = [];
   for (const axis of (axes || [])) {
     const userVal = userVector[axis] ?? 0.5;
@@ -105,8 +105,12 @@ export function generateWhySummary(userVector, targetVector, axes) {
     diffs.push({ axis, absDiff: Math.abs(userVal - targetVal) });
   }
   diffs.sort((a, b) => a.absDiff - b.absDiff);
-  return diffs.slice(0, 3).map(a => a.axis);
+  const strongest = diffs.slice(0, 3).map(a => a.axis);
+  const distinguishing = diffs.slice(-2).reverse().map(a => a.axis);
+  return { strongest, distinguishing };
 }
+
+export { generateAxisBreakdown as generateWhySummary };
 
 /*
   computeMaxPathLength: finds the longest root-to-terminal path in the graph.

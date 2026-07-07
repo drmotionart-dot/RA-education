@@ -2,7 +2,7 @@ import { SurveyGraph, SurveySession } from './survey.model.js';
 import { User } from '../users/users.model.js';
 import { Specialty, Path } from '../catalog/catalog.model.js';
 import { ApiError } from '../../utils/apiError.js';
-import { normalizeScores, computeEuclideanSimilarity, computeAxisWeights, generateWhySummary } from '../../utils/scoring.js';
+import { normalizeScores, computeEuclideanSimilarity, computeAxisWeights, generateAxisBreakdown } from '../../utils/scoring.js';
 import { QuickPickSelection } from '../quickpick/quickpick.model.js';
 import { StudyPlan } from '../studyplan/studyplan.model.js';
 import { generatePlan } from '../studyplan/studyplan.service.js';
@@ -273,14 +273,22 @@ function computeResults(axisScores, graph) {
 
   const weights = computeAxisWeights(graph.target_vectors || [], graph.axes);
 
+  // Detect axes that were never hit by the user's answers
+  const hitAxes = new Set(Object.keys(plainScores));
+  const totalAxes = graph.axes || [];
+  const unhitAxes = totalAxes.filter(axis => !hitAxes.has(axis));
+  const unhitWarning = unhitAxes.length > 0 && (unhitAxes.length / totalAxes.length) > 0.3
+    ? `${Math.round((unhitAxes.length / totalAxes.length) * 100)}% of preference axes were never addressed in your answers (${unhitAxes.join(', ')}). Results may be less precise.`
+    : null;
+
   const matches = (graph.target_vectors || []).map(tv => {
     const target = {};
     for (const axis of (graph.axes || [])) {
       target[axis] = tv.axes?.[axis] ?? 0.5;
     }
     const similarity = computeEuclideanSimilarity(normalized, target, graph.axes, weights);
-    const contributing = generateWhySummary(normalized, target, graph.axes);
-    return { specialty_name: tv.specialty_name, similarity, axes_contributing: contributing };
+    const { strongest, distinguishing } = generateAxisBreakdown(normalized, target, graph.axes);
+    return { specialty_name: tv.specialty_name, similarity, strongest_axes: strongest, distinguishing_axes: distinguishing };
   });
 
   matches.sort((a, b) => b.similarity - a.similarity || a.specialty_name.localeCompare(b.specialty_name));
@@ -300,6 +308,7 @@ function computeResults(axisScores, graph) {
     matches: top5,
     top_match: topMatch?.specialty_name || null,
     confidence: topMatch ? Math.round(topMatch.similarity * 100) : 0,
+    unhit_axes_warning: unhitWarning,
   };
 }
 

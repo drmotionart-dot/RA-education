@@ -121,14 +121,14 @@ export const api = {
         body: JSON.stringify({ type, role }),
       }),
     answer: (sessionId: string, nodeId: string, optionIndex: number) =>
-      request<{ session_id: string; status: string; question?: { node_id: string; question_text: string; is_universal: boolean; options: { index: number; option_text: string }[] }; progress?: { answered: number; total: number }; results?: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; axes_contributing: string[] }[]; top_match: string; confidence: number } }>(`/survey/${sessionId}/answer`, {
+      request<{ session_id: string; status: string; question?: { node_id: string; question_text: string; is_universal: boolean; options: { index: number; option_text: string }[] }; progress?: { answered: number; total: number }; results?: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; strongest_axes: string[]; distinguishing_axes: string[] }[]; top_match: string; confidence: number; unhit_axes_warning?: string } }>(`/survey/${sessionId}/answer`, {
         method: 'POST',
         body: JSON.stringify({ node_id: nodeId, option_index: optionIndex }),
       }),
     state: (sessionId: string) =>
-      request<{ session_id: string; status: string; question?: { node_id: string; question_text: string; is_universal: boolean; options: { index: number; option_text: string }[] }; progress?: { answered: number; total: number }; results?: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; axes_contributing: string[] }[]; top_match: string; confidence: number } }>(`/survey/${sessionId}/state`),
+      request<{ session_id: string; status: string; question?: { node_id: string; question_text: string; is_universal: boolean; options: { index: number; option_text: string }[] }; progress?: { answered: number; total: number }; results?: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; strongest_axes: string[]; distinguishing_axes: string[] }[]; top_match: string; confidence: number; unhit_axes_warning?: string } }>(`/survey/${sessionId}/state`),
     complete: (sessionId: string) =>
-      request<{ session_id: string; status: string; results: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; axes_contributing: string[] }[]; top_match: string; confidence: number } }>(`/survey/${sessionId}/complete`, { method: 'POST' }),
+      request<{ session_id: string; status: string; results: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; strongest_axes: string[]; distinguishing_axes: string[] }[]; top_match: string; confidence: number; unhit_axes_warning?: string } }>(`/survey/${sessionId}/complete`, { method: 'POST' }),
     createPlan: (sessionId: string) =>
       request<{ plan: Record<string, unknown>; source: string }>(`/survey/${sessionId}/create-plan`, { method: 'POST' }),
     status: () =>
