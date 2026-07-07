@@ -136,7 +136,7 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onMobileClose
   };
 
   const sidebarContent = (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col md:min-h-screen">
       {/* Logo */}
       <div className="flex items-center h-16 px-4 border-b border-[var(--color-border)] shrink-0">
         {collapsed ? (
@@ -234,7 +234,7 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onMobileClose
         transition={{ type: 'spring', stiffness: 200, damping: 30 }}
         className={`
           fixed md:relative inset-y-0 left-0 z-50
-          flex flex-col md:h-full
+          flex flex-col
           border-r border-[var(--color-border)]
           bg-white/80 dark:bg-[#14181F]/85 backdrop-blur-xl
           overflow-hidden
