@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { BarChart3, ExternalLink, Loader2, RotateCcw, Star, BookOpen } from 'lucide-react';
+import { BarChart3, BookOpen, ExternalLink, Loader2, RotateCcw, Star } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { ProgressBar } from '../../components/ui/ProgressBar';
@@ -34,7 +34,6 @@ export function SurveyResultsPage() {
   const [result, setResult] = useState<SurveyResult | null>(null);
   const [error, setError] = useState('');
   const [creatingPlan, setCreatingPlan] = useState(false);
-  const [planCreated, setPlanCreated] = useState(false);
 
   useEffect(() => {
     if (!id) { navigate('/survey'); return; }
@@ -64,10 +63,9 @@ export function SurveyResultsPage() {
     setCreatingPlan(true);
     try {
       await api.survey.createPlan(id);
-      setPlanCreated(true);
+      navigate('/plan');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to create plan');
-    } finally {
       setCreatingPlan(false);
     }
   };
@@ -189,16 +187,26 @@ export function SurveyResultsPage() {
         })}
       </div>
 
+      {result.type && (
+        <div className="rounded-lg border border-[var(--color-border-accent)] bg-[var(--color-surface)] p-4 text-center">
+          <p className="text-sm text-[var(--color-text-secondary)]">
+            {result.type === 'specialty' ? 'Also take our Career Path Survey to find the best route for your specialty.' : 'Already know your specialty? Take the Specialty Survey for a deeper match.'}
+          </p>
+          <Button
+            variant="outline"
+            size="sm"
+            className="mt-2"
+            onClick={() => navigate('/survey')}
+          >
+            {result.type === 'specialty' ? 'Take Path Survey' : 'Take Specialty Survey'}
+          </Button>
+        </div>
+      )}
+
       <div className="flex justify-center gap-3 pt-4">
-        {planCreated ? (
-          <Button onClick={() => navigate('/plan')}>
-            <BookOpen size={16} /> View My Study Plan
-          </Button>
-        ) : (
-          <Button onClick={handleCreatePlan} loading={creatingPlan}>
-            <BookOpen size={16} /> Create Study Plan
-          </Button>
-        )}
+        <Button onClick={handleCreatePlan} loading={creatingPlan}>
+          <BookOpen size={16} /> Create Study Plan
+        </Button>
         <Button variant="ghost" onClick={() => navigate('/survey')}>
           <RotateCcw size={16} /> Take Another Survey
         </Button>

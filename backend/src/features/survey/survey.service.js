@@ -2,7 +2,7 @@ import { SurveyGraph, SurveySession } from './survey.model.js';
 import { User } from '../users/users.model.js';
 import { Specialty, Path } from '../catalog/catalog.model.js';
 import { ApiError } from '../../utils/apiError.js';
-import { normalizeScores, computeEuclideanSimilarity, generateWhySummary } from '../../utils/scoring.js';
+import { normalizeScores, computeEuclideanSimilarity, computeAxisWeights, generateWhySummary } from '../../utils/scoring.js';
 import { QuickPickSelection } from '../quickpick/quickpick.model.js';
 import { StudyPlan } from '../studyplan/studyplan.model.js';
 import { generatePlan } from '../studyplan/studyplan.service.js';
@@ -163,15 +163,24 @@ export async function getSurveyStatus(mobileNumber) {
   const user = await User.findOne({ mobile_number: mobileNumber });
   if (!user) throw new ApiError(404, 'User not found');
 
-  const completed = await SurveySession.findOne({ user_id: user._id, status: 'completed' })
-    .sort({ completed_at: -1 })
+  const completedSessions = await SurveySession.find({ user_id: user._id, status: 'completed' })
+    .select('graph_id')
     .lean();
+
+  const graphIds = [...new Set(completedSessions.map(s => s.graph_id).filter(Boolean))];
+  const graphs = await SurveyGraph.find({ _id: { $in: graphIds } }).select('type role').lean();
+
+  const completion = { doctor_specialty: false, nurse_specialty: false, doctor_path: false, nurse_path: false };
+  for (const g of graphs) {
+    const key = `${g.role}_${g.type}`;
+    if (completion.hasOwnProperty(key)) completion[key] = true;
+  }
 
   const planFromSurvey = await StudyPlan.findOne({ user_id: user._id, source: 'survey_result', status: 'active' }).lean();
 
   return {
-    hasCompletedSurvey: !!completed,
-    completedSessionId: completed?._id || null,
+    ...completion,
+    hasCompletedSurvey: completedSessions.length > 0,
     hasPlanFromSurvey: !!planFromSurvey,
   };
 }
@@ -262,17 +271,26 @@ function computeResults(axisScores, graph) {
   const plainScores = axisScores && typeof axisScores.entries === 'function' ? Object.fromEntries(axisScores) : (axisScores || {});
   const normalized = normalizeScores(plainScores, boundsMap, graph.axes);
 
+  const weights = computeAxisWeights(graph.target_vectors || [], graph.axes);
+
   const matches = (graph.target_vectors || []).map(tv => {
     const target = {};
     for (const axis of (graph.axes || [])) {
       target[axis] = tv.axes?.[axis] ?? 0.5;
     }
-    const similarity = computeEuclideanSimilarity(normalized, target, graph.axes);
+    const similarity = computeEuclideanSimilarity(normalized, target, graph.axes, weights);
     const contributing = generateWhySummary(normalized, target, graph.axes);
     return { specialty_name: tv.specialty_name, similarity, axes_contributing: contributing };
   });
 
-  matches.sort((a, b) => b.similarity - a.similarity);
+  matches.sort((a, b) => b.similarity - a.similarity || a.specialty_name.localeCompare(b.specialty_name));
+
+  if (process.env.DEBUG_SURVEY) {
+    console.log(`[DEBUG_SURVEY] graph=${graph.type}/${graph.role} matches=${matches.length}`);
+    for (const m of matches.slice(0, 3)) {
+      console.log(`  #${(m.similarity * 100).toFixed(2)}% ${m.specialty_name}`);
+    }
+  }
 
   const top5 = matches.slice(0, 5);
   const topMatch = top5[0];

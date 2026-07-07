@@ -10,14 +10,16 @@ export function SpecialtyDetail() {
   const { id } = useParams();
   const [specialty, setSpecialty] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!id) return;
-    api.catalog.specialty(id).then(setSpecialty).catch(console.error).finally(() => setLoading(false));
+    api.catalog.specialty(id).then(setSpecialty).catch((err: Error) => setError(err.message || 'Failed to load specialty')).finally(() => setLoading(false));
   }, [id]);
 
   if (loading) return <p className="text-center text-[var(--color-text-secondary)]">Loading...</p>;
+  if (error) return <p className="text-center text-[var(--color-error)]">{error}</p>;
   if (!specialty) return <p className="text-center text-[var(--color-error)]">Specialty not found</p>;
 
   const branches = (specialty.branches || []) as Record<string, unknown>[];

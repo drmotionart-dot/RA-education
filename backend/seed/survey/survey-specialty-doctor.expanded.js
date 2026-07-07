@@ -1,6 +1,6 @@
 // Auto-generated expanded Doctor Specialty Survey Graph
 // Source: survey-specialty-doctor.js
-// Generated on: 2026-07-05T15:36:09.566Z
+// Generated on: 2026-07-07T20:06:06.696Z
 
 export const doctor_specialty_graph = {
   type: 'specialty',
@@ -83,22 +83,22 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "Bones and joints",
-        "next_node_id": "SURG_ORTHO",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       },
       {
         "option_text": "Abdomen / general operations",
-        "next_node_id": "SURG_ORTHO",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       },
       {
         "option_text": "Brain and nervous system",
-        "next_node_id": "SURG_ORTHO",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       },
       {
         "option_text": "Heart and chest",
-        "next_node_id": "SURG_ORTHO",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       }
     ]
@@ -111,14 +111,14 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "Catheter-based heart procedures",
-        "next_node_id": "INT_CATH",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "procedural_affinity": 1
         }
       },
       {
         "option_text": "Image-guided minimally invasive procedures",
-        "next_node_id": "INT_CATH",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "lab_imaging_affinity": 1
         }
@@ -155,19 +155,19 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "Internal medicine mysteries",
-        "next_node_id": "DX_INTERNAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       },
       {
         "option_text": "Neurological puzzles",
-        "next_node_id": "DX_INTERNAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "diagnostic_puzzle_affinity": 1
         }
       },
       {
         "option_text": "Infectious disease detective work",
-        "next_node_id": "DX_INTERNAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "public_health_affinity": 1
         }
@@ -182,12 +182,12 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "Chronic disease management",
-        "next_node_id": "LONG_CHRONIC",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       },
       {
         "option_text": "Geriatric care",
-        "next_node_id": "LONG_CHRONIC",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       }
     ]
@@ -207,7 +207,7 @@ export const doctor_specialty_graph = {
       },
       {
         "option_text": "Women's health / pregnancy",
-        "next_node_id": "OBGYN_CLINICAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "ob_gyn_affinity": 2
         }
@@ -242,12 +242,12 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "General pediatrics",
-        "next_node_id": "PEDS_GENERAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       },
       {
         "option_text": "Pediatric cardiology",
-        "next_node_id": "PEDS_GENERAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "diagnostic_puzzle_affinity": 1
         }
@@ -262,12 +262,12 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "General psychiatry",
-        "next_node_id": "PSYCH_GENERAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {}
       },
       {
         "option_text": "Child and adolescent",
-        "next_node_id": "PSYCH_GENERAL",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "pediatric_affinity": 1
         }
@@ -282,28 +282,28 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "Making hospitals safer and processes better",
-        "next_node_id": "ADMIN_QUALITY",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "admin_systems_affinity": 2
         }
       },
       {
         "option_text": "Advancing medical knowledge through research",
-        "next_node_id": "ADMIN_QUALITY",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "research_academic_affinity": 3
         }
       },
       {
         "option_text": "Population-level health, not individual patients",
-        "next_node_id": "ADMIN_QUALITY",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "public_health_affinity": 3
         }
       },
       {
         "option_text": "Technology and data in medicine",
-        "next_node_id": "ADMIN_QUALITY",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "admin_systems_affinity": 2,
           "lab_imaging_affinity": 1
@@ -319,21 +319,21 @@ export const doctor_specialty_graph = {
     "options": [
       {
         "option_text": "The science of diagnosis",
-        "next_node_id": "GEN_SCIENCE",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "diagnostic_puzzle_affinity": 1
         }
       },
       {
         "option_text": "The art of patient relationships",
-        "next_node_id": "GEN_SCIENCE",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "acute_vs_longitudinal": -1
         }
       },
       {
         "option_text": "The team and leadership side",
-        "next_node_id": "GEN_SCIENCE",
+        "next_node_id": "CALIB_LIFESTYLE",
         "axis_deltas": {
           "admin_systems_affinity": 1
         }
@@ -452,903 +452,6 @@ export const doctor_specialty_graph = {
         "axis_deltas": {
           "research_academic_affinity": 0
         }
-      }
-    ]
-  },
-  {
-    "node_id": "SURG_ORTHO",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "In orthopedic surgery, what interests you most?",
-    "options": [
-      {
-        "option_text": "Sports medicine and joint preservation",
-        "next_node_id": "SURG_SPINE",
-        "axis_deltas": {
-          "procedural_affinity": 1
-        }
-      },
-      {
-        "option_text": "Spine surgery — complex anatomy and precision",
-        "next_node_id": "SURG_SPINE",
-        "axis_deltas": {
-          "surgical_tolerance": 1,
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "Reconstructive and trauma surgery",
-        "next_node_id": "SURG_SPINE",
-        "axis_deltas": {
-          "emergency_tolerance": 1
-        }
-      },
-      {
-        "option_text": "Pediatric orthopedics",
-        "next_node_id": "SURG_SPINE",
-        "axis_deltas": {
-          "pediatric_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "SURG_SPINE",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How do you feel about long, meticulous surgeries lasting 6+ hours?",
-    "options": [
-      {
-        "option_text": "I am drawn to the focus and precision required",
-        "next_node_id": "SURG_GENERAL",
-        "axis_deltas": {
-          "surgical_tolerance": 2
-        }
-      },
-      {
-        "option_text": "I can handle them but prefer efficient cases",
-        "next_node_id": "SURG_GENERAL",
-        "axis_deltas": {
-          "surgical_tolerance": 1
-        }
-      },
-      {
-        "option_text": "I prefer shorter, higher-volume procedures",
-        "next_node_id": "SURG_GENERAL",
-        "axis_deltas": {
-          "procedural_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "SURG_GENERAL",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "Would you rather operate on a wide variety of cases or specialize in one type of surgery?",
-    "options": [
-      {
-        "option_text": "Variety — general surgery approach",
-        "next_node_id": "SURG_ROBOTICS",
-        "axis_deltas": {
-          "procedural_affinity": 1
-        }
-      },
-      {
-        "option_text": "Specialize — master one type of procedure",
-        "next_node_id": "SURG_ROBOTICS",
-        "axis_deltas": {
-          "surgical_tolerance": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "SURG_ROBOTICS",
-    "order": 7,
-    "is_universal": false,
-    "question_text": "How excited are you about robotic and AI-assisted surgery?",
-    "options": [
-      {
-        "option_text": "Very — I want to be at the forefront",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lab_imaging_affinity": 1,
-          "procedural_affinity": 1
-        }
-      },
-      {
-        "option_text": "Interested but I value traditional techniques too",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "surgical_tolerance": 0
-        }
-      },
-      {
-        "option_text": "I prefer direct hands-on surgery",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "surgical_tolerance": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "INT_CATH",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "Which interventional area draws you most?",
-    "options": [
-      {
-        "option_text": "Cardiac catheterization — coronary interventions",
-        "next_node_id": "INT_IMAGING",
-        "axis_deltas": {
-          "procedural_affinity": 2,
-          "acute_vs_longitudinal": 1
-        }
-      },
-      {
-        "option_text": "Interventional radiology — image-guided procedures",
-        "next_node_id": "INT_IMAGING",
-        "axis_deltas": {
-          "lab_imaging_affinity": 2,
-          "procedural_affinity": 1
-        }
-      },
-      {
-        "option_text": "Endoscopy / gastroenterology procedures",
-        "next_node_id": "INT_IMAGING",
-        "axis_deltas": {
-          "procedural_affinity": 1,
-          "diagnostic_puzzle_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "INT_IMAGING",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How comfortable are you interpreting complex imaging during procedures?",
-    "options": [
-      {
-        "option_text": "Very — real-time imaging is fascinating",
-        "next_node_id": "INT_ACUITY",
-        "axis_deltas": {
-          "lab_imaging_affinity": 2,
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "Adequate — I can read what I need",
-        "next_node_id": "INT_ACUITY",
-        "axis_deltas": {
-          "lab_imaging_affinity": 1
-        }
-      },
-      {
-        "option_text": "I prefer direct visualization over imaging guidance",
-        "next_node_id": "INT_ACUITY",
-        "axis_deltas": {
-          "procedural_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "INT_ACUITY",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "Are you comfortable with the acuity of interventional complications?",
-    "options": [
-      {
-        "option_text": "Yes — managing complications is part of the excitement",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "emergency_tolerance": 2,
-          "surgical_tolerance": 1
-        }
-      },
-      {
-        "option_text": "I accept it as part of the job",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "emergency_tolerance": 1
-        }
-      },
-      {
-        "option_text": "It makes me anxious — I prefer low-risk procedures",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "emergency_tolerance": -1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "DX_INTERNAL",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "What diagnostic area fascinates you most?",
-    "options": [
-      {
-        "option_text": "Complex internal medicine — multisystem mysteries",
-        "next_node_id": "DX_INFECTIOUS",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 2
-        }
-      },
-      {
-        "option_text": "Neurological localization — finding the lesion",
-        "next_node_id": "DX_INFECTIOUS",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 1,
-          "lab_imaging_affinity": 1
-        }
-      },
-      {
-        "option_text": "Infectious disease — identifying the pathogen",
-        "next_node_id": "DX_INFECTIOUS",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 1,
-          "public_health_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "DX_INFECTIOUS",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How do you feel about managing chronic, complex patients with multiple comorbidities?",
-    "options": [
-      {
-        "option_text": "I enjoy the challenge of coordinating their care",
-        "next_node_id": "DX_RARE",
-        "axis_deltas": {
-          "acute_vs_longitudinal": -1,
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "It can be rewarding but also draining",
-        "next_node_id": "DX_RARE",
-        "axis_deltas": {
-          "acute_vs_longitudinal": 0
-        }
-      },
-      {
-        "option_text": "I prefer acute diagnostic challenges, not long-term management",
-        "next_node_id": "DX_RARE",
-        "axis_deltas": {
-          "acute_vs_longitudinal": 2
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "DX_RARE",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "How interested are you in rare diseases and unusual presentations?",
-    "options": [
-      {
-        "option_text": "Extremely — zebras are what excite me about medicine",
-        "next_node_id": "DX_LITIGATION",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 2,
-          "research_academic_affinity": 1
-        }
-      },
-      {
-        "option_text": "Moderately — interesting but I see mostly common cases",
-        "next_node_id": "DX_LITIGATION",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "Less interested — I want practical, common medicine",
-        "next_node_id": "DX_LITIGATION",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": -1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "DX_LITIGATION",
-    "order": 7,
-    "is_universal": false,
-    "question_text": "How does the risk of diagnostic errors and litigation affect your decision?",
-    "options": [
-      {
-        "option_text": "I accept it — it comes with the territory in diagnosis",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "emergency_tolerance": 1
-        }
-      },
-      {
-        "option_text": "It worries me but I will practice carefully",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lifestyle_priority": 1
-        }
-      },
-      {
-        "option_text": "It is a significant concern that makes me lean toward lower-risk fields",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lifestyle_priority": 2,
-          "emergency_tolerance": -1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "LONG_CHRONIC",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "What aspect of long-term patient care appeals most?",
-    "options": [
-      {
-        "option_text": "Managing chronic diseases over decades",
-        "next_node_id": "LONG_GERIATRIC",
-        "axis_deltas": {
-          "acute_vs_longitudinal": -2,
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "Building deep therapeutic relationships",
-        "next_node_id": "LONG_GERIATRIC",
-        "axis_deltas": {
-          "acute_vs_longitudinal": -2,
-          "psych_affinity": 1
-        }
-      },
-      {
-        "option_text": "Coordinating care across multiple specialties",
-        "next_node_id": "LONG_GERIATRIC",
-        "axis_deltas": {
-          "admin_systems_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "LONG_GERIATRIC",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How do you feel about caring for elderly patients with complex social and medical needs?",
-    "options": [
-      {
-        "option_text": "I find it deeply rewarding",
-        "next_node_id": "LONG_PALLIATIVE",
-        "axis_deltas": {
-          "public_health_affinity": 1
-        }
-      },
-      {
-        "option_text": "I can do it but it is not my passion",
-        "next_node_id": "LONG_PALLIATIVE",
-        "axis_deltas": {}
-      },
-      {
-        "option_text": "I prefer a patient population with more acute challenges",
-        "next_node_id": "LONG_PALLIATIVE",
-        "axis_deltas": {
-          "acute_vs_longitudinal": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "LONG_PALLIATIVE",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "How do you feel about palliative and end-of-life care conversations?",
-    "options": [
-      {
-        "option_text": "I consider them a privilege and core to medicine",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "acute_vs_longitudinal": -1,
-          "psych_affinity": 1
-        }
-      },
-      {
-        "option_text": "They are important but emotionally taxing",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "psych_affinity": 1
-        }
-      },
-      {
-        "option_text": "I prefer to focus on curative treatment",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "acute_vs_longitudinal": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "OBGYN_CLINICAL",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "What aspect of women's health draws you most?",
-    "options": [
-      {
-        "option_text": "Obstetrics — pregnancy, delivery, and childbirth",
-        "next_node_id": "OBGYN_SURGERY",
-        "axis_deltas": {
-          "ob_gyn_affinity": 2,
-          "procedural_affinity": 1
-        }
-      },
-      {
-        "option_text": "Gynecology — surgical and medical care of the female reproductive system",
-        "next_node_id": "OBGYN_SURGERY",
-        "axis_deltas": {
-          "ob_gyn_affinity": 2,
-          "surgical_tolerance": 1
-        }
-      },
-      {
-        "option_text": "Reproductive endocrinology and infertility",
-        "next_node_id": "OBGYN_SURGERY",
-        "axis_deltas": {
-          "ob_gyn_affinity": 1,
-          "research_academic_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "OBGYN_SURGERY",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How do you feel about the surgical component of OB/GYN?",
-    "options": [
-      {
-        "option_text": "I love it — surgery is a big draw for me",
-        "next_node_id": "OBGYN_LIFESTYLE",
-        "axis_deltas": {
-          "surgical_tolerance": 1,
-          "procedural_affinity": 1
-        }
-      },
-      {
-        "option_text": "I can do it but it is not my favorite part",
-        "next_node_id": "OBGYN_LIFESTYLE",
-        "axis_deltas": {
-          "surgical_tolerance": 0
-        }
-      },
-      {
-        "option_text": "I prefer the medical management aspects",
-        "next_node_id": "OBGYN_LIFESTYLE",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "OBGYN_LIFESTYLE",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "How do you feel about the on-call demands and unpredictability of obstetrics?",
-    "options": [
-      {
-        "option_text": "I accept it — babies arrive on their own schedule",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "emergency_tolerance": 1
-        }
-      },
-      {
-        "option_text": "It is a concern but manageable",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lifestyle_priority": 1
-        }
-      },
-      {
-        "option_text": "It is a significant drawback for me",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lifestyle_priority": 2
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "PEDS_GENERAL",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "What draws you to pediatrics?",
-    "options": [
-      {
-        "option_text": "Caring for children and their families holistically",
-        "next_node_id": "PEDS_NEONATAL",
-        "axis_deltas": {
-          "pediatric_affinity": 2
-        }
-      },
-      {
-        "option_text": "The diagnostic challenge of pediatric presentations",
-        "next_node_id": "PEDS_NEONATAL",
-        "axis_deltas": {
-          "pediatric_affinity": 1,
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "I want to sub-specialize in a pediatric organ system",
-        "next_node_id": "PEDS_NEONATAL",
-        "axis_deltas": {
-          "pediatric_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "PEDS_NEONATAL",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How do you feel about the emotional weight of caring for seriously ill children?",
-    "options": [
-      {
-        "option_text": "I am prepared for it — it comes with the calling",
-        "next_node_id": "PEDS_ACUTE",
-        "axis_deltas": {
-          "pediatric_affinity": 1,
-          "emergency_tolerance": 1
-        }
-      },
-      {
-        "option_text": "It is difficult but meaningful",
-        "next_node_id": "PEDS_ACUTE",
-        "axis_deltas": {
-          "pediatric_affinity": 1
-        }
-      },
-      {
-        "option_text": "It worries me — I prefer less emotionally intense settings",
-        "next_node_id": "PEDS_ACUTE",
-        "axis_deltas": {
-          "lifestyle_priority": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "PEDS_ACUTE",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "Would you prefer general pediatrics with variety or a pediatric sub-specialty?",
-    "options": [
-      {
-        "option_text": "General pediatrics — I like the variety",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "pediatric_affinity": 1
-        }
-      },
-      {
-        "option_text": "Pediatric sub-specialty — deeper expertise in one area",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "Neonatology or pediatric ICU — acute and technical",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "emergency_tolerance": 1,
-          "procedural_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "PSYCH_GENERAL",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "What aspect of mental health appeals to you most?",
-    "options": [
-      {
-        "option_text": "Understanding the human mind and behavior",
-        "next_node_id": "PSYCH_ACUTE",
-        "axis_deltas": {
-          "psych_affinity": 2,
-          "diagnostic_puzzle_affinity": 1
-        }
-      },
-      {
-        "option_text": "Helping people through talk therapy and connection",
-        "next_node_id": "PSYCH_ACUTE",
-        "axis_deltas": {
-          "psych_affinity": 2,
-          "acute_vs_longitudinal": -1
-        }
-      },
-      {
-        "option_text": "The neurobiology and pharmacology of psychiatric conditions",
-        "next_node_id": "PSYCH_ACUTE",
-        "axis_deltas": {
-          "psych_affinity": 1,
-          "research_academic_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "PSYCH_ACUTE",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How comfortable are you with managing acute psychiatric crises and involuntary care?",
-    "options": [
-      {
-        "option_text": "Comfortable — crisis management is part of psychiatry",
-        "next_node_id": "PSYCH_CHILD",
-        "axis_deltas": {
-          "emergency_tolerance": 1,
-          "psych_affinity": 1
-        }
-      },
-      {
-        "option_text": "I prefer outpatient, non-crisis settings",
-        "next_node_id": "PSYCH_CHILD",
-        "axis_deltas": {
-          "lifestyle_priority": 1
-        }
-      },
-      {
-        "option_text": "I would focus on psychotherapy rather than crisis care",
-        "next_node_id": "PSYCH_CHILD",
-        "axis_deltas": {
-          "psych_affinity": 1,
-          "acute_vs_longitudinal": -1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "PSYCH_CHILD",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "Would you work with children and adolescents, adults, or both?",
-    "options": [
-      {
-        "option_text": "Child and adolescent — early intervention is powerful",
-        "next_node_id": "PSYCH_LIFESTYLE",
-        "axis_deltas": {
-          "pediatric_affinity": 1,
-          "psych_affinity": 1
-        }
-      },
-      {
-        "option_text": "Adults — more experience with complex comorbidities",
-        "next_node_id": "PSYCH_LIFESTYLE",
-        "axis_deltas": {
-          "psych_affinity": 1
-        }
-      },
-      {
-        "option_text": "Both — I want flexibility",
-        "next_node_id": "PSYCH_LIFESTYLE",
-        "axis_deltas": {
-          "psych_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "PSYCH_LIFESTYLE",
-    "order": 7,
-    "is_universal": false,
-    "question_text": "How important is lifestyle flexibility (private practice, telehealth) in psychiatry?",
-    "options": [
-      {
-        "option_text": "Very — the lifestyle is a major draw for me",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lifestyle_priority": 2
-        }
-      },
-      {
-        "option_text": "Somewhat — I value the flexibility but it is not primary",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lifestyle_priority": 1
-        }
-      },
-      {
-        "option_text": "Not a factor — I will work wherever I am needed",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "public_health_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "ADMIN_QUALITY",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "What kind of systems impact appeals to you most?",
-    "options": [
-      {
-        "option_text": "Quality improvement and patient safety",
-        "next_node_id": "ADMIN_INFORMATICS",
-        "axis_deltas": {
-          "admin_systems_affinity": 2
-        }
-      },
-      {
-        "option_text": "Health policy and population health",
-        "next_node_id": "ADMIN_INFORMATICS",
-        "axis_deltas": {
-          "public_health_affinity": 2,
-          "admin_systems_affinity": 1
-        }
-      },
-      {
-        "option_text": "Medical education and training the next generation",
-        "next_node_id": "ADMIN_INFORMATICS",
-        "axis_deltas": {
-          "research_academic_affinity": 2
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "ADMIN_INFORMATICS",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "How comfortable are you with health IT, data analytics, and informatics?",
-    "options": [
-      {
-        "option_text": "Very — I see data as the future of medicine",
-        "next_node_id": "ADMIN_IMPACT",
-        "axis_deltas": {
-          "admin_systems_affinity": 1,
-          "lab_imaging_affinity": 1
-        }
-      },
-      {
-        "option_text": "Moderately — I can work with basic systems",
-        "next_node_id": "ADMIN_IMPACT",
-        "axis_deltas": {}
-      },
-      {
-        "option_text": "Not interested — I prefer clinical work",
-        "next_node_id": "ADMIN_IMPACT",
-        "axis_deltas": {
-          "procedural_affinity": -1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "ADMIN_IMPACT",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "Would you be satisfied with an entirely non-clinical role?",
-    "options": [
-      {
-        "option_text": "Yes — my impact would be on systems, not individuals",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "admin_systems_affinity": 1,
-          "procedural_affinity": -1
-        }
-      },
-      {
-        "option_text": "I want a hybrid — some clinical, some administrative",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "admin_systems_affinity": 1
-        }
-      },
-      {
-        "option_text": "No — I need direct patient care to feel fulfilled",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "procedural_affinity": 1,
-          "acute_vs_longitudinal": -1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "GEN_SCIENCE",
-    "order": 4,
-    "is_universal": false,
-    "question_text": "If you had to pick one aspect of medicine as your primary focus, what would it be?",
-    "options": [
-      {
-        "option_text": "The science — understanding disease mechanisms",
-        "next_node_id": "GEN_ART",
-        "axis_deltas": {
-          "diagnostic_puzzle_affinity": 1,
-          "research_academic_affinity": 1
-        }
-      },
-      {
-        "option_text": "The art — connecting with patients and their stories",
-        "next_node_id": "GEN_ART",
-        "axis_deltas": {
-          "acute_vs_longitudinal": -1,
-          "psych_affinity": 1
-        }
-      },
-      {
-        "option_text": "The craft — procedures and technical skills",
-        "next_node_id": "GEN_ART",
-        "axis_deltas": {
-          "procedural_affinity": 1
-        }
-      }
-    ]
-  },
-  {
-    "node_id": "GEN_ART",
-    "order": 5,
-    "is_universal": false,
-    "question_text": "Would you rather work in a community setting or an academic medical center?",
-    "options": [
-      {
-        "option_text": "Community — I want to serve a local population",
-        "next_node_id": "GEN_EMERGENCY",
-        "axis_deltas": {
-          "public_health_affinity": 1
-        }
-      },
-      {
-        "option_text": "Academic — I want research and teaching",
-        "next_node_id": "GEN_EMERGENCY",
-        "axis_deltas": {
-          "research_academic_affinity": 2
-        }
-      },
-      {
-        "option_text": "Either — I am flexible",
-        "next_node_id": "GEN_EMERGENCY",
-        "axis_deltas": {}
-      }
-    ]
-  },
-  {
-    "node_id": "GEN_EMERGENCY",
-    "order": 6,
-    "is_universal": false,
-    "question_text": "How important is it to have predictable hours vs. shift-based work?",
-    "options": [
-      {
-        "option_text": "Predictable hours — I need routine",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "lifestyle_priority": 2,
-          "emergency_tolerance": -1
-        }
-      },
-      {
-        "option_text": "Shift-based is fine — I like variety",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {
-          "emergency_tolerance": 1
-        }
-      },
-      {
-        "option_text": "A mix of both works best for me",
-        "next_node_id": "DEEP1",
-        "axis_deltas": {}
       }
     ]
   },
@@ -1997,8 +1100,8 @@ export const doctor_specialty_graph = {
       "ob_gyn_affinity": 0.5,
       "psych_affinity": 0.5,
       "lab_imaging_affinity": 0.5,
-      "lifestyle_priority": 0.6,
-      "income_priority": 0.5,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.4,
       "research_academic_affinity": 0.3,
       "admin_systems_affinity": 0.3,
       "public_health_affinity": 0.3
@@ -2016,8 +1119,8 @@ export const doctor_specialty_graph = {
       "ob_gyn_affinity": 0.5,
       "psych_affinity": 0.5,
       "lab_imaging_affinity": 0.5,
-      "lifestyle_priority": 0.5,
-      "income_priority": 0.65,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.7,
       "research_academic_affinity": 0.3,
       "admin_systems_affinity": 0.3,
       "public_health_affinity": 0.3
@@ -2162,14 +1265,14 @@ export const doctor_specialty_graph = {
       "procedural_affinity": 0.3,
       "surgical_tolerance": 0.2,
       "emergency_tolerance": 0.3,
-      "diagnostic_puzzle_affinity": 0.6,
+      "diagnostic_puzzle_affinity": 0.55,
       "acute_vs_longitudinal": 0.25,
       "pediatric_affinity": 0.5,
       "ob_gyn_affinity": 0.5,
       "psych_affinity": 0.5,
       "lab_imaging_affinity": 0.5,
-      "lifestyle_priority": 0.6,
-      "income_priority": 0.4,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.5,
       "research_academic_affinity": 0.4,
       "admin_systems_affinity": 0.3,
       "public_health_affinity": 0.3
@@ -2180,15 +1283,15 @@ export const doctor_specialty_graph = {
     "axes": {
       "procedural_affinity": 0.3,
       "surgical_tolerance": 0.2,
-      "emergency_tolerance": 0.2,
-      "diagnostic_puzzle_affinity": 0.75,
+      "emergency_tolerance": 0.15,
+      "diagnostic_puzzle_affinity": 0.8,
       "acute_vs_longitudinal": 0.25,
       "pediatric_affinity": 0.5,
       "ob_gyn_affinity": 0.5,
       "psych_affinity": 0.5,
       "lab_imaging_affinity": 0.5,
-      "lifestyle_priority": 0.6,
-      "income_priority": 0.35,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.3,
       "research_academic_affinity": 0.4,
       "admin_systems_affinity": 0.3,
       "public_health_affinity": 0.3
@@ -2392,9 +1495,9 @@ export const doctor_specialty_graph = {
       "emergency_tolerance": 0.3,
       "diagnostic_puzzle_affinity": 0.5,
       "acute_vs_longitudinal": 0.35,
-      "pediatric_affinity": 0.5,
+      "pediatric_affinity": 0.3,
       "ob_gyn_affinity": 0.5,
-      "psych_affinity": 0.95,
+      "psych_affinity": 0.9,
       "lab_imaging_affinity": 0.2,
       "lifestyle_priority": 0.6,
       "income_priority": 0.5,
@@ -2411,9 +1514,9 @@ export const doctor_specialty_graph = {
       "emergency_tolerance": 0.3,
       "diagnostic_puzzle_affinity": 0.5,
       "acute_vs_longitudinal": 0.35,
-      "pediatric_affinity": 0.6,
+      "pediatric_affinity": 0.85,
       "ob_gyn_affinity": 0.5,
-      "psych_affinity": 0.9,
+      "psych_affinity": 0.95,
       "lab_imaging_affinity": 0.2,
       "lifestyle_priority": 0.5,
       "income_priority": 0.5,
@@ -2681,10 +1784,10 @@ export const doctor_specialty_graph = {
       "ob_gyn_affinity": 0.5,
       "psych_affinity": 0.5,
       "lab_imaging_affinity": 0.3,
-      "lifestyle_priority": 0.6,
-      "income_priority": 0.45,
-      "research_academic_affinity": 0.9,
-      "admin_systems_affinity": 0.5,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.35,
+      "research_academic_affinity": 0.95,
+      "admin_systems_affinity": 0.6,
       "public_health_affinity": 0.3
     }
   },
@@ -2757,10 +1860,10 @@ export const doctor_specialty_graph = {
       "ob_gyn_affinity": 0.5,
       "psych_affinity": 0.5,
       "lab_imaging_affinity": 0.3,
-      "lifestyle_priority": 0.5,
-      "income_priority": 0.65,
-      "research_academic_affinity": 0.9,
-      "admin_systems_affinity": 0.5,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.75,
+      "research_academic_affinity": 0.85,
+      "admin_systems_affinity": 0.4,
       "public_health_affinity": 0.3
     }
   },

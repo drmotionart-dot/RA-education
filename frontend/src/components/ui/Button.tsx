@@ -7,7 +7,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function Button({ variant = 'secondary', size = 'md', loading, children, className = '', ...props }: Props) {
-  const base = 'inline-flex items-center justify-center rounded-lg font-medium transition-colors disabled:opacity-50 cursor-pointer';
+  const base = 'inline-flex items-center justify-center rounded-lg font-medium transition disabled:opacity-50 cursor-pointer hover:scale-[1.02] active:scale-[0.98]';
 
   const sizes: Record<string, string> = {
     sm: 'px-3 py-1.5 text-xs gap-1.5',

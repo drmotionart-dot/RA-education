@@ -8,10 +8,11 @@ export function AssessmentPage() {
   const [specialties, setSpecialties] = useState<Record<string, unknown>[]>([]);
   const [loading, setLoading] = useState(true);
   const [starting, setStarting] = useState<string | null>(null);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.catalog.specialties().then(setSpecialties).catch(console.error).finally(() => setLoading(false));
+    api.catalog.specialties().then(setSpecialties).catch((err: Error) => setError(err.message || 'Failed to load specialties')).finally(() => setLoading(false));
   }, []);
 
   const handleStart = async (specialtyId: string) => {
@@ -26,6 +27,7 @@ export function AssessmentPage() {
   };
 
   if (loading) return <p className="text-center text-[var(--color-text-secondary)]">Loading...</p>;
+  if (error) return <p className="text-center text-[var(--color-error)]">{error}</p>;
 
   return (
     <div className="space-y-6">

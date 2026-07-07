@@ -46,14 +46,16 @@ export function PathDetail() {
   const [path, setPath] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
   const [expandedStage, setExpandedStage] = useState<string | null>(null);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!id) return;
-    api.catalog.path(id).then(setPath).catch(console.error).finally(() => setLoading(false));
+    api.catalog.path(id).then(setPath).catch((err: Error) => setError(err.message || 'Failed to load path')).finally(() => setLoading(false));
   }, [id]);
 
   if (loading) return <p className="text-center text-[var(--color-text-secondary)]">Loading...</p>;
+  if (error) return <p className="text-center text-[var(--color-error)]">{error}</p>;
   if (!path) return <p className="text-center text-[var(--color-error)]">Path not found</p>;
 
   const exams = (path.required_exams || []) as Record<string, string | number>[];

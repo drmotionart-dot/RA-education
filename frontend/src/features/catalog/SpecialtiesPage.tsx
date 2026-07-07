@@ -13,10 +13,11 @@ export function SpecialtiesPage() {
   const [specialties, setSpecialties] = useState<Record<string, unknown>[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.catalog.specialties(category).then(setSpecialties).catch(console.error).finally(() => setLoading(false));
+    api.catalog.specialties(category).then(setSpecialties).catch((err: Error) => setError(err.message || 'Failed to load specialties')).finally(() => setLoading(false));
   }, [category]);
 
   const filtered = useMemo(() => {
@@ -26,6 +27,7 @@ export function SpecialtiesPage() {
   }, [specialties, search]);
 
   if (loading) return <p className="text-center text-[var(--color-text-secondary)]">Loading...</p>;
+  if (error) return <p className="text-center text-[var(--color-error)]">{error}</p>;
 
   return (
     <div className="space-y-4">

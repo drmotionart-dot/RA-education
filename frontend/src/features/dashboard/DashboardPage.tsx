@@ -103,7 +103,7 @@ export function DashboardPage() {
     <div className="space-y-8">
 
       {/* ───── Hero ───── */}
-      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-hover)] p-6 sm:p-8 text-white">
+      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#0A1428] via-[#2D1B4E] to-[#050A14] p-6 sm:p-8 text-white">
         <svg className="absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
           <defs>
             <pattern id="hero-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -114,7 +114,7 @@ export function DashboardPage() {
         </svg>
         <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 text-2xl font-bold ring-2 ring-white/20 ring-offset-2 ring-offset-[var(--color-primary)]">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 text-2xl font-bold ring-2 ring-white/20 ring-offset-2 ring-offset-[#0A1428]">
               {(user?.name as string)?.[0]?.toUpperCase() || 'U'}
             </div>
             <div>

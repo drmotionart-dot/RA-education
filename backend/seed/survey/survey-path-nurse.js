@@ -152,32 +152,362 @@ export const nursePathGraph = {
     },
   ],
   target_vectors: [
-    // Egypt National Tracks
-    { specialty_name: 'Stay-Egypt (MOH Government Nursing Track)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.3, gulf_preference: 0.2, western_preference: 0.2, egypt_stability: 0.95, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
-    { specialty_name: 'Stay-Egypt (University/Teaching Hospital Nursing Track)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.2, time_investment: 0.4, cost_tolerance: 0.2, income_expectation: 0.3, gulf_preference: 0.2, western_preference: 0.3, egypt_stability: 0.9, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.85 } },
-    { specialty_name: 'Stay-Egypt (Private Sector Nursing)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.2, time_investment: 0.2, cost_tolerance: 0.3, income_expectation: 0.75, gulf_preference: 0.2, western_preference: 0.2, egypt_stability: 0.8, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.2 } },
-    { specialty_name: 'Stay-Egypt (Military/Police Nursing Services)', axes: { willingness_relocate: 0.1, language_learning: 0.1, exam_tolerance: 0.3, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.4, gulf_preference: 0.2, western_preference: 0.2, egypt_stability: 0.9, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.2 } },
-    { specialty_name: 'Stay-Egypt (Postgraduate Nursing Track)', axes: { willingness_relocate: 0.2, language_learning: 0.2, exam_tolerance: 0.4, time_investment: 0.6, cost_tolerance: 0.3, income_expectation: 0.3, gulf_preference: 0.2, western_preference: 0.3, egypt_stability: 0.7, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.9 } },
-    { specialty_name: 'Stay-Egypt (NGO/International Health Nursing)', axes: { willingness_relocate: 0.2, language_learning: 0.3, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.4, gulf_preference: 0.2, western_preference: 0.3, egypt_stability: 0.6, clinical_vs_admin: 0.3, humanitarian_orientation: 0.9, research_academic_orientation: 0.4 } },
-    // Gulf
-    { specialty_name: 'Saudi Arabia — Saudi Nursing License (SCFHS)', axes: { willingness_relocate: 0.8, language_learning: 0.2, exam_tolerance: 0.6, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.8, gulf_preference: 0.95, western_preference: 0.2, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
-    { specialty_name: 'UAE — Nursing License (DHA/DoH)', axes: { willingness_relocate: 0.8, language_learning: 0.2, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.85, gulf_preference: 0.85, western_preference: 0.35, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
-    // Europe
-    { specialty_name: 'UK — NMC OSCE', axes: { willingness_relocate: 0.85, language_learning: 0.1, exam_tolerance: 0.7, time_investment: 0.5, cost_tolerance: 0.6, income_expectation: 0.6, gulf_preference: 0.2, western_preference: 0.9, egypt_stability: 0.15, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
-    { specialty_name: 'Ireland — NMBI Registration', axes: { willingness_relocate: 0.8, language_learning: 0.1, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.6, gulf_preference: 0.2, western_preference: 0.85, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
-    { specialty_name: 'Germany — Nursing Approbation', axes: { willingness_relocate: 0.85, language_learning: 0.95, exam_tolerance: 0.6, time_investment: 0.6, cost_tolerance: 0.5, income_expectation: 0.7, gulf_preference: 0.15, western_preference: 0.9, egypt_stability: 0.1, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
-    { specialty_name: 'Malta — Nursing Council Registration', axes: { willingness_relocate: 0.7, language_learning: 0.1, exam_tolerance: 0.3, time_investment: 0.3, cost_tolerance: 0.4, income_expectation: 0.5, gulf_preference: 0.2, western_preference: 0.7, egypt_stability: 0.25, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
-    // North America
-    { specialty_name: 'Canada — NCLEX-RN', axes: { willingness_relocate: 0.85, language_learning: 0.1, exam_tolerance: 0.7, time_investment: 0.6, cost_tolerance: 0.7, income_expectation: 0.7, gulf_preference: 0.1, western_preference: 0.9, egypt_stability: 0.15, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.4 } },
-    { specialty_name: 'USA — NCLEX-RN', axes: { willingness_relocate: 0.9, language_learning: 0.1, exam_tolerance: 0.8, time_investment: 0.7, cost_tolerance: 0.8, income_expectation: 0.95, gulf_preference: 0.1, western_preference: 0.95, egypt_stability: 0.1, clinical_vs_admin: 0.5, humanitarian_orientation: 0.2, research_academic_orientation: 0.3 } },
-    // Oceania
-    { specialty_name: 'Australia — AHPRA/ANMAC Nursing', axes: { willingness_relocate: 0.85, language_learning: 0.1, exam_tolerance: 0.6, time_investment: 0.6, cost_tolerance: 0.6, income_expectation: 0.75, gulf_preference: 0.1, western_preference: 0.85, egypt_stability: 0.15, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
-    { specialty_name: 'New Zealand — Nursing Council Registration', axes: { willingness_relocate: 0.8, language_learning: 0.1, exam_tolerance: 0.5, time_investment: 0.4, cost_tolerance: 0.5, income_expectation: 0.6, gulf_preference: 0.1, western_preference: 0.85, egypt_stability: 0.2, clinical_vs_admin: 0.5, humanitarian_orientation: 0.3, research_academic_orientation: 0.3 } },
-    // Admin / Global Health
-    { specialty_name: 'International Organization Nursing (WHO/UN)', axes: { willingness_relocate: 0.6, language_learning: 0.4, exam_tolerance: 0.2, time_investment: 0.4, cost_tolerance: 0.3, income_expectation: 0.5, gulf_preference: 0.2, western_preference: 0.4, egypt_stability: 0.3, clinical_vs_admin: 0.15, humanitarian_orientation: 0.95, research_academic_orientation: 0.5 } },
-    { specialty_name: 'Humanitarian Nursing (MSF, IRC, Red Cross)', axes: { willingness_relocate: 0.9, language_learning: 0.5, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.2, income_expectation: 0.3, gulf_preference: 0.3, western_preference: 0.3, egypt_stability: 0.2, clinical_vs_admin: 0.3, humanitarian_orientation: 0.95, research_academic_orientation: 0.3 } },
-    { specialty_name: 'Global Health Research Nursing', axes: { willingness_relocate: 0.5, language_learning: 0.4, exam_tolerance: 0.3, time_investment: 0.6, cost_tolerance: 0.3, income_expectation: 0.4, gulf_preference: 0.15, western_preference: 0.5, egypt_stability: 0.3, clinical_vs_admin: 0.15, humanitarian_orientation: 0.6, research_academic_orientation: 0.95 } },
-    { specialty_name: 'Health-Tech Nursing / Nursing Informatics', axes: { willingness_relocate: 0.4, language_learning: 0.2, exam_tolerance: 0.2, time_investment: 0.3, cost_tolerance: 0.3, income_expectation: 0.75, gulf_preference: 0.2, western_preference: 0.5, egypt_stability: 0.4, clinical_vs_admin: 0.1, humanitarian_orientation: 0.3, research_academic_orientation: 0.4 } },
-    { specialty_name: 'Pharmaceutical/Clinical Research Nursing', axes: { willingness_relocate: 0.4, language_learning: 0.3, exam_tolerance: 0.3, time_investment: 0.3, cost_tolerance: 0.3, income_expectation: 0.8, gulf_preference: 0.3, western_preference: 0.4, egypt_stability: 0.4, clinical_vs_admin: 0.15, humanitarian_orientation: 0.3, research_academic_orientation: 0.7 } },
-  ],
+  {
+    "specialty_name": "Stay-Egypt (MOH Government Nursing Track)",
+    "axes": {
+      "willingness_relocate": 0.1,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.2,
+      "time_investment": 0.3,
+      "cost_tolerance": 0.2,
+      "income_expectation": 0.3,
+      "gulf_preference": 0.2,
+      "western_preference": 0.2,
+      "egypt_stability": 0.95,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "Stay-Egypt (University/Teaching Hospital Nursing Track)",
+    "axes": {
+      "willingness_relocate": 0.1,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.2,
+      "time_investment": 0.4,
+      "cost_tolerance": 0.2,
+      "income_expectation": 0.3,
+      "gulf_preference": 0.2,
+      "western_preference": 0.3,
+      "egypt_stability": 0.9,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.85
+    }
+  },
+  {
+    "specialty_name": "Stay-Egypt (Private Sector Nursing)",
+    "axes": {
+      "willingness_relocate": 0.1,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.2,
+      "time_investment": 0.2,
+      "cost_tolerance": 0.3,
+      "income_expectation": 0.75,
+      "gulf_preference": 0.2,
+      "western_preference": 0.2,
+      "egypt_stability": 0.8,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.2,
+      "research_academic_orientation": 0.2
+    }
+  },
+  {
+    "specialty_name": "Stay-Egypt (Military/Police Nursing Services)",
+    "axes": {
+      "willingness_relocate": 0.1,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.3,
+      "time_investment": 0.3,
+      "cost_tolerance": 0.2,
+      "income_expectation": 0.4,
+      "gulf_preference": 0.2,
+      "western_preference": 0.2,
+      "egypt_stability": 0.9,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.2,
+      "research_academic_orientation": 0.2
+    }
+  },
+  {
+    "specialty_name": "Stay-Egypt (Postgraduate Nursing Track)",
+    "axes": {
+      "willingness_relocate": 0.2,
+      "language_learning": 0.2,
+      "exam_tolerance": 0.4,
+      "time_investment": 0.6,
+      "cost_tolerance": 0.3,
+      "income_expectation": 0.3,
+      "gulf_preference": 0.2,
+      "western_preference": 0.3,
+      "egypt_stability": 0.7,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.9
+    }
+  },
+  {
+    "specialty_name": "Stay-Egypt (NGO/International Health Nursing)",
+    "axes": {
+      "willingness_relocate": 0.2,
+      "language_learning": 0.3,
+      "exam_tolerance": 0.2,
+      "time_investment": 0.3,
+      "cost_tolerance": 0.2,
+      "income_expectation": 0.4,
+      "gulf_preference": 0.2,
+      "western_preference": 0.3,
+      "egypt_stability": 0.6,
+      "clinical_vs_admin": 0.3,
+      "humanitarian_orientation": 0.9,
+      "research_academic_orientation": 0.4
+    }
+  },
+  {
+    "specialty_name": "Saudi Arabia — Saudi Nursing License (SCFHS)",
+    "axes": {
+      "willingness_relocate": 0.8,
+      "language_learning": 0.2,
+      "exam_tolerance": 0.6,
+      "time_investment": 0.4,
+      "cost_tolerance": 0.5,
+      "income_expectation": 0.8,
+      "gulf_preference": 0.95,
+      "western_preference": 0.2,
+      "egypt_stability": 0.2,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.2,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "UAE — Nursing License (DHA/DoH)",
+    "axes": {
+      "willingness_relocate": 0.8,
+      "language_learning": 0.2,
+      "exam_tolerance": 0.5,
+      "time_investment": 0.4,
+      "cost_tolerance": 0.5,
+      "income_expectation": 0.85,
+      "gulf_preference": 0.85,
+      "western_preference": 0.35,
+      "egypt_stability": 0.2,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.2,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "UK — NMC OSCE",
+    "axes": {
+      "willingness_relocate": 0.85,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.7,
+      "time_investment": 0.5,
+      "cost_tolerance": 0.6,
+      "income_expectation": 0.6,
+      "gulf_preference": 0.2,
+      "western_preference": 0.9,
+      "egypt_stability": 0.15,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "Ireland — NMBI Registration",
+    "axes": {
+      "willingness_relocate": 0.8,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.5,
+      "time_investment": 0.4,
+      "cost_tolerance": 0.6,
+      "income_expectation": 0.55,
+      "gulf_preference": 0.2,
+      "western_preference": 0.85,
+      "egypt_stability": 0.2,
+      "clinical_vs_admin": 0.55,
+      "humanitarian_orientation": 0.25,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "Germany — Nursing Approbation",
+    "axes": {
+      "willingness_relocate": 0.85,
+      "language_learning": 0.95,
+      "exam_tolerance": 0.6,
+      "time_investment": 0.6,
+      "cost_tolerance": 0.5,
+      "income_expectation": 0.7,
+      "gulf_preference": 0.15,
+      "western_preference": 0.9,
+      "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "Malta — Nursing Council Registration",
+    "axes": {
+      "willingness_relocate": 0.7,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.3,
+      "time_investment": 0.3,
+      "cost_tolerance": 0.4,
+      "income_expectation": 0.5,
+      "gulf_preference": 0.2,
+      "western_preference": 0.7,
+      "egypt_stability": 0.25,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "Canada — NCLEX-RN",
+    "axes": {
+      "willingness_relocate": 0.85,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.75,
+      "time_investment": 0.6,
+      "cost_tolerance": 0.75,
+      "income_expectation": 0.65,
+      "gulf_preference": 0.1,
+      "western_preference": 0.9,
+      "egypt_stability": 0.15,
+      "clinical_vs_admin": 0.55,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.4
+    }
+  },
+  {
+    "specialty_name": "USA — NCLEX-RN",
+    "axes": {
+      "willingness_relocate": 0.9,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.8,
+      "time_investment": 0.7,
+      "cost_tolerance": 0.8,
+      "income_expectation": 0.95,
+      "gulf_preference": 0.1,
+      "western_preference": 0.95,
+      "egypt_stability": 0.1,
+      "clinical_vs_admin": 0.5,
+      "humanitarian_orientation": 0.2,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "Australia — AHPRA/ANMAC Nursing",
+    "axes": {
+      "willingness_relocate": 0.85,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.55,
+      "time_investment": 0.6,
+      "cost_tolerance": 0.5,
+      "income_expectation": 0.8,
+      "gulf_preference": 0.1,
+      "western_preference": 0.8,
+      "egypt_stability": 0.15,
+      "clinical_vs_admin": 0.45,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "New Zealand — Nursing Council Registration",
+    "axes": {
+      "willingness_relocate": 0.75,
+      "language_learning": 0.1,
+      "exam_tolerance": 0.5,
+      "time_investment": 0.4,
+      "cost_tolerance": 0.4,
+      "income_expectation": 0.55,
+      "gulf_preference": 0.1,
+      "western_preference": 0.85,
+      "egypt_stability": 0.2,
+      "clinical_vs_admin": 0.4,
+      "humanitarian_orientation": 0.45,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "International Organization Nursing (WHO/UN)",
+    "axes": {
+      "willingness_relocate": 0.6,
+      "language_learning": 0.4,
+      "exam_tolerance": 0.2,
+      "time_investment": 0.4,
+      "cost_tolerance": 0.3,
+      "income_expectation": 0.5,
+      "gulf_preference": 0.2,
+      "western_preference": 0.4,
+      "egypt_stability": 0.3,
+      "clinical_vs_admin": 0.15,
+      "humanitarian_orientation": 0.95,
+      "research_academic_orientation": 0.5
+    }
+  },
+  {
+    "specialty_name": "Humanitarian Nursing (MSF, IRC, Red Cross)",
+    "axes": {
+      "willingness_relocate": 0.9,
+      "language_learning": 0.5,
+      "exam_tolerance": 0.2,
+      "time_investment": 0.3,
+      "cost_tolerance": 0.2,
+      "income_expectation": 0.3,
+      "gulf_preference": 0.3,
+      "western_preference": 0.3,
+      "egypt_stability": 0.2,
+      "clinical_vs_admin": 0.3,
+      "humanitarian_orientation": 0.95,
+      "research_academic_orientation": 0.3
+    }
+  },
+  {
+    "specialty_name": "Global Health Research Nursing",
+    "axes": {
+      "willingness_relocate": 0.5,
+      "language_learning": 0.4,
+      "exam_tolerance": 0.3,
+      "time_investment": 0.6,
+      "cost_tolerance": 0.3,
+      "income_expectation": 0.4,
+      "gulf_preference": 0.15,
+      "western_preference": 0.5,
+      "egypt_stability": 0.3,
+      "clinical_vs_admin": 0.15,
+      "humanitarian_orientation": 0.6,
+      "research_academic_orientation": 0.95
+    }
+  },
+  {
+    "specialty_name": "Health-Tech Nursing / Nursing Informatics",
+    "axes": {
+      "willingness_relocate": 0.4,
+      "language_learning": 0.2,
+      "exam_tolerance": 0.2,
+      "time_investment": 0.3,
+      "cost_tolerance": 0.3,
+      "income_expectation": 0.75,
+      "gulf_preference": 0.2,
+      "western_preference": 0.5,
+      "egypt_stability": 0.4,
+      "clinical_vs_admin": 0.1,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.4
+    }
+  },
+  {
+    "specialty_name": "Pharmaceutical/Clinical Research Nursing",
+    "axes": {
+      "willingness_relocate": 0.4,
+      "language_learning": 0.3,
+      "exam_tolerance": 0.3,
+      "time_investment": 0.3,
+      "cost_tolerance": 0.3,
+      "income_expectation": 0.8,
+      "gulf_preference": 0.3,
+      "western_preference": 0.4,
+      "egypt_stability": 0.4,
+      "clinical_vs_admin": 0.15,
+      "humanitarian_orientation": 0.3,
+      "research_academic_orientation": 0.7
+    }
+  }
+],
 };

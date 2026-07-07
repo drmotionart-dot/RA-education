@@ -22,14 +22,15 @@ export function QuickPickPage() {
     preselectedSpecialtyId ? 'path' : 'specialty'
   );
   const [generating, setGenerating] = useState(false);
+  const [error, setError] = useState('');
   const [search, setSearch] = useState('');
   const [preselectedPath, setPreselectedPath] = useState<Record<string, unknown> | null>(null);
   const [preselectedSpecialty, setPreselectedSpecialty] = useState<Record<string, unknown> | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.catalog.specialties(category).then(setSpecialties).catch(console.error);
-    api.catalog.paths(category).then(setPaths).catch(console.error);
+    api.catalog.specialties(category).then(setSpecialties).catch((err: Error) => setError(err.message || 'Failed to load specialties'));
+    api.catalog.paths(category).then(setPaths).catch((err: Error) => setError(err.message || 'Failed to load paths'));
   }, [category]);
 
   // If a pathId was passed, fetch and pre-select that path
@@ -38,7 +39,7 @@ export function QuickPickPage() {
       api.catalog.path(preselectedPathId).then((p) => {
         setPreselectedPath(p);
         setSelPath(preselectedPathId);
-      }).catch(console.error);
+      }).catch((err: Error) => setError(err.message || 'Failed to load path'));
     }
   }, [preselectedPathId]);
 
@@ -48,7 +49,7 @@ export function QuickPickPage() {
       api.catalog.specialty(preselectedSpecialtyId).then((s) => {
         setPreselectedSpecialty(s);
         setSelSpecialty(preselectedSpecialtyId);
-      }).catch(console.error);
+      }).catch((err: Error) => setError(err.message || 'Failed to load specialty'));
     }
   }, [preselectedSpecialtyId]);
 
@@ -82,6 +83,8 @@ export function QuickPickPage() {
       setStep('path');
     }
   };
+
+  if (error) return <p className="text-center text-[var(--color-error)]">{error}</p>;
 
   return (
     <div className="space-y-6">

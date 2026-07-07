@@ -1,6 +1,6 @@
 // Auto-generated expanded Nurse Path Survey Graph
 // Source: survey-path-nurse.js
-// Generated on: 2026-07-05T15:36:09.582Z
+// Generated on: 2026-07-07T20:06:06.713Z
 
 export const nurse_path_graph = {
   type: 'path',
@@ -1616,13 +1616,13 @@ export const nurse_path_graph = {
       "language_learning": 0.1,
       "exam_tolerance": 0.5,
       "time_investment": 0.4,
-      "cost_tolerance": 0.5,
-      "income_expectation": 0.6,
+      "cost_tolerance": 0.6,
+      "income_expectation": 0.55,
       "gulf_preference": 0.2,
       "western_preference": 0.85,
       "egypt_stability": 0.2,
-      "clinical_vs_admin": 0.5,
-      "humanitarian_orientation": 0.3,
+      "clinical_vs_admin": 0.55,
+      "humanitarian_orientation": 0.25,
       "research_academic_orientation": 0.3
     }
   },
@@ -1665,14 +1665,14 @@ export const nurse_path_graph = {
     "axes": {
       "willingness_relocate": 0.85,
       "language_learning": 0.1,
-      "exam_tolerance": 0.7,
+      "exam_tolerance": 0.75,
       "time_investment": 0.6,
-      "cost_tolerance": 0.7,
-      "income_expectation": 0.7,
+      "cost_tolerance": 0.75,
+      "income_expectation": 0.65,
       "gulf_preference": 0.1,
       "western_preference": 0.9,
       "egypt_stability": 0.15,
-      "clinical_vs_admin": 0.5,
+      "clinical_vs_admin": 0.55,
       "humanitarian_orientation": 0.3,
       "research_academic_orientation": 0.4
     }
@@ -1699,14 +1699,14 @@ export const nurse_path_graph = {
     "axes": {
       "willingness_relocate": 0.85,
       "language_learning": 0.1,
-      "exam_tolerance": 0.6,
+      "exam_tolerance": 0.55,
       "time_investment": 0.6,
-      "cost_tolerance": 0.6,
-      "income_expectation": 0.75,
+      "cost_tolerance": 0.5,
+      "income_expectation": 0.8,
       "gulf_preference": 0.1,
-      "western_preference": 0.85,
+      "western_preference": 0.8,
       "egypt_stability": 0.15,
-      "clinical_vs_admin": 0.5,
+      "clinical_vs_admin": 0.45,
       "humanitarian_orientation": 0.3,
       "research_academic_orientation": 0.3
     }
@@ -1714,17 +1714,17 @@ export const nurse_path_graph = {
   {
     "specialty_name": "New Zealand — Nursing Council Registration",
     "axes": {
-      "willingness_relocate": 0.8,
+      "willingness_relocate": 0.75,
       "language_learning": 0.1,
       "exam_tolerance": 0.5,
       "time_investment": 0.4,
-      "cost_tolerance": 0.5,
-      "income_expectation": 0.6,
+      "cost_tolerance": 0.4,
+      "income_expectation": 0.55,
       "gulf_preference": 0.1,
       "western_preference": 0.85,
       "egypt_stability": 0.2,
-      "clinical_vs_admin": 0.5,
-      "humanitarian_orientation": 0.3,
+      "clinical_vs_admin": 0.4,
+      "humanitarian_orientation": 0.45,
       "research_academic_orientation": 0.3
     }
   },

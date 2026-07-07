@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ClipboardList, Compass, Stethoscope, Syringe } from 'lucide-react';
+import { ClipboardList, Compass, Stethoscope, Syringe, CheckCircle2 } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 import { api } from '../../lib/api';
@@ -8,16 +8,41 @@ import { api } from '../../lib/api';
 type SurveyType = 'specialty' | 'path' | null;
 type Role = 'doctor' | 'nurse' | null;
 
+interface SurveyStatus {
+  doctor_specialty: boolean;
+  nurse_specialty: boolean;
+  doctor_path: boolean;
+  nurse_path: boolean;
+}
+
 export function SurveyLandingPage() {
   const navigate = useNavigate();
   const [surveyType, setSurveyType] = useState<SurveyType>(null);
   const [role, setRole] = useState<Role>(null);
   const [loading, setLoading] = useState(false);
+  const [starting, setStarting] = useState(false);
   const [error, setError] = useState('');
+  const [status, setStatus] = useState<SurveyStatus | null>(null);
+
+  useEffect(() => {
+    api.survey.status()
+      .then((s) => setStatus({
+        doctor_specialty: s.doctor_specialty,
+        nurse_specialty: s.nurse_specialty,
+        doctor_path: s.doctor_path,
+        nurse_path: s.nurse_path,
+      }))
+      .catch(() => setStatus(null));
+  }, []);
+
+  const isCompleted = (type: SurveyType, r: Role) => {
+    if (!status) return false;
+    return status[`${r}_${type}` as keyof SurveyStatus] || false;
+  };
 
   const handleStart = async () => {
     if (!surveyType || !role) return;
-    setLoading(true);
+    setStarting(true);
     setError('');
     try {
       const res = await api.survey.start(surveyType, role);
@@ -25,7 +50,7 @@ export function SurveyLandingPage() {
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to start survey');
     } finally {
-      setLoading(false);
+      setStarting(false);
     }
   };
 
@@ -47,7 +72,7 @@ export function SurveyLandingPage() {
                 ? 'border-[var(--color-secondary)] bg-[var(--color-secondary)]/5'
                 : 'border-[var(--color-border)]'
             }`}
-            onClick={() => setSurveyType('specialty')}
+            onClick={() => { setSurveyType('specialty'); setRole(null); }}
           >
             <Stethoscope size={32} className="mx-auto mb-2 text-[var(--color-primary)]" />
             <h3 className="font-heading font-semibold">Specialties</h3>
@@ -61,7 +86,7 @@ export function SurveyLandingPage() {
                 ? 'border-[var(--color-secondary)] bg-[var(--color-secondary)]/5'
                 : 'border-[var(--color-border)]'
             }`}
-            onClick={() => setSurveyType('path')}
+            onClick={() => { setSurveyType('path'); setRole(null); }}
           >
             <Compass size={32} className="mx-auto mb-2 text-[var(--color-primary)]" />
             <h3 className="font-heading font-semibold">Paths</h3>
@@ -76,30 +101,35 @@ export function SurveyLandingPage() {
         <div className="space-y-4 animate-[fadeIn_0.3s_ease]">
           <h2 className="font-heading text-lg font-semibold">What is your role?</h2>
           <div className="grid grid-cols-2 gap-4">
-            <Card
-              className={`border-2 p-6 text-center transition-all ${
-                role === 'doctor'
-                  ? 'border-[var(--color-secondary)] bg-[var(--color-secondary)]/5'
-                  : 'border-[var(--color-border)]'
-              }`}
-              onClick={() => setRole('doctor')}
-            >
-              <ClipboardList size={32} className="mx-auto mb-2 text-[var(--color-primary)]" />
-              <h3 className="font-heading font-semibold">Doctor</h3>
-              <p className="mt-1 text-xs text-[var(--color-text-secondary)]">I am a medical doctor</p>
-            </Card>
-            <Card
-              className={`border-2 p-6 text-center transition-all ${
-                role === 'nurse'
-                  ? 'border-[var(--color-secondary)] bg-[var(--color-secondary)]/5'
-                  : 'border-[var(--color-border)]'
-              }`}
-              onClick={() => setRole('nurse')}
-            >
-              <Syringe size={32} className="mx-auto mb-2 text-[var(--color-primary)]" />
-              <h3 className="font-heading font-semibold">Nurse</h3>
-              <p className="mt-1 text-xs text-[var(--color-text-secondary)]">I am a nurse</p>
-            </Card>
+            {(['doctor', 'nurse'] as Role[]).filter(Boolean).map((r) => {
+              const done = isCompleted(surveyType, r);
+              return (
+                <Card
+                  key={r}
+                  className={`border-2 p-6 text-center transition-all ${
+                    role === r
+                      ? 'border-[var(--color-secondary)] bg-[var(--color-secondary)]/5'
+                      : 'border-[var(--color-border)]'
+                  }`}
+                  onClick={() => setRole(r)}
+                >
+                  <div className="relative">
+                    {r === 'doctor' ? (
+                      <ClipboardList size={32} className="mx-auto mb-2 text-[var(--color-primary)]" />
+                    ) : (
+                      <Syringe size={32} className="mx-auto mb-2 text-[var(--color-primary)]" />
+                    )}
+                    {done && (
+                      <CheckCircle2 size={18} className="absolute -top-1 -right-1 text-[var(--color-success)]" />
+                    )}
+                  </div>
+                  <h3 className="font-heading font-semibold">{r === 'doctor' ? 'Doctor' : 'Nurse'}</h3>
+                  <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
+                    {done ? 'Completed' : `I am a ${r}`}
+                  </p>
+                </Card>
+              );
+            })}
           </div>
         </div>
       )}
@@ -109,10 +139,15 @@ export function SurveyLandingPage() {
       )}
 
       {surveyType && role && (
-        <div className="text-center">
-          <Button onClick={handleStart} loading={loading} className="px-8">
-            Start Survey
+        <div className="space-y-3 text-center">
+          <Button onClick={handleStart} loading={starting} className="px-8">
+            {isCompleted(surveyType, role) ? 'Re-take Survey' : 'Start Survey'}
           </Button>
+          {isCompleted(surveyType, role) && (
+            <p className="text-xs text-[var(--color-text-secondary)]">
+              You&apos;ve already completed this survey. Re-taking it will create new recommendations.
+            </p>
+          )}
         </div>
       )}
     </div>

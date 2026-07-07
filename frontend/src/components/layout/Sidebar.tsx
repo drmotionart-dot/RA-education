@@ -24,6 +24,10 @@ interface NavItemData {
 }
 
 interface SurveyStatus {
+  doctor_specialty: boolean;
+  nurse_specialty: boolean;
+  doctor_path: boolean;
+  nurse_path: boolean;
   hasCompletedSurvey: boolean;
   hasPlanFromSurvey: boolean;
 }
@@ -117,7 +121,7 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onMobileClose
   useEffect(() => {
     api.survey.status()
       .then(setSurveyStatus)
-      .catch(() => setSurveyStatus({ hasCompletedSurvey: false, hasPlanFromSurvey: false }));
+      .catch(() => setSurveyStatus({ doctor_specialty: false, nurse_specialty: false, doctor_path: false, nurse_path: false, hasCompletedSurvey: false, hasPlanFromSurvey: false }));
   }, []);
 
   const handleNav = (path: string) => {
@@ -233,11 +237,12 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onMobileClose
         animate={{ width: collapsed ? 64 : 240 }}
         transition={{ type: 'spring', stiffness: 200, damping: 30 }}
         className={`
-          fixed md:relative inset-y-0 left-0 z-50
+          fixed md:sticky md:top-0 inset-y-0 left-0 z-50
           flex flex-col
           border-r border-[var(--color-border)]
           bg-white/80 dark:bg-[#14181F]/85 backdrop-blur-xl
           overflow-hidden
+          md:h-screen md:self-start
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
           md:translate-x-0
           transition-transform duration-300 ease-in-out md:transition-none

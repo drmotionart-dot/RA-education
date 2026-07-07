@@ -18,20 +18,57 @@ export function normalizeScores(rawScores, boundsMap, axes) {
 }
 
 /*
+  computeAxisWeights: returns a map of axis->weight based on the inverse-variance
+  of each axis across all target vectors. Low-variance axes (little differentiation
+  across targets) contribute less to the distance. Weights are normalized to [0.1, 1.0].
+*/
+export function computeAxisWeights(targetVectors, axes) {
+  if (!targetVectors || targetVectors.length < 2 || !axes) return {};
+  const means = {};
+  for (const ax of axes) {
+    let sum = 0;
+    for (const tv of targetVectors) sum += tv.axes?.[ax] ?? 0.5;
+    means[ax] = sum / targetVectors.length;
+  }
+  const variances = {};
+  let maxVar = 0;
+  for (const ax of axes) {
+    let sumSq = 0;
+    for (const tv of targetVectors) {
+      const diff = (tv.axes?.[ax] ?? 0.5) - means[ax];
+      sumSq += diff * diff;
+    }
+    variances[ax] = sumSq / targetVectors.length;
+    if (variances[ax] > maxVar) maxVar = variances[ax];
+  }
+  const weights = {};
+  for (const ax of axes) {
+    if (maxVar === 0) { weights[ax] = 1; continue; }
+    const rawWeight = variances[ax] / maxVar;
+    weights[ax] = Math.max(0.1, Math.min(1, rawWeight));
+  }
+  return weights;
+}
+
+/*
   computeEuclideanSimilarity: returns 0-1 where 1 = perfect match.
-  similarity = 1 - (euclidean_distance / sqrt(num_axes))
+  If weights are provided, uses weighted Euclidean distance so that
+  low-variance axes contribute proportionally less.
   All missing axis values (in either vector) default to 0.5.
 */
-export function computeEuclideanSimilarity(userVector, targetVector, axes) {
+export function computeEuclideanSimilarity(userVector, targetVector, axes, weights) {
   let sumSq = 0;
+  let totalW = 0;
   for (const axis of (axes || [])) {
     const diff = (userVector[axis] ?? 0.5) - (targetVector[axis] ?? 0.5);
-    sumSq += diff * diff;
+    const w = weights?.[axis] ?? 1;
+    sumSq += w * diff * diff;
+    totalW += w;
   }
-  const euclidean = Math.sqrt(sumSq);
-  const maxDist = Math.sqrt(axes?.length ?? 0);
+  const weightedEuclidean = Math.sqrt(sumSq);
+  const maxDist = Math.sqrt(totalW);
   if (maxDist === 0) return 0;
-  return 1 - (euclidean / maxDist);
+  return 1 - (weightedEuclidean / maxDist);
 }
 
 /*

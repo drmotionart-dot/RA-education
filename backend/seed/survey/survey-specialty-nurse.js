@@ -240,37 +240,430 @@ export const nurseSpecialtyGraph = {
     },
   ],
   target_vectors: [
-    // Critical & Acute Care
-    { specialty_name: 'ICU / Critical Care Nursing', axes: { critical_care_acuity: 0.9, procedural_technical: 0.7, acute_vs_chronic: 0.8, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.5, community_outreach: 0.3, lifestyle_priority: 0.4, income_priority: 0.5, management_leadership: 0.5, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Emergency Room Nursing', axes: { critical_care_acuity: 0.85, procedural_technical: 0.6, acute_vs_chronic: 0.95, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.4, community_outreach: 0.3, lifestyle_priority: 0.5, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Neonatal ICU Nursing', axes: { critical_care_acuity: 0.7, procedural_technical: 0.6, acute_vs_chronic: 0.6, pediatric_affinity: 0.95, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.6, community_outreach: 0.3, lifestyle_priority: 0.4, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Cardiac Care Nursing', axes: { critical_care_acuity: 0.7, procedural_technical: 0.6, acute_vs_chronic: 0.7, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.5, community_outreach: 0.3, lifestyle_priority: 0.4, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Flight/Transport Nursing', axes: { critical_care_acuity: 0.85, procedural_technical: 0.7, acute_vs_chronic: 0.9, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.4, community_outreach: 0.3, lifestyle_priority: 0.3, income_priority: 0.6, management_leadership: 0.5, admin_systems_affinity: 0.3 } },
-    // Perioperative
-    { specialty_name: 'OR / Surgical (Perioperative) Nursing', axes: { critical_care_acuity: 0.4, procedural_technical: 0.9, acute_vs_chronic: 0.6, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.3, community_outreach: 0.2, lifestyle_priority: 0.5, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Post-Anesthesia Care (PACU) Nursing', axes: { critical_care_acuity: 0.5, procedural_technical: 0.6, acute_vs_chronic: 0.6, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.4, community_outreach: 0.3, lifestyle_priority: 0.5, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    // Women's & Children's
-    { specialty_name: 'Pediatric Nursing', axes: { critical_care_acuity: 0.3, procedural_technical: 0.3, acute_vs_chronic: 0.4, pediatric_affinity: 0.9, ob_maternal_affinity: 0.5, psych_affinity: 0.4, patient_education_affinity: 0.6, community_outreach: 0.3, lifestyle_priority: 0.5, income_priority: 0.4, management_leadership: 0.3, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Pediatric Oncology Nursing', axes: { critical_care_acuity: 0.4, procedural_technical: 0.5, acute_vs_chronic: 0.3, pediatric_affinity: 0.85, ob_maternal_affinity: 0.5, psych_affinity: 0.4, patient_education_affinity: 0.7, community_outreach: 0.3, lifestyle_priority: 0.4, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Labor & Delivery / Obstetric Nursing', axes: { critical_care_acuity: 0.5, procedural_technical: 0.5, acute_vs_chronic: 0.7, pediatric_affinity: 0.5, ob_maternal_affinity: 0.95, psych_affinity: 0.4, patient_education_affinity: 0.5, community_outreach: 0.3, lifestyle_priority: 0.4, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Midwifery-track Nursing', axes: { critical_care_acuity: 0.3, procedural_technical: 0.4, acute_vs_chronic: 0.4, pediatric_affinity: 0.5, ob_maternal_affinity: 0.95, psych_affinity: 0.4, patient_education_affinity: 0.6, community_outreach: 0.5, lifestyle_priority: 0.5, income_priority: 0.5, management_leadership: 0.5, admin_systems_affinity: 0.3 } },
-    // Mental Health
-    { specialty_name: 'Psychiatric/Mental Health Nursing', axes: { critical_care_acuity: 0.2, procedural_technical: 0.1, acute_vs_chronic: 0.5, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.95, patient_education_affinity: 0.5, community_outreach: 0.4, lifestyle_priority: 0.5, income_priority: 0.4, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    // Community & Chronic Care
-    { specialty_name: 'Community/Public Health Nursing', axes: { critical_care_acuity: 0.2, procedural_technical: 0.2, acute_vs_chronic: 0.2, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.8, community_outreach: 0.95, lifestyle_priority: 0.6, income_priority: 0.4, management_leadership: 0.4, admin_systems_affinity: 0.4 } },
-    { specialty_name: 'Home Health Nursing', axes: { critical_care_acuity: 0.2, procedural_technical: 0.3, acute_vs_chronic: 0.15, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.7, community_outreach: 0.85, lifestyle_priority: 0.7, income_priority: 0.4, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Geriatric/Long-Term Care Nursing', axes: { critical_care_acuity: 0.2, procedural_technical: 0.3, acute_vs_chronic: 0.15, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.6, community_outreach: 0.4, lifestyle_priority: 0.7, income_priority: 0.35, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Rehabilitation Nursing', axes: { critical_care_acuity: 0.2, procedural_technical: 0.3, acute_vs_chronic: 0.2, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.7, community_outreach: 0.4, lifestyle_priority: 0.6, income_priority: 0.4, management_leadership: 0.3, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Oncology Nursing (adult)', axes: { critical_care_acuity: 0.3, procedural_technical: 0.5, acute_vs_chronic: 0.25, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.7, community_outreach: 0.3, lifestyle_priority: 0.5, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.3 } },
-    { specialty_name: 'Dialysis/Nephrology Nursing', axes: { critical_care_acuity: 0.3, procedural_technical: 0.6, acute_vs_chronic: 0.2, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.6, community_outreach: 0.3, lifestyle_priority: 0.6, income_priority: 0.4, management_leadership: 0.3, admin_systems_affinity: 0.3 } },
-    // Management & Education
-    { specialty_name: 'Nurse Management / Charge Nurse', axes: { critical_care_acuity: 0.3, procedural_technical: 0.3, acute_vs_chronic: 0.4, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.4, community_outreach: 0.3, lifestyle_priority: 0.5, income_priority: 0.6, management_leadership: 0.95, admin_systems_affinity: 0.7 } },
-    { specialty_name: 'Nurse Education / Clinical Instructor', axes: { critical_care_acuity: 0.2, procedural_technical: 0.3, acute_vs_chronic: 0.3, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.9, community_outreach: 0.4, lifestyle_priority: 0.7, income_priority: 0.4, management_leadership: 0.5, admin_systems_affinity: 0.4 } },
-    { specialty_name: 'Case Management / Care Coordination', axes: { critical_care_acuity: 0.1, procedural_technical: 0.2, acute_vs_chronic: 0.3, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.5, community_outreach: 0.4, lifestyle_priority: 0.7, income_priority: 0.5, management_leadership: 0.6, admin_systems_affinity: 0.85 } },
-    // Administrative / Non-Bedside
-    { specialty_name: 'Infection Control Nursing', axes: { critical_care_acuity: 0.2, procedural_technical: 0.3, acute_vs_chronic: 0.3, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.5, community_outreach: 0.5, lifestyle_priority: 0.7, income_priority: 0.5, management_leadership: 0.5, admin_systems_affinity: 0.9 } },
-    { specialty_name: 'Quality Management / Patient Safety Nursing', axes: { critical_care_acuity: 0.1, procedural_technical: 0.2, acute_vs_chronic: 0.3, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.4, community_outreach: 0.3, lifestyle_priority: 0.7, income_priority: 0.5, management_leadership: 0.6, admin_systems_affinity: 0.95 } },
-    { specialty_name: 'Nursing Informatics', axes: { critical_care_acuity: 0.1, procedural_technical: 0.2, acute_vs_chronic: 0.3, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.4, community_outreach: 0.3, lifestyle_priority: 0.7, income_priority: 0.55, management_leadership: 0.4, admin_systems_affinity: 0.9 } },
-    { specialty_name: 'Occupational Health Nursing', axes: { critical_care_acuity: 0.1, procedural_technical: 0.2, acute_vs_chronic: 0.3, pediatric_affinity: 0.5, ob_maternal_affinity: 0.5, psych_affinity: 0.5, patient_education_affinity: 0.6, community_outreach: 0.6, lifestyle_priority: 0.85, income_priority: 0.5, management_leadership: 0.4, admin_systems_affinity: 0.5 } },
-  ],
+  {
+    "specialty_name": "ICU / Critical Care Nursing",
+    "axes": {
+      "critical_care_acuity": 0.9,
+      "procedural_technical": 0.7,
+      "acute_vs_chronic": 0.8,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.5,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "management_leadership": 0.5,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Emergency Room Nursing",
+    "axes": {
+      "critical_care_acuity": 0.85,
+      "procedural_technical": 0.6,
+      "acute_vs_chronic": 0.95,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.4,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Neonatal ICU Nursing",
+    "axes": {
+      "critical_care_acuity": 0.7,
+      "procedural_technical": 0.6,
+      "acute_vs_chronic": 0.6,
+      "pediatric_affinity": 0.95,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.6,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Cardiac Care Nursing",
+    "axes": {
+      "critical_care_acuity": 0.7,
+      "procedural_technical": 0.6,
+      "acute_vs_chronic": 0.7,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.5,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Flight/Transport Nursing",
+    "axes": {
+      "critical_care_acuity": 0.85,
+      "procedural_technical": 0.7,
+      "acute_vs_chronic": 0.9,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.4,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.3,
+      "income_priority": 0.6,
+      "management_leadership": 0.5,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "OR / Surgical (Perioperative) Nursing",
+    "axes": {
+      "critical_care_acuity": 0.4,
+      "procedural_technical": 0.9,
+      "acute_vs_chronic": 0.6,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.3,
+      "community_outreach": 0.2,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Post-Anesthesia Care (PACU) Nursing",
+    "axes": {
+      "critical_care_acuity": 0.5,
+      "procedural_technical": 0.6,
+      "acute_vs_chronic": 0.6,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.4,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Pediatric Nursing",
+    "axes": {
+      "critical_care_acuity": 0.3,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.4,
+      "pediatric_affinity": 0.9,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.4,
+      "patient_education_affinity": 0.6,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.4,
+      "management_leadership": 0.3,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Pediatric Oncology Nursing",
+    "axes": {
+      "critical_care_acuity": 0.4,
+      "procedural_technical": 0.5,
+      "acute_vs_chronic": 0.3,
+      "pediatric_affinity": 0.85,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.4,
+      "patient_education_affinity": 0.7,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Labor & Delivery / Obstetric Nursing",
+    "axes": {
+      "critical_care_acuity": 0.5,
+      "procedural_technical": 0.5,
+      "acute_vs_chronic": 0.7,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.95,
+      "psych_affinity": 0.4,
+      "patient_education_affinity": 0.5,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Midwifery-track Nursing",
+    "axes": {
+      "critical_care_acuity": 0.3,
+      "procedural_technical": 0.4,
+      "acute_vs_chronic": 0.4,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.95,
+      "psych_affinity": 0.4,
+      "patient_education_affinity": 0.6,
+      "community_outreach": 0.5,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.5,
+      "management_leadership": 0.5,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Psychiatric/Mental Health Nursing",
+    "axes": {
+      "critical_care_acuity": 0.2,
+      "procedural_technical": 0.1,
+      "acute_vs_chronic": 0.5,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.95,
+      "patient_education_affinity": 0.5,
+      "community_outreach": 0.4,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.4,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Community/Public Health Nursing",
+    "axes": {
+      "critical_care_acuity": 0.2,
+      "procedural_technical": 0.2,
+      "acute_vs_chronic": 0.2,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.8,
+      "community_outreach": 0.95,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.4,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Home Health Nursing",
+    "axes": {
+      "critical_care_acuity": 0.2,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.15,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.7,
+      "community_outreach": 0.85,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.4,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Geriatric/Long-Term Care Nursing",
+    "axes": {
+      "critical_care_acuity": 0.2,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.1,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.5,
+      "community_outreach": 0.4,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.3,
+      "management_leadership": 0.45,
+      "admin_systems_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Rehabilitation Nursing",
+    "axes": {
+      "critical_care_acuity": 0.2,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.2,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.8,
+      "community_outreach": 0.5,
+      "lifestyle_priority": 0.55,
+      "income_priority": 0.45,
+      "management_leadership": 0.25,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Oncology Nursing (adult)",
+    "axes": {
+      "critical_care_acuity": 0.3,
+      "procedural_technical": 0.5,
+      "acute_vs_chronic": 0.25,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.7,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Dialysis/Nephrology Nursing",
+    "axes": {
+      "critical_care_acuity": 0.3,
+      "procedural_technical": 0.6,
+      "acute_vs_chronic": 0.2,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.6,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.4,
+      "management_leadership": 0.3,
+      "admin_systems_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Nurse Management / Charge Nurse",
+    "axes": {
+      "critical_care_acuity": 0.3,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.4,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.4,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.6,
+      "management_leadership": 0.95,
+      "admin_systems_affinity": 0.7
+    }
+  },
+  {
+    "specialty_name": "Nurse Education / Clinical Instructor",
+    "axes": {
+      "critical_care_acuity": 0.2,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.9,
+      "community_outreach": 0.4,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.4,
+      "management_leadership": 0.5,
+      "admin_systems_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Case Management / Care Coordination",
+    "axes": {
+      "critical_care_acuity": 0.1,
+      "procedural_technical": 0.2,
+      "acute_vs_chronic": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.5,
+      "community_outreach": 0.4,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.5,
+      "management_leadership": 0.6,
+      "admin_systems_affinity": 0.85
+    }
+  },
+  {
+    "specialty_name": "Infection Control Nursing",
+    "axes": {
+      "critical_care_acuity": 0.2,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.5,
+      "community_outreach": 0.5,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.5,
+      "management_leadership": 0.5,
+      "admin_systems_affinity": 0.9
+    }
+  },
+  {
+    "specialty_name": "Quality Management / Patient Safety Nursing",
+    "axes": {
+      "critical_care_acuity": 0.1,
+      "procedural_technical": 0.2,
+      "acute_vs_chronic": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.35,
+      "community_outreach": 0.35,
+      "lifestyle_priority": 0.65,
+      "income_priority": 0.45,
+      "management_leadership": 0.7,
+      "admin_systems_affinity": 0.95
+    }
+  },
+  {
+    "specialty_name": "Nursing Informatics",
+    "axes": {
+      "critical_care_acuity": 0.1,
+      "procedural_technical": 0.3,
+      "acute_vs_chronic": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.3,
+      "community_outreach": 0.3,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.6,
+      "management_leadership": 0.3,
+      "admin_systems_affinity": 0.75
+    }
+  },
+  {
+    "specialty_name": "Occupational Health Nursing",
+    "axes": {
+      "critical_care_acuity": 0.1,
+      "procedural_technical": 0.2,
+      "acute_vs_chronic": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_maternal_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "patient_education_affinity": 0.6,
+      "community_outreach": 0.6,
+      "lifestyle_priority": 0.85,
+      "income_priority": 0.5,
+      "management_leadership": 0.4,
+      "admin_systems_affinity": 0.5
+    }
+  }
+],
 };

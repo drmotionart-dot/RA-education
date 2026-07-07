@@ -174,63 +174,936 @@ export const doctorSpecialtyGraph = {
     },
   ],
   target_vectors: [
-    // Surgical
-    { specialty_name: 'General Surgery', axes: { procedural_affinity: 0.9, surgical_tolerance: 0.9, emergency_tolerance: 0.6, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.6, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.3, income_priority: 0.5, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Orthopedic Surgery', axes: { procedural_affinity: 0.9, surgical_tolerance: 0.85, emergency_tolerance: 0.5, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.6, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.6, lifestyle_priority: 0.6, income_priority: 0.6, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Neurosurgery', axes: { procedural_affinity: 0.95, surgical_tolerance: 0.95, emergency_tolerance: 0.5, diagnostic_puzzle_affinity: 0.7, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.7, lifestyle_priority: 0.2, income_priority: 0.7, research_academic_affinity: 0.5, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Cardiothoracic Surgery', axes: { procedural_affinity: 0.95, surgical_tolerance: 0.95, emergency_tolerance: 0.7, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.7, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.3, income_priority: 0.7, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Vascular Surgery', axes: { procedural_affinity: 0.85, surgical_tolerance: 0.85, emergency_tolerance: 0.6, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.6, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.6, lifestyle_priority: 0.4, income_priority: 0.6, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Plastic & Reconstructive Surgery', axes: { procedural_affinity: 0.9, surgical_tolerance: 0.8, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.3, acute_vs_longitudinal: 0.4, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.5, income_priority: 0.7, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Pediatric Surgery', axes: { procedural_affinity: 0.85, surgical_tolerance: 0.85, emergency_tolerance: 0.5, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.95, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.4, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'ENT (Otolaryngology)', axes: { procedural_affinity: 0.75, surgical_tolerance: 0.65, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.6, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Urology', axes: { procedural_affinity: 0.75, surgical_tolerance: 0.7, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.5, income_priority: 0.65, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Ophthalmology', axes: { procedural_affinity: 0.8, surgical_tolerance: 0.5, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.4, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.6, lifestyle_priority: 0.75, income_priority: 0.7, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    // Internal Medicine
-    { specialty_name: 'Internal Medicine (General)', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.75, acute_vs_longitudinal: 0.4, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.5, income_priority: 0.4, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Cardiology', axes: { procedural_affinity: 0.6, surgical_tolerance: 0.4, emergency_tolerance: 0.5, diagnostic_puzzle_affinity: 0.7, acute_vs_longitudinal: 0.55, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.6, lifestyle_priority: 0.4, income_priority: 0.6, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Interventional Cardiology', axes: { procedural_affinity: 0.85, surgical_tolerance: 0.6, emergency_tolerance: 0.6, diagnostic_puzzle_affinity: 0.6, acute_vs_longitudinal: 0.6, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.7, lifestyle_priority: 0.3, income_priority: 0.7, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Gastroenterology', axes: { procedural_affinity: 0.65, surgical_tolerance: 0.4, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.65, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.5, income_priority: 0.55, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Nephrology', axes: { procedural_affinity: 0.4, surgical_tolerance: 0.3, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.75, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.5, income_priority: 0.4, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.4 } },
-    { specialty_name: 'Pulmonology', axes: { procedural_affinity: 0.5, surgical_tolerance: 0.3, emergency_tolerance: 0.55, diagnostic_puzzle_affinity: 0.65, acute_vs_longitudinal: 0.55, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.6, lifestyle_priority: 0.4, income_priority: 0.45, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.4 } },
-    { specialty_name: 'Endocrinology', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.6, acute_vs_longitudinal: 0.25, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.6, income_priority: 0.4, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Rheumatology', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.75, acute_vs_longitudinal: 0.25, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.6, income_priority: 0.35, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Infectious Disease', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.8, acute_vs_longitudinal: 0.4, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.5, income_priority: 0.35, research_academic_affinity: 0.5, admin_systems_affinity: 0.3, public_health_affinity: 0.55 } },
-    { specialty_name: 'Hematology/Oncology', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.7, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.6, lifestyle_priority: 0.4, income_priority: 0.5, research_academic_affinity: 0.6, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Geriatric Medicine', axes: { procedural_affinity: 0.2, surgical_tolerance: 0.2, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.2, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.6, income_priority: 0.35, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    // Emergency, Anesthesia, Critical Care
-    { specialty_name: 'Emergency Medicine', axes: { procedural_affinity: 0.6, surgical_tolerance: 0.4, emergency_tolerance: 0.95, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.9, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.65, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Anesthesiology', axes: { procedural_affinity: 0.8, surgical_tolerance: 0.4, emergency_tolerance: 0.7, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.65, income_priority: 0.7, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Critical Care / Intensivist', axes: { procedural_affinity: 0.5, surgical_tolerance: 0.4, emergency_tolerance: 0.85, diagnostic_puzzle_affinity: 0.6, acute_vs_longitudinal: 0.85, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.4, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    // Women's & Children's Health
-    { specialty_name: 'Obstetrics & Gynecology', axes: { procedural_affinity: 0.7, surgical_tolerance: 0.5, emergency_tolerance: 0.5, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.5, ob_gyn_affinity: 0.95, psych_affinity: 0.4, lab_imaging_affinity: 0.5, lifestyle_priority: 0.4, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Pediatrics (General)', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.9, ob_gyn_affinity: 0.5, psych_affinity: 0.4, lab_imaging_affinity: 0.3, lifestyle_priority: 0.5, income_priority: 0.35, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Neonatology', axes: { procedural_affinity: 0.6, surgical_tolerance: 0.4, emergency_tolerance: 0.7, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.7, pediatric_affinity: 0.95, ob_gyn_affinity: 0.5, psych_affinity: 0.4, lab_imaging_affinity: 0.4, lifestyle_priority: 0.3, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Pediatric Cardiology', axes: { procedural_affinity: 0.5, surgical_tolerance: 0.3, emergency_tolerance: 0.5, diagnostic_puzzle_affinity: 0.65, acute_vs_longitudinal: 0.5, pediatric_affinity: 0.9, ob_gyn_affinity: 0.5, psych_affinity: 0.4, lab_imaging_affinity: 0.6, lifestyle_priority: 0.4, income_priority: 0.5, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    // Mental Health & Neuro
-    { specialty_name: 'Psychiatry', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.35, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.95, lab_imaging_affinity: 0.2, lifestyle_priority: 0.6, income_priority: 0.5, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.4 } },
-    { specialty_name: 'Child & Adolescent Psychiatry', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.35, pediatric_affinity: 0.6, ob_gyn_affinity: 0.5, psych_affinity: 0.9, lab_imaging_affinity: 0.2, lifestyle_priority: 0.5, income_priority: 0.5, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.4 } },
-    { specialty_name: 'Neurology', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.85, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.7, lifestyle_priority: 0.4, income_priority: 0.5, research_academic_affinity: 0.5, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    // Diagnostic / Lab-Based
-    { specialty_name: 'Radiology', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.7, acute_vs_longitudinal: 0.4, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.95, lifestyle_priority: 0.7, income_priority: 0.75, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Pathology', axes: { procedural_affinity: 0.2, surgical_tolerance: 0.2, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.65, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.9, lifestyle_priority: 0.75, income_priority: 0.55, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Clinical Laboratory Medicine', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.9, lifestyle_priority: 0.7, income_priority: 0.5, research_academic_affinity: 0.5, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    // Primary Care & Community
-    { specialty_name: 'Family Medicine', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.4, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.15, pediatric_affinity: 0.6, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.6, income_priority: 0.4, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.4 } },
-    { specialty_name: 'Community/Public Health Medicine', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.2, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.6, income_priority: 0.35, research_academic_affinity: 0.5, admin_systems_affinity: 0.55, public_health_affinity: 0.9 } },
-    { specialty_name: 'Occupational Medicine', axes: { procedural_affinity: 0.2, surgical_tolerance: 0.2, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.75, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.6 } },
-    // Dermatology & Lifestyle
-    { specialty_name: 'Dermatology', axes: { procedural_affinity: 0.4, surgical_tolerance: 0.3, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.85, income_priority: 0.75, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Physical Medicine & Rehabilitation', axes: { procedural_affinity: 0.3, surgical_tolerance: 0.2, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.75, income_priority: 0.45, research_academic_affinity: 0.3, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    { specialty_name: 'Allergy & Immunology', axes: { procedural_affinity: 0.2, surgical_tolerance: 0.2, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.6, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.7, income_priority: 0.45, research_academic_affinity: 0.4, admin_systems_affinity: 0.3, public_health_affinity: 0.3 } },
-    // Admin / Non-Clinical
-    { specialty_name: 'Quality Management & Patient Safety', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.3, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.7, income_priority: 0.5, research_academic_affinity: 0.3, admin_systems_affinity: 0.95, public_health_affinity: 0.5 } },
-    { specialty_name: 'Infection Control & Hospital Epidemiology', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.6, income_priority: 0.5, research_academic_affinity: 0.4, admin_systems_affinity: 0.85, public_health_affinity: 0.8 } },
-    { specialty_name: 'Health Informatics / Medical Informatics', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.4, lifestyle_priority: 0.6, income_priority: 0.55, research_academic_affinity: 0.6, admin_systems_affinity: 0.85, public_health_affinity: 0.3 } },
-    { specialty_name: 'Medical Education / Academic Faculty', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.6, income_priority: 0.45, research_academic_affinity: 0.9, admin_systems_affinity: 0.5, public_health_affinity: 0.3 } },
-    { specialty_name: 'Hospital Administration / Medical Directorship', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.3, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.2, lifestyle_priority: 0.5, income_priority: 0.6, research_academic_affinity: 0.3, admin_systems_affinity: 0.95, public_health_affinity: 0.4 } },
-    { specialty_name: 'Public Health / Epidemiology (non-clinical)', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.5, acute_vs_longitudinal: 0.2, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.6, income_priority: 0.4, research_academic_affinity: 0.7, admin_systems_affinity: 0.5, public_health_affinity: 0.95 } },
-    { specialty_name: 'Health Insurance / Medical Underwriting', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.3, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.2, lifestyle_priority: 0.75, income_priority: 0.65, research_academic_affinity: 0.2, admin_systems_affinity: 0.8, public_health_affinity: 0.3 } },
-    { specialty_name: 'Pharmaceutical / Clinical Research Medicine', axes: { procedural_affinity: 0.1, surgical_tolerance: 0.1, emergency_tolerance: 0.2, diagnostic_puzzle_affinity: 0.4, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.3, lifestyle_priority: 0.5, income_priority: 0.65, research_academic_affinity: 0.9, admin_systems_affinity: 0.5, public_health_affinity: 0.3 } },
-    { specialty_name: 'Forensic Medicine', axes: { procedural_affinity: 0.2, surgical_tolerance: 0.3, emergency_tolerance: 0.3, diagnostic_puzzle_affinity: 0.7, acute_vs_longitudinal: 0.3, pediatric_affinity: 0.5, ob_gyn_affinity: 0.5, psych_affinity: 0.5, lab_imaging_affinity: 0.5, lifestyle_priority: 0.6, income_priority: 0.45, research_academic_affinity: 0.4, admin_systems_affinity: 0.5, public_health_affinity: 0.4 } },
-  ],
+  {
+    "specialty_name": "General Surgery",
+    "axes": {
+      "procedural_affinity": 0.9,
+      "surgical_tolerance": 0.9,
+      "emergency_tolerance": 0.6,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.6,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.3,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Orthopedic Surgery",
+    "axes": {
+      "procedural_affinity": 0.9,
+      "surgical_tolerance": 0.85,
+      "emergency_tolerance": 0.5,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.6,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.6,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.6,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Neurosurgery",
+    "axes": {
+      "procedural_affinity": 0.95,
+      "surgical_tolerance": 0.95,
+      "emergency_tolerance": 0.5,
+      "diagnostic_puzzle_affinity": 0.7,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.7,
+      "lifestyle_priority": 0.2,
+      "income_priority": 0.7,
+      "research_academic_affinity": 0.5,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Cardiothoracic Surgery",
+    "axes": {
+      "procedural_affinity": 0.95,
+      "surgical_tolerance": 0.95,
+      "emergency_tolerance": 0.7,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.7,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.3,
+      "income_priority": 0.7,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Vascular Surgery",
+    "axes": {
+      "procedural_affinity": 0.85,
+      "surgical_tolerance": 0.85,
+      "emergency_tolerance": 0.6,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.6,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.6,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.6,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Plastic & Reconstructive Surgery",
+    "axes": {
+      "procedural_affinity": 0.9,
+      "surgical_tolerance": 0.8,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.3,
+      "acute_vs_longitudinal": 0.4,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.7,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Pediatric Surgery",
+    "axes": {
+      "procedural_affinity": 0.85,
+      "surgical_tolerance": 0.85,
+      "emergency_tolerance": 0.5,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.95,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "ENT (Otolaryngology)",
+    "axes": {
+      "procedural_affinity": 0.75,
+      "surgical_tolerance": 0.65,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.4,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Urology",
+    "axes": {
+      "procedural_affinity": 0.75,
+      "surgical_tolerance": 0.7,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.7,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Ophthalmology",
+    "axes": {
+      "procedural_affinity": 0.8,
+      "surgical_tolerance": 0.5,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.4,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.6,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.7,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Internal Medicine (General)",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.75,
+      "acute_vs_longitudinal": 0.4,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.4,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Cardiology",
+    "axes": {
+      "procedural_affinity": 0.6,
+      "surgical_tolerance": 0.4,
+      "emergency_tolerance": 0.5,
+      "diagnostic_puzzle_affinity": 0.7,
+      "acute_vs_longitudinal": 0.55,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.6,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.6,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Interventional Cardiology",
+    "axes": {
+      "procedural_affinity": 0.85,
+      "surgical_tolerance": 0.6,
+      "emergency_tolerance": 0.6,
+      "diagnostic_puzzle_affinity": 0.6,
+      "acute_vs_longitudinal": 0.6,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.7,
+      "lifestyle_priority": 0.3,
+      "income_priority": 0.7,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Gastroenterology",
+    "axes": {
+      "procedural_affinity": 0.65,
+      "surgical_tolerance": 0.4,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.65,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.55,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Nephrology",
+    "axes": {
+      "procedural_affinity": 0.4,
+      "surgical_tolerance": 0.3,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.75,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.4,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Pulmonology",
+    "axes": {
+      "procedural_affinity": 0.5,
+      "surgical_tolerance": 0.3,
+      "emergency_tolerance": 0.55,
+      "diagnostic_puzzle_affinity": 0.65,
+      "acute_vs_longitudinal": 0.55,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.6,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.45,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Endocrinology",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.55,
+      "acute_vs_longitudinal": 0.25,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Rheumatology",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.15,
+      "diagnostic_puzzle_affinity": 0.8,
+      "acute_vs_longitudinal": 0.25,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.3,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Infectious Disease",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.8,
+      "acute_vs_longitudinal": 0.4,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.35,
+      "research_academic_affinity": 0.5,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.55
+    }
+  },
+  {
+    "specialty_name": "Hematology/Oncology",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.7,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.6,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.6,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Geriatric Medicine",
+    "axes": {
+      "procedural_affinity": 0.2,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.2,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.35,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Emergency Medicine",
+    "axes": {
+      "procedural_affinity": 0.6,
+      "surgical_tolerance": 0.4,
+      "emergency_tolerance": 0.95,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.9,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.65,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Anesthesiology",
+    "axes": {
+      "procedural_affinity": 0.8,
+      "surgical_tolerance": 0.4,
+      "emergency_tolerance": 0.7,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.65,
+      "income_priority": 0.7,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Critical Care / Intensivist",
+    "axes": {
+      "procedural_affinity": 0.5,
+      "surgical_tolerance": 0.4,
+      "emergency_tolerance": 0.85,
+      "diagnostic_puzzle_affinity": 0.6,
+      "acute_vs_longitudinal": 0.85,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Obstetrics & Gynecology",
+    "axes": {
+      "procedural_affinity": 0.7,
+      "surgical_tolerance": 0.5,
+      "emergency_tolerance": 0.5,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.95,
+      "psych_affinity": 0.4,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Pediatrics (General)",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.9,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.4,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.35,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Neonatology",
+    "axes": {
+      "procedural_affinity": 0.6,
+      "surgical_tolerance": 0.4,
+      "emergency_tolerance": 0.7,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.7,
+      "pediatric_affinity": 0.95,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.4,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.3,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Pediatric Cardiology",
+    "axes": {
+      "procedural_affinity": 0.5,
+      "surgical_tolerance": 0.3,
+      "emergency_tolerance": 0.5,
+      "diagnostic_puzzle_affinity": 0.65,
+      "acute_vs_longitudinal": 0.5,
+      "pediatric_affinity": 0.9,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.4,
+      "lab_imaging_affinity": 0.6,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Psychiatry",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.35,
+      "pediatric_affinity": 0.3,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.9,
+      "lab_imaging_affinity": 0.2,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Child & Adolescent Psychiatry",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.35,
+      "pediatric_affinity": 0.85,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.95,
+      "lab_imaging_affinity": 0.2,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Neurology",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.85,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.7,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.5,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Radiology",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.7,
+      "acute_vs_longitudinal": 0.4,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.95,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.75,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Pathology",
+    "axes": {
+      "procedural_affinity": 0.2,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.65,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.9,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.55,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Clinical Laboratory Medicine",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.9,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.5,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Family Medicine",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.4,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.15,
+      "pediatric_affinity": 0.6,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.4,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Community/Public Health Medicine",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.2,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.35,
+      "research_academic_affinity": 0.5,
+      "admin_systems_affinity": 0.55,
+      "public_health_affinity": 0.9
+    }
+  },
+  {
+    "specialty_name": "Occupational Medicine",
+    "axes": {
+      "procedural_affinity": 0.2,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.6
+    }
+  },
+  {
+    "specialty_name": "Dermatology",
+    "axes": {
+      "procedural_affinity": 0.4,
+      "surgical_tolerance": 0.3,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.85,
+      "income_priority": 0.75,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Physical Medicine & Rehabilitation",
+    "axes": {
+      "procedural_affinity": 0.3,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.45,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Allergy & Immunology",
+    "axes": {
+      "procedural_affinity": 0.2,
+      "surgical_tolerance": 0.2,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.6,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.45,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.3,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Quality Management & Patient Safety",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.3,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.95,
+      "public_health_affinity": 0.5
+    }
+  },
+  {
+    "specialty_name": "Infection Control & Hospital Epidemiology",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.5,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.85,
+      "public_health_affinity": 0.8
+    }
+  },
+  {
+    "specialty_name": "Health Informatics / Medical Informatics",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.4,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.55,
+      "research_academic_affinity": 0.6,
+      "admin_systems_affinity": 0.85,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Medical Education / Academic Faculty",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.7,
+      "income_priority": 0.35,
+      "research_academic_affinity": 0.95,
+      "admin_systems_affinity": 0.6,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Hospital Administration / Medical Directorship",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.3,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.2,
+      "lifestyle_priority": 0.5,
+      "income_priority": 0.6,
+      "research_academic_affinity": 0.3,
+      "admin_systems_affinity": 0.95,
+      "public_health_affinity": 0.4
+    }
+  },
+  {
+    "specialty_name": "Public Health / Epidemiology (non-clinical)",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.5,
+      "acute_vs_longitudinal": 0.2,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.4,
+      "research_academic_affinity": 0.7,
+      "admin_systems_affinity": 0.5,
+      "public_health_affinity": 0.95
+    }
+  },
+  {
+    "specialty_name": "Health Insurance / Medical Underwriting",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.3,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.2,
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.65,
+      "research_academic_affinity": 0.2,
+      "admin_systems_affinity": 0.8,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Pharmaceutical / Clinical Research Medicine",
+    "axes": {
+      "procedural_affinity": 0.1,
+      "surgical_tolerance": 0.1,
+      "emergency_tolerance": 0.2,
+      "diagnostic_puzzle_affinity": 0.4,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.3,
+      "lifestyle_priority": 0.4,
+      "income_priority": 0.75,
+      "research_academic_affinity": 0.85,
+      "admin_systems_affinity": 0.4,
+      "public_health_affinity": 0.3
+    }
+  },
+  {
+    "specialty_name": "Forensic Medicine",
+    "axes": {
+      "procedural_affinity": 0.2,
+      "surgical_tolerance": 0.3,
+      "emergency_tolerance": 0.3,
+      "diagnostic_puzzle_affinity": 0.7,
+      "acute_vs_longitudinal": 0.3,
+      "pediatric_affinity": 0.5,
+      "ob_gyn_affinity": 0.5,
+      "psych_affinity": 0.5,
+      "lab_imaging_affinity": 0.5,
+      "lifestyle_priority": 0.6,
+      "income_priority": 0.45,
+      "research_academic_affinity": 0.4,
+      "admin_systems_affinity": 0.5,
+      "public_health_affinity": 0.4
+    }
+  }
+],
 };

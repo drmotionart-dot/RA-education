@@ -132,7 +132,7 @@ export const api = {
     createPlan: (sessionId: string) =>
       request<{ plan: Record<string, unknown>; source: string }>(`/survey/${sessionId}/create-plan`, { method: 'POST' }),
     status: () =>
-      request<{ hasCompletedSurvey: boolean; completedSessionId: string | null; hasPlanFromSurvey: boolean }>('/survey/status'),
+      request<{ doctor_specialty: boolean; nurse_specialty: boolean; doctor_path: boolean; nurse_path: boolean; hasCompletedSurvey: boolean; hasPlanFromSurvey: boolean }>('/survey/status'),
   },
   assessment: {
     start: (specialtyId: string) =>

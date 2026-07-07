@@ -14,10 +14,11 @@ export function PathsPage() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [pathType, setPathType] = useState('all');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.catalog.paths(category).then(setPaths).catch(console.error).finally(() => setLoading(false));
+    api.catalog.paths(category).then(setPaths).catch((err: Error) => setError(err.message || 'Failed to load paths')).finally(() => setLoading(false));
   }, [category]);
 
   const filtered = useMemo(() => {
@@ -29,11 +30,15 @@ export function PathsPage() {
       const q = search.toLowerCase();
       result = result.filter((p) =>
         (p.name as string)?.toLowerCase().includes(q) ||
-        (p.target_country as string)?.toLowerCase().includes(q)
+        (p.target_country as string)?.toLowerCase().includes(q) ||
+        (p.description as string)?.toLowerCase().includes(q) ||
+        (p.path_type as string)?.toLowerCase().includes(q)
       );
     }
     return result;
   }, [paths, search, pathType]);
+
+  if (error) return <p className="text-center text-[var(--color-error)]">{error}</p>;
 
   const typeFilters = [
     { value: 'all', label: 'All' },

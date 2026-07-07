@@ -1,6 +1,6 @@
 // Auto-generated expanded Nurse Specialty Survey Graph
 // Source: survey-specialty-nurse.js
-// Generated on: 2026-07-05T15:36:09.575Z
+// Generated on: 2026-07-07T20:06:06.705Z
 
 export const nurse_specialty_graph = {
   type: 'specialty',
@@ -2479,16 +2479,16 @@ export const nurse_specialty_graph = {
     "axes": {
       "critical_care_acuity": 0.2,
       "procedural_technical": 0.3,
-      "acute_vs_chronic": 0.15,
+      "acute_vs_chronic": 0.1,
       "pediatric_affinity": 0.5,
       "ob_maternal_affinity": 0.5,
       "psych_affinity": 0.5,
-      "patient_education_affinity": 0.6,
+      "patient_education_affinity": 0.5,
       "community_outreach": 0.4,
-      "lifestyle_priority": 0.7,
-      "income_priority": 0.35,
-      "management_leadership": 0.4,
-      "admin_systems_affinity": 0.3
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.3,
+      "management_leadership": 0.45,
+      "admin_systems_affinity": 0.4
     }
   },
   {
@@ -2500,11 +2500,11 @@ export const nurse_specialty_graph = {
       "pediatric_affinity": 0.5,
       "ob_maternal_affinity": 0.5,
       "psych_affinity": 0.5,
-      "patient_education_affinity": 0.7,
-      "community_outreach": 0.4,
-      "lifestyle_priority": 0.6,
-      "income_priority": 0.4,
-      "management_leadership": 0.3,
+      "patient_education_affinity": 0.8,
+      "community_outreach": 0.5,
+      "lifestyle_priority": 0.55,
+      "income_priority": 0.45,
+      "management_leadership": 0.25,
       "admin_systems_affinity": 0.3
     }
   },
@@ -2619,11 +2619,11 @@ export const nurse_specialty_graph = {
       "pediatric_affinity": 0.5,
       "ob_maternal_affinity": 0.5,
       "psych_affinity": 0.5,
-      "patient_education_affinity": 0.4,
-      "community_outreach": 0.3,
-      "lifestyle_priority": 0.7,
-      "income_priority": 0.5,
-      "management_leadership": 0.6,
+      "patient_education_affinity": 0.35,
+      "community_outreach": 0.35,
+      "lifestyle_priority": 0.65,
+      "income_priority": 0.45,
+      "management_leadership": 0.7,
       "admin_systems_affinity": 0.95
     }
   },
@@ -2631,17 +2631,17 @@ export const nurse_specialty_graph = {
     "specialty_name": "Nursing Informatics",
     "axes": {
       "critical_care_acuity": 0.1,
-      "procedural_technical": 0.2,
+      "procedural_technical": 0.3,
       "acute_vs_chronic": 0.3,
       "pediatric_affinity": 0.5,
       "ob_maternal_affinity": 0.5,
       "psych_affinity": 0.5,
-      "patient_education_affinity": 0.4,
+      "patient_education_affinity": 0.3,
       "community_outreach": 0.3,
-      "lifestyle_priority": 0.7,
-      "income_priority": 0.55,
-      "management_leadership": 0.4,
-      "admin_systems_affinity": 0.9
+      "lifestyle_priority": 0.75,
+      "income_priority": 0.6,
+      "management_leadership": 0.3,
+      "admin_systems_affinity": 0.75
     }
   },
   {
