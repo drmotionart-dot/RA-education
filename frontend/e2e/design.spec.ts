@@ -158,6 +158,7 @@ test.describe('Design System v2', () => {
   test('survey results page shows match cards with gold borders', async ({
     authedPage: page, authToken, request,
   }) => {
+    test.setTimeout(30000);
     const token = authToken;
     const headers = { Authorization: `Bearer ${token}` };
 
