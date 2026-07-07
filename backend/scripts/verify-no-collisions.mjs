@@ -1,11 +1,12 @@
 /**
- * CI regression test: verify no survey-graph target pairs exceed 0.95 similarity.
+ * CI regression test: verify no survey-graph target pairs exceed similarity threshold.
  *
  * Usage:  node scripts/verify-no-collisions.mjs
  *         DEBUG=1 node scripts/verify-no-collisions.mjs   (verbose output)
+ *         COLLISION_THRESHOLD=0.9 node scripts/verify-no-collisions.mjs
  *
- * Exit code 0 = pass (all pairs < 0.95 or on allowlist)
- * Exit code 1 = fail (one or more pairs ≥ 0.95 and not on allowlist)
+ * Exit code 0 = pass (all pairs below threshold or on allowlist)
+ * Exit code 1 = fail (one or more pairs exceed threshold and not on allowlist)
  *
  * Allowlist: pairs documented as genuinely similar (Gulf-state neighbours,
  * structurally identical processes). Only add here after explicit
@@ -14,26 +15,23 @@
 
 import { fileURLToPath, pathToFileURL } from 'url';
 import { resolve, dirname } from 'path';
-import { computeAxisWeights, computeEuclideanSimilarity } from '../src/utils/scoring.js';
+import { readFileSync } from 'fs';
+import { computeAxisWeights, computeEuclideanSimilarity, computeCosineSimilarity } from '../src/utils/scoring.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
-// -- Allowlist of known-exception pairs (graph → ["A ↔ B"])
-// These are documented as genuinely similar pathways where forcing
-// differentiation would be artificial.
-const ALLOWLIST = {
-  // (none currently — all pairs are below 0.95 with real differentiation)
-};
+const ALLOWLIST = {};
 
 const GRAPHS = [
-  { label: 'Doctor Specialty', file: resolve(ROOT, 'seed/survey/survey-specialty-doctor.expanded.js'), key: 'doctor_specialty_graph' },
-  { label: 'Nurse Specialty',  file: resolve(ROOT, 'seed/survey/survey-specialty-nurse.expanded.js'),  key: 'nurse_specialty_graph' },
-  { label: 'Doctor Path',      file: resolve(ROOT, 'seed/survey/survey-path-doctor.expanded.js'),       key: 'doctor_path_graph' },
-  { label: 'Nurse Path',       file: resolve(ROOT, 'seed/survey/survey-path-nurse.expanded.js'),        key: 'nurse_path_graph' },
+  { label: 'Doctor Specialty', file: resolve(ROOT, 'seed/survey/survey-specialty-doctor.expanded.js'), key: 'doctor_specialty_graph', src: resolve(ROOT, 'seed/survey/survey-specialty-doctor.js') },
+  { label: 'Nurse Specialty',  file: resolve(ROOT, 'seed/survey/survey-specialty-nurse.expanded.js'),  key: 'nurse_specialty_graph',  src: resolve(ROOT, 'seed/survey/survey-specialty-nurse.js') },
+  { label: 'Doctor Path',      file: resolve(ROOT, 'seed/survey/survey-path-doctor.expanded.js'),       key: 'doctor_path_graph',      src: resolve(ROOT, 'seed/survey/survey-path-doctor.js') },
+  { label: 'Nurse Path',       file: resolve(ROOT, 'seed/survey/survey-path-nurse.expanded.js'),        key: 'nurse_path_graph',       src: resolve(ROOT, 'seed/survey/survey-path-nurse.js') },
 ];
 
-const THRESHOLD = 0.95;
+const THRESHOLD = parseFloat(process.env.COLLISION_THRESHOLD || '0.95');
+const STRICT_COSINE = !!process.env.STRICT_COSINE;
 const debug = !!process.env.DEBUG;
 
 function makeKey(a, b) {
@@ -47,16 +45,18 @@ function isAllowed(graphLabel, key) {
 }
 
 async function main() {
-  let totalFailures = 0;
+  let totalEuclidean = 0;
+  let totalCosine = 0;
 
-  for (const { label, file, key } of GRAPHS) {
+  for (const { label, file, key, src } of GRAPHS) {
     const mod = await import(pathToFileURL(file).href);
     const graph = mod[key];
     const axes = graph.axes;
     const targetVectors = graph.target_vectors;
     const weights = computeAxisWeights(targetVectors, axes);
 
-    let graphFailures = 0;
+    let eucFailures = 0;
+    let cosFailures = 0;
 
     for (let i = 0; i < targetVectors.length; i++) {
       for (let j = i + 1; j < targetVectors.length; j++) {
@@ -68,36 +68,61 @@ async function main() {
           vecA[axis] = a.axes?.[axis] ?? 0.5;
           vecB[axis] = b.axes?.[axis] ?? 0.5;
         }
-        const sim = computeEuclideanSimilarity(vecA, vecB, axes, weights);
+        const euc = computeEuclideanSimilarity(vecA, vecB, axes, weights);
+        const cos = computeCosineSimilarity(vecA, vecB, axes, weights);
+        const pairKey = makeKey(a.specialty_name, b.specialty_name);
+        const allowed = isAllowed(label, pairKey);
 
-        if (sim >= THRESHOLD) {
-          const pairKey = makeKey(a.specialty_name, b.specialty_name);
-          if (isAllowed(label, pairKey)) {
-            if (debug) {
-              console.log(`[OK] ${label}: ${(sim * 100).toFixed(2)}% ${pairKey} (allowlisted)`);
-            }
-            continue;
-          }
-          console.log(`[FAIL] ${label}: ${(sim * 100).toFixed(2)}%  ${a.specialty_name}  ↔  ${b.specialty_name}`);
-          graphFailures++;
-          totalFailures++;
+        if (euc >= THRESHOLD && !allowed) {
+          console.log(`[FAIL][EUCLIDEAN] ${label}: ${(euc * 100).toFixed(2)}%  ${a.specialty_name}  ↔  ${b.specialty_name}`);
+          eucFailures++;
+          totalEuclidean++;
+        }
+
+        if (euc >= THRESHOLD && !allowed) {
+          console.log(`[FAIL][EUCLIDEAN] ${label}: ${(euc * 100).toFixed(2)}%  ${a.specialty_name}  ↔  ${b.specialty_name}`);
+          eucFailures++;
+          totalEuclidean++;
+        } else if (debug && euc >= THRESHOLD && allowed) {
+          console.log(`[OK][EUCLIDEAN] ${label}: ${(euc * 100).toFixed(2)}% ${pairKey} (allowlisted)`);
+        }
+
+        if (cos >= THRESHOLD && !allowed) {
+          const tag = STRICT_COSINE ? '[FAIL]' : '[WARN]';
+          const suffix = STRICT_COSINE ? '' : ' (cosine-only)';
+          console.log(`${tag}[COSINE] ${label}: ${(cos * 100).toFixed(2)}%  ${a.specialty_name}  ↔  ${b.specialty_name}${suffix}`);
+          cosFailures++;
+          totalCosine++;
+        } else if (debug && cos >= THRESHOLD && allowed) {
+          console.log(`[OK][COSINE] ${label}: ${(cos * 100).toFixed(2)}% ${pairKey} (allowlisted)`);
         }
       }
     }
 
-    if (graphFailures > 0) {
-      console.log(`  → ${label}: ${graphFailures} collision(s) ≥ ${THRESHOLD * 100}%`);
-    } else if (debug) {
-      console.log(`[PASS] ${label}: 0 collisions`);
+    const combined = eucFailures + cosFailures;
+    if (eucFailures > 0) {
+      console.log(`  → ${label}: ${eucFailures} Euclidean collision(s) ≥ ${THRESHOLD * 100}%`);
+    }
+    if (cosFailures > 0) {
+      console.log(`  → ${label}: ${cosFailures} Cosine warning(s) ≥ ${THRESHOLD * 100}%${STRICT_COSINE ? ' [FAILING]' : ' [info only]'}`);
+    }
+    if (eucFailures === 0 && cosFailures === 0 && debug) {
+      console.log(`[PASS] ${label}: 0 collisions (both metrics)`);
     }
   }
 
-  if (totalFailures > 0) {
-    console.log(`\n❌ FAILED: ${totalFailures} collision(s) across all graphs`);
+  if (totalEuclidean > 0) {
+    console.log(`\n❌ FAILED: ${totalEuclidean} Euclidean collision(s) — exit 1`);
     process.exit(1);
-  } else {
-    console.log('✅ All graphs clean — zero collisions ≥ 95%');
   }
+  if (STRICT_COSINE && totalCosine > 0) {
+    console.log(`\n❌ FAILED (STRICT_COSINE): ${totalCosine} Cosine collision(s) — exit 1`);
+    process.exit(1);
+  }
+  if (totalCosine > 0) {
+    console.log(`\n⚠️  ${totalCosine} Cosine-only warning(s) — not failing (set STRICT_COSINE=1 to enforce)`);
+  }
+  console.log(`✅ Euclidean clean — zero Euclidean collisions ≥ ${THRESHOLD * 100}%`);
 }
 
 main().catch((e) => { console.error('Script error:', e); process.exit(1); });

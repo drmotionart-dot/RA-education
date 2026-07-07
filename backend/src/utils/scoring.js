@@ -18,6 +18,27 @@ export function normalizeScores(rawScores, boundsMap, axes) {
 }
 
 /*
+  computeCosineSimilarity: returns 0-1 where 1 = same direction.
+  Uses weighted cosine similarity so that low-variance axes contribute less.
+  Missing values default to 0.5.
+*/
+export function computeCosineSimilarity(vecA, vecB, axes, weights) {
+  let dot = 0, normASq = 0, normBSq = 0;
+  for (const axis of (axes || [])) {
+    const a = (vecA[axis] ?? 0.5) - 0.5;
+    const b = (vecB[axis] ?? 0.5) - 0.5;
+    const w = weights?.[axis] ?? 1;
+    dot += w * a * b;
+    normASq += w * a * a;
+    normBSq += w * b * b;
+  }
+  const denom = Math.sqrt(normASq) * Math.sqrt(normBSq);
+  if (denom === 0) return 1;
+  const cos = dot / denom;
+  return Math.max(0, Math.min(1, (cos + 1) / 2));
+}
+
+/*
   computeAxisWeights: returns a map of axis->weight based on the inverse-variance
   of each axis across all target vectors. Low-variance axes (little differentiation
   across targets) contribute less to the distance. Weights are normalized to [0.1, 1.0].
