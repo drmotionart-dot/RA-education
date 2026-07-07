@@ -58,7 +58,7 @@ export function SpecialtyDetail() {
         <Button onClick={() => navigate('/paths')}>
           <GraduationCap size={16} /> View Paths
         </Button>
-        <Button variant="secondary" onClick={() => navigate('/quick-pick')}>
+        <Button variant="secondary" onClick={() => navigate(`/quick-pick?specialtyId=${id}`)}>
           Quick Pick This
         </Button>
       </div>

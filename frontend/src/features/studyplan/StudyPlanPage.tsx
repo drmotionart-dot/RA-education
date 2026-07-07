@@ -97,7 +97,7 @@ export function StudyPlanPage() {
               {statusIcon(status)}
               <div className="flex-1 min-w-0">
                 <p className={`text-sm font-medium truncate ${status === 'locked' ? 'text-[var(--color-text-secondary)]' : ''}`}>
-                  Lesson {String(l.sequence_order)}
+                  {(l as any).lesson_title || `Lesson ${String(l.sequence_order)}`}
                 </p>
                 <p className="text-xs text-[var(--color-text-secondary)]">
                   {String(l.allocated_days)} days

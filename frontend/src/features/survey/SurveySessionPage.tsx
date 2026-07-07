@@ -38,7 +38,7 @@ export function SurveySessionPage() {
 
   const [pageState, setPageState] = useState<PageState>('loading');
   const [question, setQuestion] = useState<Question | null>(null);
-  const [progress, setProgress] = useState<Progress>({ answered: 0, total: 35 });
+  const [progress, setProgress] = useState<Progress>({ answered: 0, total: 0 });
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -53,7 +53,7 @@ export function SurveySessionPage() {
         navigate(`/survey/${id}/results`, { replace: true });
       } else if (state.question) {
         setQuestion(state.question);
-        setProgress(state.progress || { answered: 0, total: 35 });
+        setProgress(state.progress || { answered: 0, total: 0 });
         setPageState('answering');
       }
     } catch (err) {
@@ -73,7 +73,7 @@ export function SurveySessionPage() {
         navigate(`/survey/${id}/results`, { replace: true });
       } else if (res.question) {
         setQuestion(res.question);
-        setProgress(res.progress || { answered: 0, total: 35 });
+        setProgress(res.progress || { answered: 0, total: 0 });
         setSelectedIndex(null);
       }
     } catch (err) {

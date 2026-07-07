@@ -198,8 +198,15 @@ async function getPlanById(planId) {
   if (!plan) throw new ApiError(404, 'Plan not found');
 
   const lessons = await PlanLesson.find({ study_plan_id: planId })
+    .populate('lesson_id', 'title')
     .sort({ sequence_order: 1 })
     .lean();
 
-  return { ...plan, lessons };
+  const mapped = lessons.map((l) => ({
+    ...l,
+    lesson_title: l.lesson_id?.title || '',
+    lesson_id: l.lesson_id?._id || l.lesson_id,
+  }));
+
+  return { ...plan, lessons: mapped };
 }

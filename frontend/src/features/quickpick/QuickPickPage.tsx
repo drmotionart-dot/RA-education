@@ -11,16 +11,20 @@ export function QuickPickPage() {
   const category = (user?.role as string)?.split('_')[0] || '';
   const [searchParams] = useSearchParams();
   const preselectedPathId = searchParams.get('pathId') || '';
+  const preselectedSpecialtyId = searchParams.get('specialtyId') || '';
 
   const [specialties, setSpecialties] = useState<Record<string, unknown>[]>([]);
   const [paths, setPaths] = useState<Record<string, unknown>[]>([]);
-  const [selSpecialty, setSelSpecialty] = useState('');
+  const [selSpecialty, setSelSpecialty] = useState(preselectedSpecialtyId);
   const [selPath, setSelPath] = useState(preselectedPathId);
   const [duration, setDuration] = useState(12);
-  const [step, setStep] = useState<'specialty' | 'path' | 'duration' | 'confirm'>('specialty');
+  const [step, setStep] = useState<'specialty' | 'path' | 'duration' | 'confirm'>(
+    preselectedSpecialtyId ? 'path' : 'specialty'
+  );
   const [generating, setGenerating] = useState(false);
   const [search, setSearch] = useState('');
   const [preselectedPath, setPreselectedPath] = useState<Record<string, unknown> | null>(null);
+  const [preselectedSpecialty, setPreselectedSpecialty] = useState<Record<string, unknown> | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,7 +42,18 @@ export function QuickPickPage() {
     }
   }, [preselectedPathId]);
 
-  const preselectedName = (preselectedPath?.name as string) || '';
+  // If a specialtyId was passed, fetch and pre-select that specialty
+  useEffect(() => {
+    if (preselectedSpecialtyId) {
+      api.catalog.specialty(preselectedSpecialtyId).then((s) => {
+        setPreselectedSpecialty(s);
+        setSelSpecialty(preselectedSpecialtyId);
+      }).catch(console.error);
+    }
+  }, [preselectedSpecialtyId]);
+
+  const preselectedPathName = (preselectedPath?.name as string) || '';
+  const preselectedSpecialtyName = (preselectedSpecialty?.name as string) || '';
 
   const filteredSpecialties = useMemo(() => {
     if (!search) return specialties;
@@ -62,7 +77,6 @@ export function QuickPickPage() {
   const onSpecialtyPicked = (id: string) => {
     setSelSpecialty(id);
     if (preselectedPathId) {
-      // Skip path step, go directly to duration
       setStep('duration');
     } else {
       setStep('path');
@@ -76,9 +90,14 @@ export function QuickPickPage() {
         <h1 className="font-heading text-2xl font-bold">Quick Pick</h1>
       </div>
 
-      {preselectedName && (
+      {preselectedSpecialtyName && (
         <div className="rounded-lg border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 px-4 py-2 text-sm">
-          Path pre-selected: <strong>{preselectedName}</strong>
+          Specialty pre-selected: <strong>{preselectedSpecialtyName}</strong>
+        </div>
+      )}
+      {preselectedPathName && (
+        <div className="rounded-lg border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 px-4 py-2 text-sm">
+          Path pre-selected: <strong>{preselectedPathName}</strong>
         </div>
       )}
 
@@ -136,7 +155,7 @@ export function QuickPickPage() {
           <h2 className="font-heading text-lg font-semibold">Confirm Your Selection</h2>
           <Card>
             <p><strong>Specialty:</strong> {specialties.find((s) => s._id === selSpecialty)?.name as string}</p>
-            <p><strong>Path:</strong> {paths.find((p) => p._id === selPath)?.name as string || preselectedName}</p>
+            <p><strong>Path:</strong> {paths.find((p) => p._id === selPath)?.name as string || preselectedPathName}</p>
             <p><strong>Duration:</strong> {duration} months</p>
           </Card>
           <div className="flex gap-2">
