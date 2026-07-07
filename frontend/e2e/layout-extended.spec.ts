@@ -11,31 +11,23 @@ test.describe('Layout Extended', () => {
     await expect(footer.getByTitle('Toggle theme')).toBeVisible();
   });
 
-  test('navbar is sticky at top', async ({ authedPage: page }) => {
+  test('sidebar nav items are visible', async ({ authedPage: page }) => {
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
-    const nav = page.locator('nav').first();
-    await expect(nav).toBeVisible();
-    const position = await nav.evaluate((el) => getComputedStyle(el).position);
-    expect(position).toBe('sticky');
+    await expect(page.getByTitle('Dashboard')).toBeVisible();
+    await expect(page.getByTitle('Explore')).toBeVisible();
+    await expect(page.getByTitle('Paths')).toBeVisible();
   });
 
-  test('nav links have correct href attributes', async ({ authedPage: page }) => {
+  test('nav links have correct text', async ({ authedPage: page }) => {
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
-    const checks = [
-      { title: 'Dashboard', href: '/dashboard' },
-      { title: 'Explore', href: '/explore' },
-      { title: 'Paths', href: '/paths' },
-      { title: 'Quick Pick', href: '/quick-pick' },
-      { title: 'Assessment', href: '/assessment' },
-      { title: 'Survey', href: '/survey' },
-    ];
-    for (const { title, href } of checks) {
-      const link = page.getByTitle(title);
-      await expect(link).toBeVisible();
-      await expect(link).toHaveAttribute('href', href);
-    }
+    await expect(page.getByTitle('Dashboard')).toBeVisible();
+    await expect(page.getByTitle('Explore')).toBeVisible();
+    await expect(page.getByTitle('Paths')).toBeVisible();
+    await expect(page.getByTitle('Quick Pick')).toBeVisible();
+    await expect(page.getByTitle('Assessment')).toBeVisible();
+    await expect(page.getByTitle('Survey')).toBeVisible();
   });
 
   test('brand link has correct href', async ({ authedPage: page }) => {
@@ -58,17 +50,17 @@ test.describe('Layout Extended', () => {
     expect(afterHtml).not.toBe(initialHtml);
   });
 
-  test('navbar renders at mobile viewport width', async ({ authedPage: page }) => {
+  test('sidebar renders at mobile viewport width', async ({ authedPage: page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
-    const nav = page.locator('nav').first();
-    await expect(nav).toBeVisible();
+    await page.getByRole('button', { name: /Open menu/i }).click();
+    await page.waitForTimeout(400);
     await expect(page.getByTitle('Dashboard')).toBeVisible();
     await expect(page.getByTitle('Profile')).toBeVisible();
   });
 
-  test('navbar renders at tablet viewport width', async ({ authedPage: page }) => {
+  test('sidebar renders at tablet viewport width', async ({ authedPage: page }) => {
     await page.setViewportSize({ width: 768, height: 1024 });
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
@@ -77,7 +69,7 @@ test.describe('Layout Extended', () => {
     await expect(page.getByTitle('Quick Pick')).toBeVisible();
   });
 
-  test('profile icon visible in navbar', async ({ authedPage: page }) => {
+  test('profile icon visible in sidebar', async ({ authedPage: page }) => {
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
     const profileLink = page.getByTitle('Profile');

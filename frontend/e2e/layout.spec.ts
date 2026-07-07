@@ -40,7 +40,7 @@ test.describe('Layout & Navigation', () => {
 
     const activeLink = page.getByTitle('Explore');
     const bgClass = await activeLink.getAttribute('class');
-    expect(bgClass).toContain('bg-[var(--color-primary)]');
+    expect(bgClass).toContain('bg-[var(--color-secondary)]');
   });
 
   test('brand link navigates to dashboard', async ({ authedPage: page }) => {

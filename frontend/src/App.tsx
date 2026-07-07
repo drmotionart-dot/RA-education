@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './components/layout/ProtectedRoute';
 import { AppLayout } from './components/layout/AppLayout';
 import { LandingPage } from './features/landing/LandingPage';
+import { useAuthStore } from './store/authStore';
 import { LoginPage } from './features/auth/LoginPage';
 import { RegisterPage } from './features/auth/RegisterPage';
 import { ForgotPasswordPage } from './features/auth/ForgotPasswordPage';
@@ -26,11 +27,17 @@ import { LessonViewPage } from './features/lessons/LessonViewPage';
 import { LessonExamPage } from './features/lessons/LessonExamPage';
 import { SurveyErrorBoundary } from './components/ui/SurveyErrorBoundary';
 
+function HomeRoute() {
+  const token = useAuthStore((s) => s.token);
+  if (token) return <Navigate to="/dashboard" replace />;
+  return <LandingPage />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<HomeRoute />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />

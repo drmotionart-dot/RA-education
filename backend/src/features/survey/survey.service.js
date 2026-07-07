@@ -4,6 +4,7 @@ import { Specialty, Path } from '../catalog/catalog.model.js';
 import { ApiError } from '../../utils/apiError.js';
 import { normalizeScores, computeEuclideanSimilarity, generateWhySummary } from '../../utils/scoring.js';
 import { QuickPickSelection } from '../quickpick/quickpick.model.js';
+import { StudyPlan } from '../studyplan/studyplan.model.js';
 import { generatePlan } from '../studyplan/studyplan.service.js';
 
 const DEFAULT_MAX_QUESTIONS = 35;
@@ -156,6 +157,23 @@ export async function abandonSurvey(mobileNumber, sessionId) {
   await session.save();
 
   return { session_id: session._id, status: 'abandoned' };
+}
+
+export async function getSurveyStatus(mobileNumber) {
+  const user = await User.findOne({ mobile_number: mobileNumber });
+  if (!user) throw new ApiError(404, 'User not found');
+
+  const completed = await SurveySession.findOne({ user_id: user._id, status: 'completed' })
+    .sort({ completed_at: -1 })
+    .lean();
+
+  const planFromSurvey = await StudyPlan.findOne({ user_id: user._id, source: 'survey_result', status: 'active' }).lean();
+
+  return {
+    hasCompletedSurvey: !!completed,
+    completedSessionId: completed?._id || null,
+    hasPlanFromSurvey: !!planFromSurvey,
+  };
 }
 
 export async function completeSurvey(mobileNumber, sessionId) {

@@ -47,6 +47,15 @@ export async function abandonSurvey(req, res, next) {
   }
 }
 
+export async function getSurveyStatus(req, res, next) {
+  try {
+    const result = await surveyService.getSurveyStatus(req.user.mobile_number);
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function createPlanFromSurvey(req, res, next) {
   try {
     const result = await surveyService.createPlanFromSurvey(req.user.mobile_number, req.params.id);
