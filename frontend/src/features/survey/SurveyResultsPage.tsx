@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { BarChart3, ExternalLink, Loader2, RotateCcw, Star } from 'lucide-react';
+import { BarChart3, ExternalLink, Loader2, RotateCcw, Star, BookOpen } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { TiltCard } from '../../components/ui/TiltCard';
 import { ProgressBar } from '../../components/ui/ProgressBar';
@@ -33,6 +33,8 @@ export function SurveyResultsPage() {
   const [pageState, setPageState] = useState<PageState>('loading');
   const [result, setResult] = useState<SurveyResult | null>(null);
   const [error, setError] = useState('');
+  const [creatingPlan, setCreatingPlan] = useState(false);
+  const [planCreated, setPlanCreated] = useState(false);
 
   useEffect(() => {
     if (!id) { navigate('/survey'); return; }
@@ -56,6 +58,19 @@ export function SurveyResultsPage() {
 
     fetchResults();
   }, [id]);
+
+  const handleCreatePlan = async () => {
+    if (!id) return;
+    setCreatingPlan(true);
+    try {
+      await api.survey.createPlan(id);
+      setPlanCreated(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to create plan');
+    } finally {
+      setCreatingPlan(false);
+    }
+  };
 
   if (pageState === 'loading') {
     return (
@@ -175,7 +190,16 @@ export function SurveyResultsPage() {
       </div>
 
       <div className="flex justify-center gap-3 pt-4">
-        <Button onClick={() => navigate('/survey')}>
+        {planCreated ? (
+          <Button onClick={() => navigate('/plan')}>
+            <BookOpen size={16} /> View My Study Plan
+          </Button>
+        ) : (
+          <Button onClick={handleCreatePlan} loading={creatingPlan}>
+            <BookOpen size={16} /> Create Study Plan
+          </Button>
+        )}
+        <Button variant="ghost" onClick={() => navigate('/survey')}>
           <RotateCcw size={16} /> Take Another Survey
         </Button>
         <Button variant="ghost" onClick={() => navigate('/paths')}>

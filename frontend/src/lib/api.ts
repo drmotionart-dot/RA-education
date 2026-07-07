@@ -129,6 +129,8 @@ export const api = {
       request<{ session_id: string; status: string; question?: { node_id: string; question_text: string; is_universal: boolean; options: { index: number; option_text: string }[] }; progress?: { answered: number; total: number }; results?: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; axes_contributing: string[] }[]; top_match: string; confidence: number } }>(`/survey/${sessionId}/state`),
     complete: (sessionId: string) =>
       request<{ session_id: string; status: string; results: { matches: { specialty_name: string; specialty_id: string | null; similarity: number; axes_contributing: string[] }[]; top_match: string; confidence: number } }>(`/survey/${sessionId}/complete`, { method: 'POST' }),
+    createPlan: (sessionId: string) =>
+      request<{ plan: Record<string, unknown>; source: string }>(`/survey/${sessionId}/create-plan`, { method: 'POST' }),
   },
   assessment: {
     start: (specialtyId: string) =>

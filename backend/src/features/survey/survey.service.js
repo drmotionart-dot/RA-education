@@ -3,6 +3,8 @@ import { User } from '../users/users.model.js';
 import { Specialty, Path } from '../catalog/catalog.model.js';
 import { ApiError } from '../../utils/apiError.js';
 import { normalizeScores, computeEuclideanSimilarity, generateWhySummary } from '../../utils/scoring.js';
+import { QuickPickSelection } from '../quickpick/quickpick.model.js';
+import { generatePlan } from '../studyplan/studyplan.service.js';
 
 const DEFAULT_MAX_QUESTIONS = 35;
 
@@ -52,6 +54,9 @@ export async function answerQuestion(mobileNumber, sessionId, { node_id, option_
   }
   if (session.current_node_id !== node_id) {
     throw new ApiError(400, 'This question is not the current question');
+  }
+  if ((session.answered_node_ids || []).includes(node_id)) {
+    throw new ApiError(400, 'This question has already been answered');
   }
 
   const graph = await SurveyGraph.findById(session.graph_id).lean();
@@ -131,6 +136,28 @@ export async function getSessionState(mobileNumber, sessionId) {
   return formatSurveyQuestion(graph, currentNode, session, graph.max_questions);
 }
 
+export async function abandonSurvey(mobileNumber, sessionId) {
+  const user = await User.findOne({ mobile_number: mobileNumber });
+  if (!user) throw new ApiError(404, 'User not found');
+
+  const session = await SurveySession.findById(sessionId);
+  if (!session) throw new ApiError(404, 'Survey session not found');
+  if (String(session.user_id) !== String(user._id)) {
+    throw new ApiError(403, 'This session does not belong to you');
+  }
+  if (session.status === 'completed') {
+    throw new ApiError(400, 'Survey already completed');
+  }
+
+  session.status = 'completed';
+  session.completed_at = new Date();
+  session.current_node_id = null;
+  session.results = { matches: [], top_match: null, confidence: 0 };
+  await session.save();
+
+  return { session_id: session._id, status: 'abandoned' };
+}
+
 export async function completeSurvey(mobileNumber, sessionId) {
   const user = await User.findOne({ mobile_number: mobileNumber });
   if (!user) throw new ApiError(404, 'User not found');
@@ -158,6 +185,54 @@ export async function completeSurvey(mobileNumber, sessionId) {
   await session.save();
 
   return await formatSurveyResults(session, graph);
+}
+
+export async function createPlanFromSurvey(mobileNumber, sessionId) {
+  const user = await User.findOne({ mobile_number: mobileNumber });
+  if (!user) throw new ApiError(404, 'User not found');
+
+  const session = await SurveySession.findById(sessionId);
+  if (!session) throw new ApiError(404, 'Survey session not found');
+  if (String(session.user_id) !== String(user._id)) {
+    throw new ApiError(403, 'This session does not belong to you');
+  }
+  if (session.status !== 'completed' || !session.results?.top_match) {
+    throw new ApiError(400, 'Survey must be completed with a top match to create a plan');
+  }
+
+  const topMatchName = session.results.top_match;
+  const graph = await SurveyGraph.findById(session.graph_id).lean();
+  const Model = graph.type === 'path' ? Path : Specialty;
+  const doc = await Model.findOne({ name: topMatchName });
+  if (!doc) throw new ApiError(404, `No ${graph.type} found with name "${topMatchName}"`);
+
+  if (graph.type === 'path') {
+    const paths = await Path.find({ name: topMatchName });
+    if (paths.length === 0) throw new ApiError(404, 'No path found for the top match');
+    const specialty = await Specialty.findOne({ category: paths[0].category });
+    if (!specialty) throw new ApiError(404, 'No specialty found for the matched path');
+
+    const selection = await QuickPickSelection.create({
+      user_id: user._id,
+      specialty_id: specialty._id,
+      path_id: paths[0]._id,
+      preset_duration_months: 12,
+    });
+    const plan = await generatePlan(mobileNumber, selection._id);
+    return { plan, source: 'survey_result' };
+  }
+
+  const paths = await Path.find({ category: doc.category });
+  if (paths.length === 0) throw new ApiError(404, 'No paths found for the matched specialty');
+
+  const selection = await QuickPickSelection.create({
+    user_id: user._id,
+    specialty_id: doc._id,
+    path_id: paths[0]._id,
+    preset_duration_months: 12,
+  });
+  const plan = await generatePlan(mobileNumber, selection._id);
+  return { plan, source: 'survey_result' };
 }
 
 function computeResults(axisScores, graph) {

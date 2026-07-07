@@ -37,3 +37,21 @@ export async function completeSurvey(req, res, next) {
     next(err);
   }
 }
+
+export async function abandonSurvey(req, res, next) {
+  try {
+    const result = await surveyService.abandonSurvey(req.user.mobile_number, req.params.id);
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function createPlanFromSurvey(req, res, next) {
+  try {
+    const result = await surveyService.createPlanFromSurvey(req.user.mobile_number, req.params.id);
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+}
