@@ -15,18 +15,19 @@ test.describe('Layout Extended', () => {
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
     await expect(page.getByTitle('Dashboard')).toBeVisible();
+    await expect(page.getByTitle('Plan')).toBeVisible();
     await expect(page.getByTitle('Explore')).toBeVisible();
-    await expect(page.getByTitle('Paths')).toBeVisible();
   });
 
   test('nav links have correct text', async ({ authedPage: page }) => {
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
     await expect(page.getByTitle('Dashboard')).toBeVisible();
+    await expect(page.getByTitle('Plan')).toBeVisible();
+    await expect(page.getByTitle('Companion')).toBeVisible();
     await expect(page.getByTitle('Explore')).toBeVisible();
-    await expect(page.getByTitle('Paths')).toBeVisible();
-    await expect(page.getByTitle('Quick Pick')).toBeVisible();
     await expect(page.getByTitle('Assessment')).toBeVisible();
+    await expect(page.getByTitle('Quick Pick')).toBeVisible();
     await expect(page.getByTitle('Survey')).toBeVisible();
   });
 
@@ -64,9 +65,9 @@ test.describe('Layout Extended', () => {
     await page.setViewportSize({ width: 768, height: 1024 });
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
+    await expect(page.getByTitle('Plan')).toBeVisible();
+    await expect(page.getByTitle('Companion')).toBeVisible();
     await expect(page.getByTitle('Explore')).toBeVisible();
-    await expect(page.getByTitle('Paths')).toBeVisible();
-    await expect(page.getByTitle('Quick Pick')).toBeVisible();
   });
 
   test('profile icon visible in sidebar', async ({ authedPage: page }) => {

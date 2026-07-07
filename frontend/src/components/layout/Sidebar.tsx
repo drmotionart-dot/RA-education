@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  BookOpen, Home, Compass, BarChart3, Plus, Brain, ClipboardList, CheckCircle2,
-  User, LogOut, GraduationCap, PanelLeftClose, PanelLeft, Menu, X, FileText,
+  BookOpen, Home, Compass, Plus, Brain, ClipboardList, CheckCircle2,
+  User, LogOut, GraduationCap, PanelLeftClose, PanelLeft, FileText,
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { ThemeToggle } from './ThemeToggle';
@@ -28,18 +28,14 @@ interface SurveyStatus {
   hasPlanFromSurvey: boolean;
 }
 
-const mainNav: NavItemData[] = [
+const navItems: NavItemData[] = [
   { to: '/dashboard', icon: Home, label: 'Dashboard' },
-  { to: '/explore', icon: Compass, label: 'Explore' },
-  { to: '/paths', icon: BarChart3, label: 'Paths' },
-  { to: '/quick-pick', icon: Plus, label: 'Quick Pick' },
-  { to: '/assessment', icon: Brain, label: 'Assessment' },
-];
-
-const toolsNav: NavItemData[] = [
-  { to: '/survey', icon: ClipboardList, label: 'Survey' },
   { to: '/plan', icon: FileText, label: 'Plan' },
   { to: '/companion', icon: GraduationCap, label: 'Companion' },
+  { to: '/explore', icon: Compass, label: 'Explore' },
+  { to: '/assessment', icon: Brain, label: 'Assessment' },
+  { to: '/quick-pick', icon: Plus, label: 'Quick Pick' },
+  { to: '/survey', icon: ClipboardList, label: 'Survey' },
 ];
 
 function NavItem({ item, collapsed, index, surveyStatus, onSurveyClick }: {
@@ -156,11 +152,7 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onMobileClose
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5 scrollbar-none">
-        {mainNav.map((item, i) => (
-          <NavItem key={item.to} item={item} collapsed={collapsed} index={i} surveyStatus={surveyStatus} onSurveyClick={handleSurveyClick} />
-        ))}
-        <div className="my-3 border-t border-[var(--color-border)]" />
-        {toolsNav.map((item, i) => (
+        {navItems.map((item, i) => (
           <NavItem key={item.to} item={item} collapsed={collapsed} index={i} surveyStatus={surveyStatus} onSurveyClick={handleSurveyClick} />
         ))}
       </nav>
