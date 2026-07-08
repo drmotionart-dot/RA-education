@@ -166,5 +166,13 @@ export function SurveySessionPage() {
     );
   }
 
-  return null;
+  return (
+    <div className="mx-auto max-w-lg space-y-4 py-12 text-center">
+      <h2 className="font-heading text-xl font-bold">Survey unavailable</h2>
+      <p className="text-sm text-[var(--color-text-secondary)]">This survey session is in an unexpected state. Please start a new survey.</p>
+      <div className="flex justify-center gap-2">
+        <Button onClick={() => navigate('/survey')}>Back to Survey</Button>
+      </div>
+    </div>
+  );
 }

@@ -133,16 +133,33 @@ export async function getSessionState(mobileNumber, sessionId) {
     throw new ApiError(403, 'This session does not belong to you');
   }
 
+  const abandon = async () => {
+    session.status = 'completed';
+    session.completed_at = new Date();
+    session.current_node_id = null;
+    session.results = { matches: [], top_match: null, confidence: 0 };
+    await session.save();
+  };
+
   if (session.status === 'completed') {
     const graph = await SurveyGraph.findById(session.graph_id).lean();
-    if (!graph) throw new ApiError(500, 'Survey graph not found');
+    if (!graph) {
+      await abandon();
+      return { session_id: session._id, status: 'completed', results: { matches: [], top_match: null, confidence: 0 } };
+    }
     return await formatSurveyResults(session, graph);
   }
 
   const graph = await SurveyGraph.findById(session.graph_id).lean();
-  if (!graph?.nodes?.length) throw new ApiError(500, 'Survey graph has no nodes');
+  if (!graph?.nodes?.length) {
+    await abandon();
+    return { session_id: session._id, status: 'completed', results: { matches: [], top_match: null, confidence: 0 } };
+  }
   const currentNode = graph.nodes.find(n => n.node_id === session.current_node_id);
-  if (!currentNode) throw new ApiError(500, 'Current node not found in graph');
+  if (!currentNode) {
+    await abandon();
+    return { session_id: session._id, status: 'completed', results: { matches: [], top_match: null, confidence: 0 } };
+  }
   return formatSurveyQuestion(graph, currentNode, session, graph.max_questions);
 }
 

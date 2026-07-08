@@ -84,7 +84,13 @@ export function QuickPickPage() {
     }
   };
 
-  if (error) return <p className="text-center text-[var(--color-error)]">{error}</p>;
+  if (error) return (
+    <div className="mx-auto max-w-lg space-y-4 py-12 text-center">
+      <h2 className="font-heading text-xl font-bold">Something went wrong</h2>
+      <p className="text-sm text-[var(--color-text-secondary)]">{error}</p>
+      <Button onClick={() => window.location.reload()}>Try Again</Button>
+    </div>
+  );
 
   return (
     <div className="space-y-6">
