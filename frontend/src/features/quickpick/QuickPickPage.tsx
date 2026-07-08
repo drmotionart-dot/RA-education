@@ -53,6 +53,20 @@ export function QuickPickPage() {
     }
   }, [preselectedSpecialtyId]);
 
+  // When a path is preselected without a specialty, auto-match by category
+  useEffect(() => {
+    if (preselectedPathId && preselectedPath && specialties.length > 0 && !preselectedSpecialtyId) {
+      const pathCategory = preselectedPath.category as string;
+      if (pathCategory) {
+        const match = specialties.find((s) => (s.category as string) === pathCategory);
+        if (match) {
+          setSelSpecialty(match._id as string);
+          setStep('duration');
+        }
+      }
+    }
+  }, [preselectedPathId, preselectedPath, specialties, preselectedSpecialtyId]);
+
   const preselectedPathName = (preselectedPath?.name as string) || '';
   const preselectedSpecialtyName = (preselectedSpecialty?.name as string) || '';
 

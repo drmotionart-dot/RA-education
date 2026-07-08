@@ -749,13 +749,15 @@ function expandGraph(baseGraph, type, graphLabel) {
     nodeMap.set(node.node_id, { ...node });
   }
 
-  // Identify terminal nodes (any node with an option that has null/invalid next_node_id)
+  // Identify terminal nodes (any node with an option that has null/invalid next_node_id,
+  // OR points directly to a CALIB_* calibration node — these need expansion too)
   const terminalOptions = []; // { parentNodeId, optionIndex, branchContext }
   for (const node of baseGraph.nodes) {
     if (!node.options) continue;
     for (let i = 0; i < node.options.length; i++) {
       const opt = node.options[i];
-      if (!opt.next_node_id || !nodeMap.has(opt.next_node_id)) {
+      const target = opt.next_node_id;
+      if (!target || !nodeMap.has(target) || (nodeMap.has(target) && target.startsWith('CALIB_'))) {
         terminalOptions.push({ parentNodeId: node.node_id, optionIndex: i, option: opt });
       }
     }
