@@ -4,19 +4,19 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-bg: var(--color-bg);
-  --color-surface: var(--color-surface);
-  --color-text-primary: var(--color-text-primary);
-  --color-text-secondary: var(--color-text-secondary);
-  --color-primary: var(--color-primary);
-  --color-primary-hover: var(--color-primary-hover);
-  --color-secondary: var(--color-secondary);
-  --color-secondary-hover: var(--color-secondary-hover);
-  --color-success: var(--color-success);
-  --color-error: var(--color-error);
-  --color-border: var(--color-border);
-  --color-border-accent: var(--color-border-accent);
-  --color-border-accent-hover: var(--color-border-accent-hover);
+  --color-bg: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-primary: #0A1428;
+  --color-primary-hover: #152238;
+  --color-secondary: #C9A227;
+  --color-secondary-hover: #D9B030;
+  --color-success: #10B981;
+  --color-error: #DC2626;
+  --color-border: #E5E7EB;
+  --color-border-accent: rgba(201, 162, 39, 0.35);
+  --color-border-accent-hover: #C9A227;
   --font-heading: 'Sora', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-serif: 'Literata', serif;

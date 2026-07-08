@@ -129,11 +129,14 @@ export async function getSessionState(mobileNumber, sessionId) {
 
   if (session.status === 'completed') {
     const graph = await SurveyGraph.findById(session.graph_id).lean();
+    if (!graph) throw new ApiError(500, 'Survey graph not found');
     return await formatSurveyResults(session, graph);
   }
 
   const graph = await SurveyGraph.findById(session.graph_id).lean();
+  if (!graph?.nodes?.length) throw new ApiError(500, 'Survey graph has no nodes');
   const currentNode = graph.nodes.find(n => n.node_id === session.current_node_id);
+  if (!currentNode) throw new ApiError(500, 'Current node not found in graph');
   return formatSurveyQuestion(graph, currentNode, session, graph.max_questions);
 }
 
@@ -199,6 +202,7 @@ export async function completeSurvey(mobileNumber, sessionId) {
   }
 
   const graph = await SurveyGraph.findById(session.graph_id).lean();
+  if (!graph) throw new ApiError(500, 'Survey graph not found');
 
   session.status = 'completed';
   session.completed_at = new Date();
@@ -229,6 +233,7 @@ export async function createPlanFromSurvey(mobileNumber, sessionId) {
 
   const topMatchName = session.results.top_match;
   const graph = await SurveyGraph.findById(session.graph_id).lean();
+  if (!graph) throw new ApiError(500, 'Survey graph not found');
   const Model = graph.type === 'path' ? Path : Specialty;
   const doc = await Model.findOne({ name: topMatchName });
   if (!doc) throw new ApiError(404, `No ${graph.type} found with name "${topMatchName}"`);
@@ -313,6 +318,7 @@ function computeResults(axisScores, graph) {
 }
 
 function formatSurveyQuestion(graph, node, session, maxQuestions) {
+  if (!node) throw new ApiError(500, 'Survey question node is missing');
   return {
     session_id: session._id,
     status: 'in_progress',
