@@ -22,6 +22,23 @@
   --font-serif: 'Literata', serif;
 }
 
+.dark {
+  --color-bg: #14181F;
+  --color-surface: #1A1530;
+  --color-text-primary: #E8E6E1;
+  --color-text-secondary: #9CA3AF;
+  --color-primary: #D4D4D4;
+  --color-primary-hover: #E6E6E6;
+  --color-secondary: #E5C158;
+  --color-secondary-hover: #EEC868;
+  --color-success: #34D399;
+  --color-error: #F87171;
+  --color-border: #757E94;
+  --color-border-accent: rgba(229, 193, 88, 0.4);
+  --color-border-accent-hover: #E5C158;
+  --color-accent-violet: #A585D4;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);

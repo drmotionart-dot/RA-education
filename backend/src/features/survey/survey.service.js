@@ -23,10 +23,16 @@ export async function startSurvey(mobileNumber, { type, role }) {
   const rootNode = graph.nodes.find(n => n.node_id === graph.root_node_id);
   if (!rootNode) throw new ApiError(500, 'Survey graph has no root node');
 
-  const existing = await SurveySession.findOne({ user_id: user._id, status: 'in_progress' });
+  const existing = await SurveySession.findOne({ user_id: user._id, graph_id: graph._id, status: 'in_progress' });
   if (existing) {
     const currentNode = graph.nodes.find(n => n.node_id === existing.current_node_id);
-    return formatSurveyQuestion(graph, currentNode, existing, graph.max_questions);
+    if (!currentNode) {
+      existing.status = 'completed';
+      existing.completed_at = new Date();
+      await existing.save();
+    } else {
+      return formatSurveyQuestion(graph, currentNode, existing, graph.max_questions);
+    }
   }
 
   const session = await SurveySession.create({
