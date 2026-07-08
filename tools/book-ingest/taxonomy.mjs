@@ -77,7 +77,7 @@ const MEDICAL_ROOTS = [
   { root: 'transplant', pattern: /transplant|rejection|immunosuppress|graft|donor|recipient|allograft/i },
   { root: 'endocrine', pattern: /endocrine|diabet|thyroid|pituitar|hormone|metabol|insulin|glucose|adrenal|parathyroid|gonad|menopaus/i },
   { root: 'psych', pattern: /psychiatr|mental|addiction|behavio|depression|anxiety|schizophrenia|bipolar|ocd|ptsd|psychos/i },
-  { root: 'radi', pattern: /radiolog|imaging|radiograph|ct\sscan|mri|ultrasound|fluoroscop|mammograph|nuclear\smed|pet|spect/i },
+  { root: 'radi', pattern: /radiolog|radiograph|ct\sscan|mri|ultrasound|fluoroscop|mammograph|nuclear\smed|pet|spect|interventional\sradiolog/i },
   { root: 'patho', pattern: /patholog|histolog|biopsy|cytolog|autopsy|forens|stain|section|specimen|gross|microscop/i },
   { root: 'anesth', pattern: /anesth|anesthe|pain|analgesi|block|epidural|spinal\sanesth|sedation|neuromusc|paralytic|intubat/i },
   { root: 'critic', pattern: /critic|icu|intensiv|sepsis|septic|vasopressor|resuscit|multi-organ|sirs|mods|apache/i },
@@ -93,7 +93,7 @@ const MEDICAL_ROOTS = [
   { root: 'nurs', pattern: /nurs|care\splan|patient\sassess|clinical\sinstruct|simulation|skills\slab|charge\snurs|staff|bedside/i },
   { root: 'quality', pattern: /quality|accredit|patient\ssafety|risk\smanag|audit|indicator|benchmark|never\sevent|sentinel/i },
   { root: 'informatic', pattern: /informatic|data\sanalytic|clinical\sdecision|heatlh\sit|ehr|emr|electronic\shealth|interoperab/i },
-  { root: 'admin', pattern: /admin|director|manag|leadership|operat|govern|strateg|budget|human\sresource|hr|polic/i },
+  { root: 'admin', pattern: /admin|director|manag|leadership|operat|govern|strateg|budget|human\sresource|policymak|polic\sprocedur/i },
   { root: 'forens', pattern: /forens|medicolegal|autopsy|underwrit|claims|litigat|testimony|expert\switness|chain\sof\scustody/i },
   { root: 'occupat', pattern: /occupat|workplace|employee|environmental|hearing\sloss|ergonom|exposure|chemical|safety|hazmat|fit\sfor\swork/i },
   { root: 'public', pattern: /public\shealth|epidemiolog|disease\ssurveill|health\spromot|biostatist|populat|screening|prevent|health\spolic/i },
@@ -119,10 +119,12 @@ const STOPWORDS = new Set([
 // ── Branch Keyword Index ──
 
 function keywordify(text) {
-  return text.toLowerCase()
-    .replace(/[^a-z\s]/g, '')
-    .split(/\s+/)
-    .filter(w => w.length > 3 && !STOPWORDS.has(w));
+  return [...new Set(
+    text.toLowerCase()
+      .replace(/[^a-z\s]/g, '')
+      .split(/\s+/)
+      .filter(w => w.length > 3 && !STOPWORDS.has(w))
+  )];
 }
 
 function buildBranchIndex() {
