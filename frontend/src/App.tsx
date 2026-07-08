@@ -17,6 +17,7 @@ import { StudyPlanPage } from './features/studyplan/StudyPlanPage';
 import { PlanHistoryPage } from './features/studyplan/PlanHistoryPage';
 import { CompanionPage } from './features/companion/CompanionPage';
 import { AssessmentPage } from './features/assessment/AssessmentPage';
+import { CareerCompassPage } from './features/compass/CareerCompassPage';
 import { AssessmentSession } from './features/assessment/AssessmentSession';
 import { SurveyLandingPage } from './features/survey/SurveyLandingPage';
 import { SurveySessionPage } from './features/survey/SurveySessionPage';
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/paths" element={<PathsPage />} />
             <Route path="/paths/:id" element={<PathDetail />} />
             <Route path="/quick-pick" element={<QuickPickPage />} />
+            <Route path="/compass" element={<CareerCompassPage />} />
             <Route path="/plan" element={<StudyPlanPage />} />
             <Route path="/plan/history" element={<PlanHistoryPage />} />
             <Route path="/companion" element={<CompanionPage />} />

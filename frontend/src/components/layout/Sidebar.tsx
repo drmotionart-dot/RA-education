@@ -3,7 +3,7 @@ import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   BookOpen, Home, Compass, Plus, Brain, ClipboardList, CheckCircle2,
-  User, LogOut, GraduationCap, PanelLeftClose, PanelLeft, FileText,
+  User, LogOut, GraduationCap, PanelLeftClose, PanelLeft, FileText, Map,
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { ThemeToggle } from './ThemeToggle';
@@ -35,6 +35,7 @@ interface SurveyStatus {
 const navItems: NavItemData[] = [
   { to: '/dashboard', icon: Home, label: 'Dashboard' },
   { to: '/plan', icon: FileText, label: 'Plan' },
+  { to: '/compass', icon: Map, label: 'Compass' },
   { to: '/companion', icon: GraduationCap, label: 'Companion' },
   { to: '/explore', icon: Compass, label: 'Explore' },
   { to: '/assessment', icon: Brain, label: 'Assessment' },

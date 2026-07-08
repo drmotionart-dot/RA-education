@@ -1,939 +1,4705 @@
 export const specialties = [
-  // ===== DOCTOR: SURGICAL =====
-  {
-    name: 'General Surgery',
-    category: 'doctor',
-    description: 'Surgical treatment of a wide range of diseases and injuries.',
-    icon: 'scissors',
-    order: 1,
-    content_status: 'verified',
-    pros: ['Hands-on procedural work', 'Broad scope', 'Clear outcomes'],
-    cons: ['Physically demanding', 'Long irregular hours', 'High complication stress'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high',
-    training_duration_years: 5,
-    branches: [
-      { name: 'Colorectal Surgery', description: 'Surgery of the colon, rectum, and anus.', weight: 1.0, order: 1 },
-      { name: 'Hepatobiliary Surgery', description: 'Surgery of the liver, gallbladder, and bile ducts.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Orthopedic Surgery', category: 'doctor',
-    description: 'Surgical treatment of the musculoskeletal system — bones, joints, ligaments, tendons, and spine.',
-    icon: 'bone', order: 2, content_status: 'stub',
-    pros: ['High earning potential', 'Satisfying structural outcomes', 'Advances in arthroscopy and joint replacement'],
-    cons: ['Physically demanding on surgeon', 'Long training', 'High malpractice risk'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Spine Surgery', description: 'Surgical management of spinal disorders, deformities, and trauma.', weight: 1.0, order: 1 },
-      { name: 'Joint Replacement (Arthroplasty)', description: 'Hip, knee, and shoulder replacement surgery.', weight: 0.9, order: 2 },
-      { name: 'Sports Medicine & Arthroscopy', description: 'Minimally invasive joint surgery and sports injury repair.', weight: 0.8, order: 3 },
-    ],
-  },
-  {
-    name: 'Neurosurgery', category: 'doctor',
-    description: 'Surgical management of disorders affecting the brain, spinal cord, and peripheral nerves.',
-    icon: 'brain', order: 3, content_status: 'stub',
-    pros: ['Intellectually demanding and precise', 'Life-saving interventions', 'High prestige'],
-    cons: ['Extremely long training (7+ years)', 'High-stress, high-malpractice', 'Poor lifestyle with long hours'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 7,
-    branches: [
-      { name: 'Cranial Neurosurgery', description: 'Brain tumor, aneurysm, and trauma surgery.', weight: 1.0, order: 1 },
-      { name: 'Spinal Neurosurgery', description: 'Surgery of spinal cord, disc disease, and spinal tumors.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Cardiothoracic Surgery', category: 'doctor',
-    description: 'Surgery of the heart, lungs, esophagus, and other thoracic organs.',
-    icon: 'heart', order: 4, content_status: 'stub',
-    pros: ['Highly complex and rewarding procedures', 'Strong income potential', 'Direct life-saving impact'],
-    cons: ['Very long training', 'High-stress operating environment', 'On-call burden'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 6,
-    branches: [
-      { name: 'Adult Cardiac Surgery', description: 'Coronary bypass, valve repair/replacement, and aortic surgery.', weight: 1.0, order: 1 },
-      { name: 'Thoracic Surgery', description: 'Lung resection, esophageal surgery, and chest wall procedures.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Vascular Surgery', category: 'doctor',
-    description: 'Surgical and endovascular management of diseases of the arteries and veins.',
-    icon: 'activity', order: 5, content_status: 'stub',
-    pros: ['Mix of open and endovascular techniques', 'High demand with aging population', 'Satisfying outcomes'],
-    cons: ['High emergency on-call burden', 'Complex patients with multiple comorbidities', 'Medicolegal risk'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Aortic & Peripheral Arterial Surgery', description: 'Open and endovascular repair of aortic aneurysms and peripheral arterial disease.', weight: 1.0, order: 1 },
-      { name: 'Venous & Lymphatic Surgery', description: 'Management of varicose veins, DVT, and lymphedema.', weight: 0.6, order: 2 },
-    ],
-  },
-  {
-    name: 'Plastic & Reconstructive Surgery', category: 'doctor',
-    description: 'Surgical restoration of form and function after trauma, cancer, or congenital defects.',
-    icon: 'sparkles', order: 6, content_status: 'stub',
-    pros: ['Creative and satisfying work', 'Mix of reconstructive and aesthetic', 'Strong income from aesthetics'],
-    cons: ['Long training', 'Competitive field', 'Patient expectations can be challenging'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Reconstructive Microsurgery', description: 'Free flap reconstruction, hand surgery, and complex wound coverage.', weight: 1.0, order: 1 },
-      { name: 'Aesthetic (Cosmetic) Surgery', description: 'Facelift, rhinoplasty, breast augmentation, and body contouring.', weight: 0.9, order: 2 },
-    ],
-  },
-  {
-    name: 'Pediatric Surgery', category: 'doctor',
-    description: 'Surgical care for infants, children, and adolescents — from congenital anomalies to trauma.',
-    icon: 'baby', order: 7, content_status: 'stub',
-    pros: ['Highly rewarding patient population', 'Broad range of procedures', 'Family-centered impact'],
-    cons: ['Emotionally demanding', 'Complex congenital cases', 'High liability'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 6,
-    branches: [
-      { name: 'Neonatal Surgery', description: 'Surgery for congenital anomalies in newborns.', weight: 1.0, order: 1 },
-      { name: 'Pediatric Oncology Surgery', description: 'Surgical management of childhood solid tumors.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'ENT (Otolaryngology)', category: 'doctor',
-    description: 'Medical and surgical management of ear, nose, throat, head, and neck disorders.',
-    icon: 'ear', order: 8, content_status: 'stub',
-    pros: ['Mix of medical and surgical', 'Good lifestyle options', 'Broad patient population'],
-    cons: ['Moderate competition', 'Can be tedious office-based work', 'Slow-building surgical caseload'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Head & Neck Surgery', description: 'Surgery for thyroid, parathyroid, and head/neck tumors.', weight: 1.0, order: 1 },
-      { name: 'Otology & Neurotology', description: 'Surgery for hearing loss, ear infections, and skull base disorders.', weight: 0.7, order: 2 },
-    ],
-  },
   {
-    name: 'Urology', category: 'doctor',
-    description: 'Medical and surgical management of disorders of the urinary tract and male reproductive system.',
-    icon: 'droplets', order: 9, content_status: 'stub',
-    pros: ['Mix of open, endoscopic, and robotic surgery', 'Good income', 'Manageable lifestyle'],
-    cons: ['High competition for training', 'Significant on-call burden', 'Medicolegal risk'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Endourology & Stone Disease', description: 'Minimally invasive management of kidney stones and ureteric disorders.', weight: 1.0, order: 1 },
-      { name: 'Urologic Oncology', description: 'Surgical management of prostate, bladder, kidney, and testicular cancers.', weight: 0.9, order: 2 },
-    ],
-  },
-  {
-    name: 'Ophthalmology', category: 'doctor',
-    description: 'Medical and surgical care of the eye and visual system.',
-    icon: 'eye', order: 10, content_status: 'stub',
-    pros: ['Excellent lifestyle', 'High income potential', 'Mix of clinic and surgery'],
-    cons: ['Very competitive entry', 'Microsurgery requires fine motor precision', 'Medicolegal risk'],
-    market_demand_egypt: 'high', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Cataract & Refractive Surgery', description: 'Cataract extraction, LASIK, and lens-based vision correction.', weight: 1.0, order: 1 },
-      { name: 'Retina & Vitreous Surgery', description: 'Surgical management of retinal detachment, diabetic retinopathy, and macular degeneration.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: INTERNAL MEDICINE & SUBSPECIALTIES =====
-  {
-    name: 'Internal Medicine (General)', category: 'doctor',
-    description: 'Diagnosis and non-surgical management of adult diseases — the foundation of adult medical care.',
-    icon: 'stethoscope', order: 11, content_status: 'stub',
-    pros: ['Intellectually broad', 'Gateway to many subspecialties', 'Longitudinal patient relationships'],
-    cons: ['High patient volumes', 'Significant administrative burden', 'Lower income than procedural fields'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'Hospital Medicine', description: 'Inpatient management of complex medical patients.', weight: 1.0, order: 1 },
-      { name: 'Ambulatory General Medicine', description: 'Outpatient primary care for adults.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Cardiology',
-    category: 'doctor',
-    description: 'Diagnosis and treatment of heart and blood vessel disorders.',
-    icon: 'heart-pulse',
-    order: 12,
-    content_status: 'verified',
-    pros: ['High demand', 'Procedural work', 'Immediate impact on patients'],
-    cons: ['Long training (5+ years)', 'High stress', 'Frequent on-call shifts'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high',
-    training_duration_years: 5,
-    branches: [
-      { name: 'Interventional Cardiology', description: 'Catheter-based procedures for heart disease.', weight: 1.0, order: 1 },
-      { name: 'Electrophysiology', description: 'Heart rhythm disorders and pacemaker management.', weight: 0.8, order: 2 },
-      { name: 'Heart Failure', description: 'Management of advanced heart failure and transplant.', weight: 0.7, order: 3 },
-    ],
-  },
-  {
-    name: 'Interventional Cardiology', category: 'doctor',
-    description: 'Catheter-based diagnosis and treatment of coronary, peripheral, and structural heart disease.',
-    icon: 'heart-pulse', order: 13, content_status: 'stub',
-    pros: ['High-volume procedural work', 'Strong income', 'Direct and visible outcomes'],
-    cons: ['High radiation exposure', 'Significant on-call burden for STEMI', 'Long training pathway'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 6,
-    branches: [
-      { name: 'Coronary Interventions', description: 'PCI, stenting, and atherectomy for coronary artery disease.', weight: 1.0, order: 1 },
-      { name: 'Structural Heart Interventions', description: 'TAVR, MitraClip, and ASD/PFO closure.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Gastroenterology', category: 'doctor',
-    description: 'Diagnosis and management of disorders of the digestive system — esophagus, stomach, intestines, liver, and pancreas.',
-    icon: 'stethoscope', order: 14, content_status: 'stub',
-    pros: ['Mix of cognitive and procedural work', 'High procedure volume', 'Good income'],
-    cons: ['High competition for training', 'Significant endoscopy volume', 'Requires patience for complex cases'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Therapeutic Endoscopy', description: 'Advanced endoscopic procedures including ERCP and EUS.', weight: 1.0, order: 1 },
-      { name: 'Hepatology', description: 'Management of liver disease, cirrhosis, and transplant hepatology.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Nephrology', category: 'doctor',
-    description: 'Diagnosis and management of kidney diseases, electrolyte disorders, and hypertension.',
-    icon: 'droplets', order: 15, content_status: 'stub',
-    pros: ['Cognitively challenging', 'Longitudinal patient relationships', 'Mix of acute and chronic care'],
-    cons: ['High dialysis patient volume', 'Emotionally draining (ESRD patients)', 'Lower reimbursement than procedural fields'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Glomerular Disease & Hypertension', description: 'Management of primary and secondary glomerular disorders.', weight: 1.0, order: 1 },
-      { name: 'Dialysis & Transplant Nephrology', description: 'Management of ESRD, hemodialysis, and kidney transplant recipients.', weight: 0.9, order: 2 },
-    ],
-  },
-  {
-    name: 'Pulmonology', category: 'doctor',
-    description: 'Diagnosis and management of diseases of the lungs and respiratory system.',
-    icon: 'lungs', order: 16, content_status: 'stub',
-    pros: ['Mix of clinic and procedures (bronchoscopy)', 'Acute and chronic patient mix', 'Growing field with COPD/asthma burden'],
-    cons: ['High inpatient burden', 'Palliative/end-of-life aspects', 'Significant on-call'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Interventional Pulmonology', description: 'Advanced bronchoscopy, pleural procedures, and airway management.', weight: 1.0, order: 1 },
-      { name: 'Sleep Medicine', description: 'Diagnosis and management of sleep-disordered breathing and insomnia.', weight: 0.6, order: 2 },
-    ],
-  },
-  {
-    name: 'Endocrinology', category: 'doctor',
-    description: 'Diagnosis and management of hormonal and metabolic disorders — diabetes, thyroid, pituitary, adrenal, and bone health.',
-    icon: 'activity', order: 17, content_status: 'stub',
-    pros: ['Cognitive specialty with minimal emergencies', 'Longitudinal relationships', 'Good lifestyle'],
-    cons: ['Low procedural volume', 'Chronic disease management can be slow to show results', 'Lower reimbursement'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 5,
-    branches: [
-      { name: 'Diabetes & Metabolic Disorders', description: 'Management of type 1 and type 2 diabetes, obesity, and lipid disorders.', weight: 1.0, order: 1 },
-      { name: 'Thyroid & Pituitary Disorders', description: 'Management of thyroid dysfunction, pituitary tumors, and adrenal disorders.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Rheumatology', category: 'doctor',
-    description: 'Diagnosis and management of autoimmune and inflammatory diseases affecting joints, muscles, and connective tissues.',
-    icon: 'activity', order: 18, content_status: 'stub',
-    pros: ['Cognitively challenging diagnostic puzzles', 'Longitudinal patient relationships', 'Good lifestyle'],
-    cons: ['Low reimbursement', 'Chronic incurable conditions', 'Significant administrative work for biologics'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 5,
-    branches: [
-      { name: 'Inflammatory Arthritis', description: 'Management of rheumatoid arthritis, psoriatic arthritis, and spondyloarthritis.', weight: 1.0, order: 1 },
-      { name: 'Systemic Autoimmune Disease', description: 'Management of SLE, scleroderma, vasculitis, and myositis.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Infectious Disease', category: 'doctor',
-    description: 'Diagnosis and management of complex infections — from antibiotic stewardship to emerging pathogens.',
-    icon: 'shield', order: 19, content_status: 'stub',
-    pros: ['Fascinating diagnostic puzzles', 'Critical role in public health', 'Mix of clinical and academic work'],
-    cons: ['Low reimbursement', 'Often consult-only without primary patients', 'Frequent exposure to serious illness'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 5,
-    branches: [
-      { name: 'Clinical Infectious Diseases', description: 'Management of complex bacterial, viral, and fungal infections.', weight: 1.0, order: 1 },
-      { name: 'Infection Control & Hospital Epidemiology', description: 'Hospital-acquired infection prevention and outbreak management.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Hematology/Oncology', category: 'doctor',
-    description: 'Diagnosis and management of blood disorders and cancers — including chemotherapy, immunotherapy, and targeted therapy.',
-    icon: 'activity', order: 20, content_status: 'stub',
-    pros: ['Strong therapeutic advances', 'Deep patient relationships', 'Research opportunities'],
-    cons: ['Emotionally demanding (end-of-life care)', 'High patient volume with severe illness', 'Significant administrative burden'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Medical Oncology', description: 'Chemotherapy, immunotherapy, and targeted therapy for solid tumors.', weight: 1.0, order: 1 },
-      { name: 'Hematology', description: 'Management of benign and malignant blood disorders including leukemias and lymphomas.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Geriatric Medicine', category: 'doctor',
-    description: 'Specialized care for older adults — managing multiple chronic conditions, polypharmacy, and age-related syndromes.',
-    icon: 'heart', order: 21, content_status: 'stub',
-    pros: ['Growing need with aging population', 'Holistic patient-centered care', 'Good lifestyle options'],
-    cons: ['Lower reimbursement', 'Complex social and medical needs', 'Emotionally demanding (end-of-life)'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'Acute Geriatric Care', description: 'Inpatient management of acute illness in older adults.', weight: 1.0, order: 1 },
-      { name: 'Community Geriatrics', description: 'Outpatient and home-based care for aging populations.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: EMERGENCY, ANESTHESIA, CRITICAL CARE =====
-  {
-    name: 'Emergency Medicine', category: 'doctor',
-    description: 'Immediate evaluation and management of acute illness and injury across all ages.',
-    icon: 'ambulance', order: 22, content_status: 'stub',
-    pros: ['Varied and exciting cases', 'Shift work with predictable hours', 'Broad skill set'],
-    cons: ['High burnout rates', 'Irregular sleep schedule from shifts', 'Dealing with undifferentiated and sometimes violent patients'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'Trauma & Resuscitation', description: 'Management of major trauma, cardiac arrest, and critical emergencies.', weight: 1.0, order: 1 },
-      { name: 'Pediatric Emergency Medicine', description: 'Emergency care specifically for children.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Anesthesiology', category: 'doctor',
-    description: 'Perioperative care — anesthesia administration, pain management, and critical care support during surgery.',
-    icon: 'syringe', order: 23, content_status: 'stub',
-    pros: ['Procedural with good income', 'Manageable work hours', 'Low patient continuity burden'],
-    cons: ['Can be monotonous (monitoring)', 'High liability', 'Limited patient interaction'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'General Anesthesia', description: 'Operating room anesthesia for all major surgical specialties.', weight: 1.0, order: 1 },
-      { name: 'Pain Medicine', description: 'Interventional and medical management of acute and chronic pain.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Critical Care / Intensivist', category: 'doctor',
-    description: 'Management of critically ill patients in intensive care units — multiorgan failure, mechanical ventilation, and sepsis.',
-    icon: 'monitor', order: 24, content_status: 'stub',
-    pros: ['High-acuity, high-stakes medicine', 'Strong diagnostic and procedural skills', 'Close-knit ICU teams'],
-    cons: ['High burnout', '12-hour shifts with night work', 'Emotionally intense end-of-life decisions'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Medical ICU', description: 'Critical care for medical patients with sepsis, respiratory failure, and multiorgan dysfunction.', weight: 1.0, order: 1 },
-      { name: 'Surgical ICU', description: 'Post-operative critical care for complex surgical and trauma patients.', weight: 0.8, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: WOMEN'S & CHILDREN'S HEALTH =====
-  {
-    name: 'Obstetrics & Gynecology', category: 'doctor',
-    description: 'Care for women\'s reproductive health — pregnancy, childbirth, and disorders of the female reproductive system.',
-    icon: 'baby', order: 25, content_status: 'stub',
-    pros: ['Mix of medical and surgical care', 'Rewarding deliveries', 'Longitudinal relationships'],
-    cons: ['Unpredictable on-call for deliveries', 'High malpractice risk', 'Emotionally challenging losses'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Maternal-Fetal Medicine', description: 'High-risk pregnancy management and fetal interventions.', weight: 1.0, order: 1 },
-      { name: 'Gynecologic Oncology', description: 'Surgical and medical management of female reproductive cancers.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Pediatrics (General)', category: 'doctor',
-    description: 'Medical care for infants, children, and adolescents — from well-child visits to acute illness management.',
-    icon: 'baby', order: 26, content_status: 'stub',
-    pros: ['Rewarding patient population', 'Broad range of conditions', 'Preventive focus'],
-    cons: ['Lower income than adult specialties', 'Dealing with distraught parents', 'Emotionally draining (sick children)'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'General Pediatric Hospital Care', description: 'Inpatient management of acute pediatric conditions.', weight: 1.0, order: 1 },
-      { name: 'Ambulatory Pediatrics', description: 'Outpatient well-child care, immunizations, and developmental screening.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Neonatology', category: 'doctor',
-    description: 'Specialized care for newborn infants, particularly premature and critically ill neonates.',
-    icon: 'baby', order: 27, content_status: 'stub',
-    pros: ['Highly rewarding saving tiny patients', 'Cutting-edge intensive care', 'Close-knit team environment'],
-    cons: ['Emotionally intense', 'High-stakes decision-making', 'Can be devastating outcomes'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Extreme Prematurity', description: 'Care of extremely low birth weight and very preterm infants.', weight: 1.0, order: 1 },
-      { name: 'Neonatal Cardiology', description: 'Management of congenital heart disease in newborns.', weight: 0.6, order: 2 },
-    ],
-  },
-  {
-    name: 'Pediatric Cardiology', category: 'doctor',
-    description: 'Diagnosis and management of congenital and acquired heart disease in children.',
-    icon: 'heart-pulse', order: 28, content_status: 'stub',
-    pros: ['Fascinating physiology', 'Mix of noninvasive and interventional', 'Long-term patient relationships'],
-    cons: ['Very long training', 'Complex life-changing diagnoses', 'Small job market'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 6,
-    branches: [
-      { name: 'Pediatric Interventional Cardiology', description: 'Catheter-based interventions for congenital heart disease.', weight: 1.0, order: 1 },
-      { name: 'Pediatric Cardiac Imaging', description: 'Echocardiography, MRI, and CT for congenital heart disease.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: MENTAL HEALTH & NEURO =====
-  {
-    name: 'Psychiatry', category: 'doctor',
-    description: 'Diagnosis and treatment of mental health disorders — from depression and anxiety to severe psychotic illness.',
-    icon: 'brain', order: 29, content_status: 'stub',
-    pros: ['Good lifestyle', 'Fascinating patient stories', 'Growing demand and recognition'],
-    cons: ['Emotionally demanding', 'Can be physically unsafe in acute settings', 'Stigma from other medical colleagues'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'General Adult Psychiatry', description: 'Outpatient and inpatient management of adult mental health disorders.', weight: 1.0, order: 1 },
-      { name: 'Addiction Psychiatry', description: 'Management of substance use disorders and dual diagnosis.', weight: 0.6, order: 2 },
-    ],
-  },
-  {
-    name: 'Child & Adolescent Psychiatry', category: 'doctor',
-    description: 'Specialized mental health care for children, adolescents, and their families.',
-    icon: 'brain', order: 30, content_status: 'stub',
-    pros: ['Deep impact on young lives', 'Growing demand', 'Multidisciplinary teamwork'],
-    cons: ['Additional training years', 'Dealing with family dynamics', 'Emotionally draining cases'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 5,
-    branches: [
-      { name: 'Developmental Psychiatry', description: 'Management of autism, ADHD, and intellectual disability.', weight: 1.0, order: 1 },
-      { name: 'Adolescent Psychiatry', description: 'Mental health care for teenagers including eating disorders and mood disorders.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Neurology', category: 'doctor',
-    description: 'Diagnosis and management of disorders of the nervous system — brain, spinal cord, peripheral nerves, and muscles.',
-    icon: 'brain', order: 31, content_status: 'stub',
-    pros: ['Intellectually challenging diagnoses', 'Rapid therapeutic advances', 'Mix of acute and chronic care'],
-    cons: ['Limited procedural work', 'Large volume of chronic incurable conditions', 'Moderate income compared to procedural fields'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'Stroke & Neurocritical Care', description: 'Acute stroke management, thrombolysis, and neurological ICU care.', weight: 1.0, order: 1 },
-      { name: 'Epilepsy & Clinical Neurophysiology', description: 'Seizure management, EEG interpretation, and epilepsy surgery evaluation.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: DIAGNOSTIC / LAB-BASED =====
-  {
-    name: 'Radiology', category: 'doctor',
-    description: 'Medical imaging for diagnosis — X-ray, CT, MRI, ultrasound, and nuclear medicine.',
-    icon: 'scan', order: 32, content_status: 'stub',
-    pros: ['Good lifestyle and income', 'Technology-forward field', 'Essential to all clinical decision-making'],
-    cons: ['Limited patient contact', 'High screen-time fatigue', 'Remote reporting and competition from teleradiology'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'Interventional Radiology', description: 'Image-guided minimally invasive procedures (biopsies, drainages, embolizations).', weight: 1.0, order: 1 },
-      { name: 'Diagnostic Radiology', description: 'Interpretation of all imaging modalities across body systems.', weight: 0.9, order: 2 },
-    ],
-  },
-  {
-    name: 'Pathology', category: 'doctor',
-    description: 'Diagnosis of disease through laboratory analysis of tissue, blood, and body fluids.',
-    icon: 'microscope', order: 33, content_status: 'stub',
-    pros: ['Excellent lifestyle', 'Intellectually challenging', 'Low patient interaction (pro for some)'],
-    cons: ['No direct patient contact', 'Can be isolating', 'Lower income than clinical specialties'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Surgical Pathology', description: 'Microscopic diagnosis of surgical biopsy and resection specimens.', weight: 1.0, order: 1 },
-      { name: 'Clinical Pathology', description: 'Laboratory medicine including hematopathology, microbiology, and chemistry.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Clinical Laboratory Medicine', category: 'doctor',
-    description: 'Management and interpretation of clinical laboratory tests — from blood banks to molecular diagnostics.',
-    icon: 'flask', order: 34, content_status: 'stub',
-    pros: ['Behind-the-scenes impact', 'Mix of science and management', 'Regular hours'],
-    cons: ['No patient contact', 'Regulatory and administrative burden', 'Often underappreciated'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Clinical Chemistry & Immunology', description: 'Biochemical and immunological test interpretation and lab management.', weight: 1.0, order: 1 },
-      { name: 'Transfusion Medicine', description: 'Blood banking, donor management, and transfusion safety.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: PRIMARY CARE & COMMUNITY =====
-  {
-    name: 'Family Medicine', category: 'doctor',
-    description: 'Comprehensive primary care for patients of all ages — from newborns to the elderly, across all disease areas.',
-    icon: 'users', order: 35, content_status: 'stub',
-    pros: ['Broad scope and variety', 'Longitudinal relationships across generations', 'Good lifestyle options'],
-    cons: ['Lower income', 'High administrative burden', 'Often undervalued in hospital systems'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 3,
-    branches: [
-      { name: 'Community Family Medicine', description: 'Outpatient comprehensive care for families in community settings.', weight: 1.0, order: 1 },
-      { name: 'Sports & Exercise Medicine', description: 'Management of sports injuries and exercise-related health.', weight: 0.5, order: 2 },
-    ],
-  },
-  {
-    name: 'Community/Public Health Medicine', category: 'doctor',
-    description: 'Population-level health management — epidemiology, disease prevention, health promotion, and health policy.',
-    icon: 'globe', order: 36, content_status: 'stub',
-    pros: ['Wide population impact', 'Regular hours', 'Varied work (policy, research, field)'],
-    cons: ['Not direct patient care', 'Often government or NGO salaries', 'Slow to see results'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Epidemiology & Disease Surveillance', description: 'Tracking and controlling disease outbreaks and health trends.', weight: 1.0, order: 1 },
-      { name: 'Health Promotion & Policy', description: 'Designing and implementing public health programs and health policy.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Occupational Medicine', category: 'doctor',
-    description: 'Prevention and management of work-related injuries and illnesses, and workplace health and safety.',
-    icon: 'shield', order: 37, content_status: 'stub',
-    pros: ['Excellent lifestyle', 'Mix of clinical and preventive', 'Corporate sector opportunities'],
-    cons: ['Can be perceived as less exciting than acute fields', 'Limited procedures', 'May involve administrative work'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Workplace Health Management', description: 'Employee health assessments, fitness-for-work evaluations, and occupational hazard management.', weight: 1.0, order: 1 },
-      { name: 'Environmental Medicine', description: 'Health effects of environmental exposures and toxins.', weight: 0.5, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: DERMATOLOGY & OTHER LIFESTYLE-LEANING =====
-  {
-    name: 'Dermatology', category: 'doctor',
-    description: 'Diagnosis and treatment of skin, hair, and nail disorders — from acne to melanoma.',
-    icon: 'sparkles', order: 38, content_status: 'stub',
-    pros: ['Excellent lifestyle', 'High income', 'Mix of medical, surgical, and cosmetic work'],
-    cons: ['Extremely competitive training entry', 'High patient volume expectations', 'Monotonous case mix in some settings'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 4,
-    branches: [
-      { name: 'Medical Dermatology', description: 'Diagnosis and management of inflammatory skin disease, psoriasis, eczema, and skin infections.', weight: 1.0, order: 1 },
-      { name: 'Dermatologic Surgery', description: 'Surgical removal of skin cancers, reconstruction, and cosmetic procedures.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Physical Medicine & Rehabilitation', category: 'doctor',
-    description: 'Restoration of function and quality of life for patients with physical impairments from injury, illness, or congenital conditions.',
-    icon: 'activity', order: 39, content_status: 'stub',
-    pros: ['Meaningful functional improvements', 'Longitudinal patient relationships', 'Good lifestyle'],
-    cons: ['Low reimbursement', 'Limited procedures', 'Often underrecognized by other specialists'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Spinal Cord Injury Rehabilitation', description: 'Comprehensive rehabilitation for patients with spinal cord injuries.', weight: 1.0, order: 1 },
-      { name: 'Musculoskeletal Rehabilitation', description: 'Non-surgical management of musculoskeletal conditions and sports injuries.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Allergy & Immunology', category: 'doctor',
-    description: 'Diagnosis and management of allergic diseases, asthma, and immune system disorders.',
-    icon: 'shield', order: 40, content_status: 'stub',
-    pros: ['Good lifestyle', 'Mix of adult and pediatric patients', 'Satisfying improvement with treatment'],
-    cons: ['Long treatment course for immunotherapy', 'Can be repetitive case mix', 'Limited procedures'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 4,
-    branches: [
-      { name: 'Allergic Rhinitis & Asthma', description: 'Management of seasonal allergies, chronic rhinitis, and allergic asthma.', weight: 1.0, order: 1 },
-      { name: 'Immunodeficiency & Autoimmunity', description: 'Diagnosis and management of primary immunodeficiencies and autoimmune conditions.', weight: 0.6, order: 2 },
-    ],
-  },
-
-  // ===== DOCTOR: ADMINISTRATIVE / NON-CLINICAL =====
-  {
-    name: 'Quality Management & Patient Safety', category: 'doctor',
-    description: 'System-level improvement of healthcare quality, patient safety, and clinical outcomes.',
-    icon: 'shield', order: 41, content_status: 'stub',
-    pros: ['Systems-level impact', 'Growing field', 'Regular hours'],
-    cons: ['Non-clinical (not direct patient care)', 'Requires diplomacy and change management skills', 'Budget-dependent role'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 0,
-    branches: [
-      { name: 'Clinical Audit & Accreditation', description: 'Managing hospital accreditation, clinical standards, and quality indicators.', weight: 1.0, order: 1 },
-      { name: 'Patient Safety & Risk Management', description: 'Incident analysis, safety culture improvement, and medicolegal risk reduction.', weight: 0.9, order: 2 },
-    ],
-  },
-  {
-    name: 'Infection Control & Hospital Epidemiology', category: 'doctor',
-    description: 'Prevention and control of hospital-acquired infections and management of outbreaks.',
-    icon: 'shield', order: 42, content_status: 'stub',
-    pros: ['Critical public health impact', 'Mix of clinical and administrative', 'Growing importance post-pandemic'],
-    cons: ['Often consult-only without primary patients', 'Can be contentious with clinical teams', 'Frequently budget-constrained'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 0,
-    branches: [
-      { name: 'Antimicrobial Stewardship', description: 'Optimizing antibiotic use to reduce resistance and improve outcomes.', weight: 1.0, order: 1 },
-      { name: 'Outbreak Management', description: 'Investigation and control of hospital outbreaks of infectious diseases.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Health Informatics / Medical Informatics', category: 'doctor',
-    description: 'Application of information technology and data science to improve healthcare delivery and outcomes.',
-    icon: 'monitor', order: 43, content_status: 'stub',
-    pros: ['Technology-forward field', 'Growing demand', 'Flexible work arrangements'],
-    cons: ['Non-clinical', 'Requires technical skills alongside medical knowledge', 'Often misunderstood by clinical colleagues'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 0,
-    branches: [
-      { name: 'Clinical Decision Support', description: 'Designing and implementing CDS tools within electronic health records.', weight: 1.0, order: 1 },
-      { name: 'Health Data Analytics', description: 'Analysis of clinical data for quality improvement, research, and operational efficiency.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Medical Education / Academic Faculty', category: 'doctor',
-    description: 'Teaching and training the next generation of doctors — curriculum design, simulation, and assessment.',
-    icon: 'book', order: 44, content_status: 'stub',
-    pros: ['Shaping future physicians', 'Intellectually stimulating', 'Research opportunities'],
-    cons: ['Often lower clinical income', 'Administrative workload', 'Academic politics'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 0,
-    branches: [
-      { name: 'Undergraduate Medical Education', description: 'Teaching medical students in classroom, simulation, and clinical settings.', weight: 1.0, order: 1 },
-      { name: 'Postgraduate Training & Curriculum', description: 'Designing residency training programs, assessments, and faculty development.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Hospital Administration / Medical Directorship', category: 'doctor',
-    description: 'Leadership and management of healthcare organizations — from hospital departments to entire facilities.',
-    icon: 'building', order: 45, content_status: 'stub',
-    pros: ['Organizational impact', 'High income potential', 'Power to shape care delivery'],
-    cons: ['Non-clinical', 'High stress from competing priorities', 'Budget and staffing pressures'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 0,
-    branches: [
-      { name: 'Medical Directorship', description: 'Clinical leadership of a hospital department or division.', weight: 1.0, order: 1 },
-      { name: 'Healthcare Operations', description: 'Operational management of clinical services, patient flow, and resource allocation.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Public Health / Epidemiology (non-clinical)', category: 'doctor',
-    description: 'Population health research, disease surveillance, and health policy at regional, national, or global level.',
-    icon: 'globe', order: 46, content_status: 'stub',
-    pros: ['Broad population impact', 'Research and policy opportunities', 'Global career options'],
-    cons: ['Non-clinical', 'Often grant-funded or government positions', 'Slow policy cycles'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 0,
-    branches: [
-      { name: 'Epidemiology & Biostatistics', description: 'Study of disease patterns, causes, and statistical analysis of health data.', weight: 1.0, order: 1 },
-      { name: 'Health Policy & Management', description: 'Analysis and development of health policy, financing, and health system design.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Health Insurance / Medical Underwriting', category: 'doctor',
-    description: 'Medical assessment of insurance risk, claims review, and healthcare financing within insurance organizations.',
-    icon: 'file-text', order: 47, content_status: 'stub',
-    pros: ['Excellent income', 'Regular business hours', 'Low clinical stress'],
-    cons: ['Non-clinical', 'Office-based', 'May feel disconnected from patient care'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 0,
-    branches: [
-      { name: 'Medical Underwriting', description: 'Assessment of medical risk for insurance policy applicants.', weight: 1.0, order: 1 },
-      { name: 'Claims Medical Review', description: 'Review and adjudication of medical insurance claims.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Pharmaceutical / Clinical Research Medicine', category: 'doctor',
-    description: 'Medical oversight of clinical trials, drug development, and pharmacovigilance in the pharmaceutical industry.',
-    icon: 'flask', order: 48, content_status: 'stub',
-    pros: ['Excellent income', 'Research-driven', 'Global career opportunities'],
-    cons: ['Non-clinical', 'Corporate environment', 'Regulatory pressure and deadlines'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 0,
-    branches: [
-      { name: 'Clinical Development', description: 'Design and oversight of clinical trial programs for new drugs.', weight: 1.0, order: 1 },
-      { name: 'Pharmacovigilance & Drug Safety', description: 'Monitoring and reporting of adverse drug reactions and safety signals.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Forensic Medicine', category: 'doctor',
-    description: 'Application of medical knowledge to legal investigations — autopsy, injury interpretation, and medicolegal reporting.',
-    icon: 'search', order: 49, content_status: 'stub',
-    pros: ['Fascinating detective work', 'Regular hours', 'Low patient interaction'],
-    cons: ['Emotionally challenging (violent death)', 'Often isolated from clinical medicine', 'Limited job positions'],
-    market_demand_egypt: 'low', market_demand_abroad: 'low', training_duration_years: 4,
-    branches: [
-      { name: 'Clinical Forensic Medicine', description: 'Examination of living victims of assault, abuse, and medicolegal cases.', weight: 1.0, order: 1 },
-      { name: 'Forensic Pathology', description: 'Autopsy and determination of cause and manner of death.', weight: 0.9, order: 2 },
-    ],
-  },
-
-  // ===== NURSE: CRITICAL & ACUTE CARE =====
-  {
-    name: 'ICU / Critical Care Nursing',
-    category: 'nurse',
-    description: 'Specialized nursing care for critically ill patients.',
-    icon: 'monitor',
-    order: 1,
-    content_status: 'verified',
-    pros: ['High acuity learning', 'Close-knit teams', 'Advanced skills'],
-    cons: ['Emotionally draining', '12-hour shifts', 'High burnout rate'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high',
-    training_duration_years: 2,
-    branches: [
-      { name: 'Adult ICU', description: 'Critical care for adult patients.', weight: 1.0, order: 1 },
-      { name: 'Neonatal ICU', description: 'Critical care for newborn infants.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Emergency Room Nursing', category: 'nurse',
-    description: 'Nursing care for patients presenting with acute illness and injury in the emergency department.',
-    icon: 'ambulance', order: 2, content_status: 'stub',
-    pros: ['Fast-paced and varied', 'Broad skill development', 'Shift work'],
-    cons: ['High stress', 'Frequent exposure to trauma', 'Burnout risk'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Trauma Nursing', description: 'Care of major trauma patients in the resuscitation bay.', weight: 1.0, order: 1 },
-      { name: 'Emergency Triage & Fast Track', description: 'Rapid assessment and care for lower-acuity emergency patients.', weight: 0.6, order: 2 },
-    ],
-  },
-  {
-    name: 'Neonatal ICU Nursing', category: 'nurse',
-    description: 'Specialized nursing care for critically ill newborn infants, including premature and congenital anomaly cases.',
-    icon: 'baby', order: 3, content_status: 'stub',
-    pros: ['Highly skilled care', 'Deep bonds with families', 'Advanced neonatal monitoring'],
-    cons: ['Emotionally intense', 'High-stakes decisions', 'Devastating outcomes possible'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Extreme Prematurity Care', description: 'Nursing care for extremely low birth weight and micro-preemies.', weight: 1.0, order: 1 },
-      { name: 'Neonatal Surgical Nursing', description: 'Post-operative nursing care for neonates after congenital anomaly surgery.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Cardiac Care Nursing', category: 'nurse',
-    description: 'Nursing care for patients with heart disease — from acute coronary syndromes to heart failure management.',
-    icon: 'heart-pulse', order: 4, content_status: 'stub',
-    pros: ['Specialized cardiac skills', 'Telemetry and monitoring expertise', 'Structured protocols'],
-    cons: ['High patient acuity', 'Frequent rapid deterioration', 'Long shifts on your feet'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Coronary Care Unit (CCU)', description: 'Intensive nursing care for acute myocardial infarction and post-PCI patients.', weight: 1.0, order: 1 },
-      { name: 'Heart Failure Nursing', description: 'Management of chronic heart failure patients, including IV inotropes and transplant workup.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Flight/Transport Nursing', category: 'nurse',
-    description: 'Critical care nursing during air and ground medical transport of critically ill or injured patients.',
-    icon: 'plane', order: 5, content_status: 'stub',
-    pros: ['Excitement and variety', 'Autonomous practice', 'Advanced critical care skills'],
-    cons: ['Irregular schedule', 'Physical demands of transport environment', 'Limited job positions'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 3,
-    branches: [
-      { name: 'Helicopter EMS (HEMS)', description: 'Air medical transport and scene response for trauma and critical patients.', weight: 1.0, order: 1 },
-      { name: 'Fixed-Wing Transport', description: 'Long-distance inter-facility transport of critically ill patients.', weight: 0.6, order: 2 },
-    ],
-  },
-
-  // ===== NURSE: PERIOPERATIVE =====
-  {
-    name: 'OR / Surgical (Perioperative) Nursing', category: 'nurse',
-    description: 'Nursing care in the operating room — circulating, scrubbing, and assisting during surgical procedures.',
-    icon: 'scissors', order: 6, content_status: 'stub',
-    pros: ['Focused one-on-one patient care', 'Technical skill development', 'Team environment'],
-    cons: ['Long hours standing', 'Limited patient interaction (anesthetized)', 'On-call for emergencies'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Scrub Nursing', description: 'Sterile field management and instrument handling during surgery.', weight: 1.0, order: 1 },
-      { name: 'Circulating Nursing', description: 'Non-sterile OR coordination, patient positioning, and documentation.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Post-Anesthesia Care (PACU) Nursing', category: 'nurse',
-    description: 'Nursing care of patients recovering from anesthesia after surgical procedures.',
-    icon: 'monitor', order: 7, content_status: 'stub',
-    pros: ['One-on-one patient focus', 'Critical monitoring skills', 'Fast-paced recovery environment'],
-    cons: ['Rapid patient turnover', 'Managing emergence from anesthesia', 'Airway emergencies'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Adult PACU', description: 'Recovery care for adult post-surgical patients.', weight: 1.0, order: 1 },
-      { name: 'Pediatric PACU', description: 'Specialized recovery care for children after surgery.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== NURSE: WOMEN'S & CHILDREN'S =====
-  {
-    name: 'Pediatric Nursing',
-    category: 'nurse',
-    description: 'Nursing care for infants, children, and adolescents.',
-    icon: 'baby',
-    order: 8,
-    content_status: 'verified',
-    pros: ['Rewarding patient population', 'Family-centered care', 'Varied settings'],
-    cons: ['Emotionally challenging', 'Dealing with distraught parents', 'Lower pay than ICU'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high',
-    training_duration_years: 2,
-    branches: [
-      { name: 'General Pediatrics', description: 'General medical-surgical nursing for children.', weight: 1.0, order: 1 },
-      { name: 'Pediatric Oncology', description: 'Nursing care for children with cancer.', weight: 0.6, order: 2 },
-    ],
-  },
-  {
-    name: 'Pediatric Oncology Nursing', category: 'nurse',
-    description: 'Specialized nursing care for children undergoing cancer treatment — chemotherapy, supportive care, and long-term follow-up.',
-    icon: 'baby', order: 9, content_status: 'stub',
-    pros: ['Deep family bonds', 'Advanced oncology skills', 'Rewarding outcomes'],
-    cons: ['Emotionally devastating losses', 'Complex medication management', 'High burnout'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 2,
-    branches: [
-      { name: 'Pediatric Chemotherapy', description: 'Administration of chemotherapy and management of side effects in children.', weight: 1.0, order: 1 },
-      { name: 'Pediatric BMT/Stem Cell', description: 'Nursing care for children undergoing bone marrow and stem cell transplantation.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Labor & Delivery / Obstetric Nursing', category: 'nurse',
-    description: 'Nursing care during childbirth — labor support, delivery, and immediate postpartum care.',
-    icon: 'baby', order: 10, content_status: 'stub',
-    pros: ['Witnessing childbirth', 'Active and dynamic work', 'Strong patient relationships'],
-    cons: ['Unpredictable schedule', 'High liability', 'Emotional distress from losses'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Intrapartum Nursing', description: 'Labor management, fetal monitoring, and delivery room nursing.', weight: 1.0, order: 1 },
-      { name: 'Postpartum & Newborn Nursing', description: 'Mother-baby care after delivery, breastfeeding support, and newborn assessment.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Midwifery-track Nursing', category: 'nurse',
-    description: 'Advanced nursing practice focused on pregnancy, childbirth, postpartum, and women\'s reproductive health.',
-    icon: 'baby', order: 11, content_status: 'stub',
-    pros: ['Autonomous practice', 'Holistic care approach', 'Strong patient relationships'],
-    cons: ['Legal and regulatory variability', 'High liability', 'On-call for deliveries'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 3,
-    branches: [
-      { name: 'Community Midwifery', description: 'Prenatal, delivery, and postpartum care in community and home settings.', weight: 1.0, order: 1 },
-      { name: 'Hospital-Based Midwifery', description: 'Midwifery care within hospital labor and delivery units.', weight: 0.8, order: 2 },
-    ],
-  },
-
-  // ===== NURSE: MENTAL HEALTH =====
-  {
-    name: 'Psychiatric/Mental Health Nursing', category: 'nurse',
-    description: 'Nursing care for patients with mental health disorders — from acute psychiatric crises to long-term community support.',
-    icon: 'brain', order: 12, content_status: 'stub',
-    pros: ['Therapeutic relationship building', 'Growing demand', 'Varied settings (inpatient, community)'],
-    cons: ['Can be physically unsafe', 'Slow progress', 'Stigma within healthcare'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Acute Inpatient Psychiatry', description: 'Nursing care in locked psychiatric units for acute crisis stabilization.', weight: 1.0, order: 1 },
-      { name: 'Community Mental Health Nursing', description: 'Outreach and long-term support for patients in community settings.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== NURSE: COMMUNITY & CHRONIC CARE =====
-  {
-    name: 'Community/Public Health Nursing', category: 'nurse',
-    description: 'Population-focused nursing in community settings — health promotion, disease prevention, and school health.',
-    icon: 'globe', order: 13, content_status: 'stub',
-    pros: ['Regular hours', 'Preventive focus', 'Community impact'],
-    cons: ['Limited acute care skills', 'Often lower pay', 'Can be administratively heavy'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 2,
-    branches: [
-      { name: 'School Health Nursing', description: 'Health screening, immunization programs, and health education in schools.', weight: 1.0, order: 1 },
-      { name: 'Community Outreach & Home Visiting', description: 'Home visits for vulnerable populations, maternal-child health, and chronic disease support.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Home Health Nursing', category: 'nurse',
-    description: 'Skilled nursing care provided in patients\' homes — wound care, medication management, chronic disease monitoring.',
-    icon: 'home', order: 14, content_status: 'stub',
-    pros: ['Autonomous practice', 'One-on-one patient care', 'Flexible scheduling'],
-    cons: ['Travel between visits', 'Unpredictable home environments', 'Limited colleague support'],
-    market_demand_egypt: 'low', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Chronic Disease Home Management', description: 'Home-based management of diabetes, heart failure, and COPD.', weight: 1.0, order: 1 },
-      { name: 'Post-Surgical Home Care', description: 'Wound care, drain management, and recovery support after hospital discharge.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Geriatric/Long-Term Care Nursing', category: 'nurse',
-    description: 'Nursing care for older adults in long-term care facilities, nursing homes, and assisted living settings.',
-    icon: 'heart', order: 15, content_status: 'stub',
-    pros: ['Long-term relationships', 'Holistic care', 'Regular hours'],
-    cons: ['High patient dependency', 'Lower pay', 'Can be emotionally and physically demanding'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Skilled Nursing Facility Care', description: '24-hour nursing care for complex chronic conditions and post-hospital rehabilitation.', weight: 1.0, order: 1 },
-      { name: 'Dementia & Alzheimer\'s Care', description: 'Specialized nursing for patients with cognitive impairment and behavioral symptoms.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Rehabilitation Nursing', category: 'nurse',
-    description: 'Nursing care focused on restoring function and independence after stroke, injury, or surgery.',
-    icon: 'activity', order: 16, content_status: 'stub',
-    pros: ['Seeing functional improvements', 'Multidisciplinary teamwork', 'Longitudinal relationships'],
-    cons: ['Slow progress', 'Can be physically demanding', 'Emotional attachment to patients'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 2,
-    branches: [
-      { name: 'Stroke Rehabilitation Nursing', description: 'Post-stroke care focused on neurological recovery and functional independence.', weight: 1.0, order: 1 },
-      { name: 'Orthopedic Rehabilitation Nursing', description: 'Post-surgical rehabilitation for joint replacement and fracture recovery.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Oncology Nursing (adult)', category: 'nurse',
-    description: 'Nursing care for adult patients undergoing cancer treatment — chemotherapy, radiation, immunotherapy, and palliative support.',
-    icon: 'activity', order: 17, content_status: 'stub',
-    pros: ['Deep patient relationships', 'Advanced skills in chemotherapy and symptom management', 'Rewarding moments of survivorship'],
-    cons: ['Emotionally intense', 'Frequent exposure to death and dying', 'High burnout risk'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Medical Oncology Nursing', description: 'Administration of chemotherapy, immunotherapy, and management of treatment side effects.', weight: 1.0, order: 1 },
-      { name: 'Palliative & Supportive Care', description: 'Symptom management, pain control, and end-of-life support for cancer patients.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Dialysis/Nephrology Nursing', category: 'nurse',
-    description: 'Specialized nursing care for patients with end-stage renal disease requiring hemodialysis, peritoneal dialysis, or related therapies.',
-    icon: 'droplets', order: 18, content_status: 'stub',
-    pros: ['Technical skill development', 'Longitudinal patient relationships', 'Structured work environment'],
-    cons: ['Chronic patient population with frequent complications', 'May become repetitive', 'High patient dependency'],
-    market_demand_egypt: 'high', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Hemodialysis Nursing', description: 'In-center hemodialysis access, initiation, monitoring, and complication management.', weight: 1.0, order: 1 },
-      { name: 'Peritoneal Dialysis Nursing', description: 'Training and support for patients on home peritoneal dialysis.', weight: 0.6, order: 2 },
-    ],
-  },
-
-  // ===== NURSE: MANAGEMENT & EDUCATION =====
-  {
-    name: 'Nurse Management / Charge Nurse', category: 'nurse',
-    description: 'Leadership and operational management of nursing units — staffing, budgeting, quality improvement, and team coordination.',
-    icon: 'users', order: 19, content_status: 'stub',
-    pros: ['Leadership role', 'System-level impact', 'Higher pay scale'],
-    cons: ['Administrative burden', 'Staffing and conflict management', 'Less direct patient care'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 3,
-    branches: [
-      { name: 'Unit Management', description: 'Day-to-day operational management of a hospital nursing unit.', weight: 1.0, order: 1 },
-      { name: 'Nursing Administration', description: 'Hospital-wide nursing policy, staffing strategy, and quality oversight.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Nurse Education / Clinical Instructor', category: 'nurse',
-    description: 'Education and training of nursing students and practicing nurses — classroom instruction, simulation, and clinical preceptorship.',
-    icon: 'book', order: 20, content_status: 'stub',
-    pros: ['Shaping future nurses', 'Regular academic hours', 'Intellectually stimulating'],
-    cons: ['Lower clinical income', 'Academic bureaucracy', 'Limited patient contact'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'medium', training_duration_years: 3,
-    branches: [
-      { name: 'Clinical Instruction', description: 'Supervising nursing students during clinical rotations in hospital settings.', weight: 1.0, order: 1 },
-      { name: 'Simulation & Skills Lab', description: 'Teaching clinical skills and simulation-based nursing education.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Case Management / Care Coordination', category: 'nurse',
-    description: 'Coordination of patient care across the healthcare continuum — discharge planning, resource utilization, and care transitions.',
-    icon: 'file-text', order: 21, content_status: 'stub',
-    pros: ['Regular hours', 'Patient advocacy', 'Problem-solving role'],
-    cons: ['High administrative workload', 'Frequent phone calls and coordination', 'Can be stressful with complex cases'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 2,
-    branches: [
-      { name: 'Hospital Case Management', description: 'Discharge planning, utilization review, and care coordination for inpatients.', weight: 1.0, order: 1 },
-      { name: 'Community Care Coordination', description: 'Coordinating home health, outpatient services, and community resources for complex patients.', weight: 0.7, order: 2 },
-    ],
-  },
-
-  // ===== NURSE: ADMINISTRATIVE / NON-BEDSIDE =====
-  {
-    name: 'Infection Control Nursing', category: 'nurse',
-    description: 'Prevention and control of healthcare-associated infections — surveillance, isolation practices, and staff education.',
-    icon: 'shield', order: 22, content_status: 'stub',
-    pros: ['Critical role in patient safety', 'Regular hours', 'Growing importance'],
-    cons: ['Can be contentious enforcing compliance', 'Administrative heavy', 'Limited patient contact'],
-    market_demand_egypt: 'medium', market_demand_abroad: 'high', training_duration_years: 2,
-    branches: [
-      { name: 'Infection Surveillance', description: 'Monitoring and analysis of hospital infection rates and outbreak detection.', weight: 1.0, order: 1 },
-      { name: 'Isolation & Prevention Practices', description: 'Implementation of isolation protocols, hand hygiene programs, and PPE management.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Quality Management / Patient Safety Nursing', category: 'nurse',
-    description: 'System-level improvement of nursing care quality, safety protocols, and patient outcomes.',
-    icon: 'shield', order: 23, content_status: 'stub',
-    pros: ['System-level impact', 'Regular hours', 'Growing field'],
-    cons: ['Non-bedside', 'Data and metrics heavy', 'Requires change management skills'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 2,
-    branches: [
-      { name: 'Quality Improvement Nursing', description: 'Leading quality improvement projects, audits, and clinical standards development.', weight: 1.0, order: 1 },
-      { name: 'Patient Safety & Risk Management', description: 'Incident reporting, root cause analysis, and safety culture promotion.', weight: 0.8, order: 2 },
-    ],
-  },
-  {
-    name: 'Nursing Informatics', category: 'nurse',
-    description: 'Integration of nursing science with information technology — EHR optimization, clinical systems, and data analysis.',
-    icon: 'monitor', order: 24, content_status: 'stub',
-    pros: ['Technology-forward role', 'Flexible work', 'Growing demand'],
-    cons: ['Non-bedside', 'Requires technical skills', 'Bridging clinical and IT can be challenging'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 2,
-    branches: [
-      { name: 'Clinical Systems Management', description: 'Implementation, training, and optimization of electronic health record systems.', weight: 1.0, order: 1 },
-      { name: 'Nursing Data Analytics', description: 'Analysis of nursing-sensitive quality indicators and operational data.', weight: 0.7, order: 2 },
-    ],
-  },
-  {
-    name: 'Occupational Health Nursing', category: 'nurse',
-    description: 'Workplace health and safety — employee health assessments, injury prevention, and wellness programs.',
-    icon: 'shield', order: 25, content_status: 'stub',
-    pros: ['Excellent work hours', 'Mix of clinical and preventive', 'Low stress'],
-    cons: ['Can be routine', 'Limited acute care skills use', 'Corporate environment'],
-    market_demand_egypt: 'low', market_demand_abroad: 'medium', training_duration_years: 2,
-    branches: [
-      { name: 'Employee Health Services', description: 'Pre-employment screening, vaccination programs, and workplace injury management.', weight: 1.0, order: 1 },
-      { name: 'Wellness & Health Promotion', description: 'Designing and delivering workplace wellness programs and health education.', weight: 0.6, order: 2 },
-    ],
-  },
+    "name": "General Surgery",
+    "category": "doctor",
+    "description": "Surgical treatment of a wide range of diseases and injuries.",
+    "icon": "scissors",
+    "order": 1,
+    "content_status": "verified",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Hands-on procedural work",
+      "Broad scope",
+      "Clear outcomes"
+    ],
+    "cons": [
+      "Physically demanding",
+      "Long irregular hours",
+      "High complication stress"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Colorectal Surgery",
+        "description": "Surgery of the colon, rectum, and anus.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Hepatobiliary Surgery",
+        "description": "Surgery of the liver, gallbladder, and bile ducts.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Orthopedic Surgery",
+    "category": "doctor",
+    "description": "Surgical treatment of the musculoskeletal system — bones, joints, ligaments, tendons, and spine.",
+    "icon": "bone",
+    "order": 2,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "High earning potential",
+      "Satisfying structural outcomes",
+      "Advances in arthroscopy and joint replacement"
+    ],
+    "cons": [
+      "Physically demanding on surgeon",
+      "Long training",
+      "High malpractice risk"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Spine Surgery",
+        "description": "Surgical management of spinal disorders, deformities, and trauma.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Joint Replacement (Arthroplasty)",
+        "description": "Hip, knee, and shoulder replacement surgery.",
+        "weight": 0.9,
+        "order": 2
+      },
+      {
+        "name": "Sports Medicine & Arthroscopy",
+        "description": "Minimally invasive joint surgery and sports injury repair.",
+        "weight": 0.8,
+        "order": 3
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Neurosurgery",
+    "category": "doctor",
+    "description": "Surgical management of disorders affecting the brain, spinal cord, and peripheral nerves.",
+    "icon": "brain",
+    "order": 3,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Intellectually demanding and precise",
+      "Life-saving interventions",
+      "High prestige"
+    ],
+    "cons": [
+      "Extremely long training (7+ years)",
+      "High-stress, high-malpractice",
+      "Poor lifestyle with long hours"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 7,
+    "branches": [
+      {
+        "name": "Cranial Neurosurgery",
+        "description": "Brain tumor, aneurysm, and trauma surgery.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Spinal Neurosurgery",
+        "description": "Surgery of spinal cord, disc disease, and spinal tumors.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Cardiothoracic Surgery",
+    "category": "doctor",
+    "description": "Surgery of the heart, lungs, esophagus, and other thoracic organs.",
+    "icon": "heart",
+    "order": 4,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Highly complex and rewarding procedures",
+      "Strong income potential",
+      "Direct life-saving impact"
+    ],
+    "cons": [
+      "Very long training",
+      "High-stress operating environment",
+      "On-call burden"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 6,
+    "branches": [
+      {
+        "name": "Adult Cardiac Surgery",
+        "description": "Coronary bypass, valve repair/replacement, and aortic surgery.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Thoracic Surgery",
+        "description": "Lung resection, esophageal surgery, and chest wall procedures.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Vascular Surgery",
+    "category": "doctor",
+    "description": "Surgical and endovascular management of diseases of the arteries and veins.",
+    "icon": "activity",
+    "order": 5,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Mix of open and endovascular techniques",
+      "High demand with aging population",
+      "Satisfying outcomes"
+    ],
+    "cons": [
+      "High emergency on-call burden",
+      "Complex patients with multiple comorbidities",
+      "Medicolegal risk"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Aortic & Peripheral Arterial Surgery",
+        "description": "Open and endovascular repair of aortic aneurysms and peripheral arterial disease.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Venous & Lymphatic Surgery",
+        "description": "Management of varicose veins, DVT, and lymphedema.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Plastic & Reconstructive Surgery",
+    "category": "doctor",
+    "description": "Surgical restoration of form and function after trauma, cancer, or congenital defects.",
+    "icon": "sparkles",
+    "order": 6,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Creative and satisfying work",
+      "Mix of reconstructive and aesthetic",
+      "Strong income from aesthetics"
+    ],
+    "cons": [
+      "Long training",
+      "Competitive field",
+      "Patient expectations can be challenging"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Reconstructive Microsurgery",
+        "description": "Free flap reconstruction, hand surgery, and complex wound coverage.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Aesthetic (Cosmetic) Surgery",
+        "description": "Facelift, rhinoplasty, breast augmentation, and body contouring.",
+        "weight": 0.9,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pediatric Surgery",
+    "category": "doctor",
+    "description": "Surgical care for infants, children, and adolescents — from congenital anomalies to trauma.",
+    "icon": "baby",
+    "order": 7,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Highly rewarding patient population",
+      "Broad range of procedures",
+      "Family-centered impact"
+    ],
+    "cons": [
+      "Emotionally demanding",
+      "Complex congenital cases",
+      "High liability"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 6,
+    "branches": [
+      {
+        "name": "Neonatal Surgery",
+        "description": "Surgery for congenital anomalies in newborns.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pediatric Oncology Surgery",
+        "description": "Surgical management of childhood solid tumors.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "ENT (Otolaryngology)",
+    "category": "doctor",
+    "description": "Medical and surgical management of ear, nose, throat, head, and neck disorders.",
+    "icon": "ear",
+    "order": 8,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Mix of medical and surgical",
+      "Good lifestyle options",
+      "Broad patient population"
+    ],
+    "cons": [
+      "Moderate competition",
+      "Can be tedious office-based work",
+      "Slow-building surgical caseload"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Head & Neck Surgery",
+        "description": "Surgery for thyroid, parathyroid, and head/neck tumors.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Otology & Neurotology",
+        "description": "Surgery for hearing loss, ear infections, and skull base disorders.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Urology",
+    "category": "doctor",
+    "description": "Medical and surgical management of disorders of the urinary tract and male reproductive system.",
+    "icon": "droplets",
+    "order": 9,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Mix of open, endoscopic, and robotic surgery",
+      "Good income",
+      "Manageable lifestyle"
+    ],
+    "cons": [
+      "High competition for training",
+      "Significant on-call burden",
+      "Medicolegal risk"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Endourology & Stone Disease",
+        "description": "Minimally invasive management of kidney stones and ureteric disorders.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Urologic Oncology",
+        "description": "Surgical management of prostate, bladder, kidney, and testicular cancers.",
+        "weight": 0.9,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Ophthalmology",
+    "category": "doctor",
+    "description": "Medical and surgical care of the eye and visual system.",
+    "icon": "eye",
+    "order": 10,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCS (Surgery)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Excellent lifestyle",
+      "High income potential",
+      "Mix of clinic and surgery"
+    ],
+    "cons": [
+      "Very competitive entry",
+      "Microsurgery requires fine motor precision",
+      "Medicolegal risk"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Cataract & Refractive Surgery",
+        "description": "Cataract extraction, LASIK, and lens-based vision correction.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Retina & Vitreous Surgery",
+        "description": "Surgical management of retinal detachment, diabetic retinopathy, and macular degeneration.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Internal Medicine (General)",
+    "category": "doctor",
+    "description": "Diagnosis and non-surgical management of adult diseases — the foundation of adult medical care.",
+    "icon": "stethoscope",
+    "order": 11,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Canada — NAC/MCCQE",
+      "Australia — AMC"
+    ],
+    "pros": [
+      "Intellectually broad",
+      "Gateway to many subspecialties",
+      "Longitudinal patient relationships"
+    ],
+    "cons": [
+      "High patient volumes",
+      "Significant administrative burden",
+      "Lower income than procedural fields"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Hospital Medicine",
+        "description": "Inpatient management of complex medical patients.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Ambulatory General Medicine",
+        "description": "Outpatient primary care for adults.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Cardiology",
+    "category": "doctor",
+    "description": "Diagnosis and treatment of heart and blood vessel disorders.",
+    "icon": "heart-pulse",
+    "order": 12,
+    "content_status": "verified",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Canada — NAC/MCCQE",
+      "Australia — AMC"
+    ],
+    "pros": [
+      "High demand",
+      "Procedural work",
+      "Immediate impact on patients"
+    ],
+    "cons": [
+      "Long training (5+ years)",
+      "High stress",
+      "Frequent on-call shifts"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Interventional Cardiology",
+        "description": "Catheter-based procedures for heart disease.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Electrophysiology",
+        "description": "Heart rhythm disorders and pacemaker management.",
+        "weight": 0.8,
+        "order": 2
+      },
+      {
+        "name": "Heart Failure",
+        "description": "Management of advanced heart failure and transplant.",
+        "weight": 0.7,
+        "order": 3
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Interventional Cardiology",
+    "category": "doctor",
+    "description": "Catheter-based diagnosis and treatment of coronary, peripheral, and structural heart disease.",
+    "icon": "heart-pulse",
+    "order": 13,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "High-volume procedural work",
+      "Strong income",
+      "Direct and visible outcomes"
+    ],
+    "cons": [
+      "High radiation exposure",
+      "Significant on-call burden for STEMI",
+      "Long training pathway"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 6,
+    "branches": [
+      {
+        "name": "Coronary Interventions",
+        "description": "PCI, stenting, and atherectomy for coronary artery disease.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Structural Heart Interventions",
+        "description": "TAVR, MitraClip, and ASD/PFO closure.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Gastroenterology",
+    "category": "doctor",
+    "description": "Diagnosis and management of disorders of the digestive system — esophagus, stomach, intestines, liver, and pancreas.",
+    "icon": "stethoscope",
+    "order": 14,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Mix of cognitive and procedural work",
+      "High procedure volume",
+      "Good income"
+    ],
+    "cons": [
+      "High competition for training",
+      "Significant endoscopy volume",
+      "Requires patience for complex cases"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Therapeutic Endoscopy",
+        "description": "Advanced endoscopic procedures including ERCP and EUS.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Hepatology",
+        "description": "Management of liver disease, cirrhosis, and transplant hepatology.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Nephrology",
+    "category": "doctor",
+    "description": "Diagnosis and management of kidney diseases, electrolyte disorders, and hypertension.",
+    "icon": "droplets",
+    "order": 15,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Cognitively challenging",
+      "Longitudinal patient relationships",
+      "Mix of acute and chronic care"
+    ],
+    "cons": [
+      "High dialysis patient volume",
+      "Emotionally draining (ESRD patients)",
+      "Lower reimbursement than procedural fields"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Glomerular Disease & Hypertension",
+        "description": "Management of primary and secondary glomerular disorders.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Dialysis & Transplant Nephrology",
+        "description": "Management of ESRD, hemodialysis, and kidney transplant recipients.",
+        "weight": 0.9,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pulmonology",
+    "category": "doctor",
+    "description": "Diagnosis and management of diseases of the lungs and respiratory system.",
+    "icon": "lungs",
+    "order": 16,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Mix of clinic and procedures (bronchoscopy)",
+      "Acute and chronic patient mix",
+      "Growing field with COPD/asthma burden"
+    ],
+    "cons": [
+      "High inpatient burden",
+      "Palliative/end-of-life aspects",
+      "Significant on-call"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Interventional Pulmonology",
+        "description": "Advanced bronchoscopy, pleural procedures, and airway management.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Sleep Medicine",
+        "description": "Diagnosis and management of sleep-disordered breathing and insomnia.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Endocrinology",
+    "category": "doctor",
+    "description": "Diagnosis and management of hormonal and metabolic disorders — diabetes, thyroid, pituitary, adrenal, and bone health.",
+    "icon": "activity",
+    "order": 17,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Cognitive specialty with minimal emergencies",
+      "Longitudinal relationships",
+      "Good lifestyle"
+    ],
+    "cons": [
+      "Low procedural volume",
+      "Chronic disease management can be slow to show results",
+      "Lower reimbursement"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Diabetes & Metabolic Disorders",
+        "description": "Management of type 1 and type 2 diabetes, obesity, and lipid disorders.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Thyroid & Pituitary Disorders",
+        "description": "Management of thyroid dysfunction, pituitary tumors, and adrenal disorders.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Rheumatology",
+    "category": "doctor",
+    "description": "Diagnosis and management of autoimmune and inflammatory diseases affecting joints, muscles, and connective tissues.",
+    "icon": "activity",
+    "order": 18,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Cognitively challenging diagnostic puzzles",
+      "Longitudinal patient relationships",
+      "Good lifestyle"
+    ],
+    "cons": [
+      "Low reimbursement",
+      "Chronic incurable conditions",
+      "Significant administrative work for biologics"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Inflammatory Arthritis",
+        "description": "Management of rheumatoid arthritis, psoriatic arthritis, and spondyloarthritis.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Systemic Autoimmune Disease",
+        "description": "Management of SLE, scleroderma, vasculitis, and myositis.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Infectious Disease",
+    "category": "doctor",
+    "description": "Diagnosis and management of complex infections — from antibiotic stewardship to emerging pathogens.",
+    "icon": "shield",
+    "order": 19,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Fascinating diagnostic puzzles",
+      "Critical role in public health",
+      "Mix of clinical and academic work"
+    ],
+    "cons": [
+      "Low reimbursement",
+      "Often consult-only without primary patients",
+      "Frequent exposure to serious illness"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Clinical Infectious Diseases",
+        "description": "Management of complex bacterial, viral, and fungal infections.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Infection Control & Hospital Epidemiology",
+        "description": "Hospital-acquired infection prevention and outbreak management.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Hematology/Oncology",
+    "category": "doctor",
+    "description": "Diagnosis and management of blood disorders and cancers — including chemotherapy, immunotherapy, and targeted therapy.",
+    "icon": "activity",
+    "order": 20,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Strong therapeutic advances",
+      "Deep patient relationships",
+      "Research opportunities"
+    ],
+    "cons": [
+      "Emotionally demanding (end-of-life care)",
+      "High patient volume with severe illness",
+      "Significant administrative burden"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Medical Oncology",
+        "description": "Chemotherapy, immunotherapy, and targeted therapy for solid tumors.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Hematology",
+        "description": "Management of benign and malignant blood disorders including leukemias and lymphomas.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Geriatric Medicine",
+    "category": "doctor",
+    "description": "Specialized care for older adults — managing multiple chronic conditions, polypharmacy, and age-related syndromes.",
+    "icon": "heart",
+    "order": 21,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Growing need with aging population",
+      "Holistic patient-centered care",
+      "Good lifestyle options"
+    ],
+    "cons": [
+      "Lower reimbursement",
+      "Complex social and medical needs",
+      "Emotionally demanding (end-of-life)"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Acute Geriatric Care",
+        "description": "Inpatient management of acute illness in older adults.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Community Geriatrics",
+        "description": "Outpatient and home-based care for aging populations.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "low",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Emergency Medicine",
+    "category": "doctor",
+    "description": "Immediate evaluation and management of acute illness and injury across all ages.",
+    "icon": "ambulance",
+    "order": 22,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Canada — NAC/MCCQE",
+      "Australia — AMC"
+    ],
+    "pros": [
+      "Varied and exciting cases",
+      "Shift work with predictable hours",
+      "Broad skill set"
+    ],
+    "cons": [
+      "High burnout rates",
+      "Irregular sleep schedule from shifts",
+      "Dealing with undifferentiated and sometimes violent patients"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Trauma & Resuscitation",
+        "description": "Management of major trauma, cardiac arrest, and critical emergencies.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pediatric Emergency Medicine",
+        "description": "Emergency care specifically for children.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Anesthesiology",
+    "category": "doctor",
+    "description": "Perioperative care — anesthesia administration, pain management, and critical care support during surgery.",
+    "icon": "syringe",
+    "order": 23,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — FRCA (Anaesthetics)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Procedural with good income",
+      "Manageable work hours",
+      "Low patient continuity burden"
+    ],
+    "cons": [
+      "Can be monotonous (monitoring)",
+      "High liability",
+      "Limited patient interaction"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "General Anesthesia",
+        "description": "Operating room anesthesia for all major surgical specialties.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pain Medicine",
+        "description": "Interventional and medical management of acute and chronic pain.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Critical Care / Intensivist",
+    "category": "doctor",
+    "description": "Management of critically ill patients in intensive care units — multiorgan failure, mechanical ventilation, and sepsis.",
+    "icon": "monitor",
+    "order": 24,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "High-acuity, high-stakes medicine",
+      "Strong diagnostic and procedural skills",
+      "Close-knit ICU teams"
+    ],
+    "cons": [
+      "High burnout",
+      "12-hour shifts with night work",
+      "Emotionally intense end-of-life decisions"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Medical ICU",
+        "description": "Critical care for medical patients with sepsis, respiratory failure, and multiorgan dysfunction.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Surgical ICU",
+        "description": "Post-operative critical care for complex surgical and trauma patients.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Obstetrics & Gynecology",
+    "category": "doctor",
+    "description": "Care for women's reproductive health — pregnancy, childbirth, and disorders of the female reproductive system.",
+    "icon": "baby",
+    "order": 25,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCOG (Obstetrics & Gynaecology)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Mix of medical and surgical care",
+      "Rewarding deliveries",
+      "Longitudinal relationships"
+    ],
+    "cons": [
+      "Unpredictable on-call for deliveries",
+      "High malpractice risk",
+      "Emotionally challenging losses"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Maternal-Fetal Medicine",
+        "description": "High-risk pregnancy management and fetal interventions.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Gynecologic Oncology",
+        "description": "Surgical and medical management of female reproductive cancers.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pediatrics (General)",
+    "category": "doctor",
+    "description": "Medical care for infants, children, and adolescents — from well-child visits to acute illness management.",
+    "icon": "baby",
+    "order": 26,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCPCH (Paediatrics)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Rewarding patient population",
+      "Broad range of conditions",
+      "Preventive focus"
+    ],
+    "cons": [
+      "Lower income than adult specialties",
+      "Dealing with distraught parents",
+      "Emotionally draining (sick children)"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "General Pediatric Hospital Care",
+        "description": "Inpatient management of acute pediatric conditions.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Ambulatory Pediatrics",
+        "description": "Outpatient well-child care, immunizations, and developmental screening.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Neonatology",
+    "category": "doctor",
+    "description": "Specialized care for newborn infants, particularly premature and critically ill neonates.",
+    "icon": "baby",
+    "order": 27,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCPCH (Paediatrics)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Highly rewarding saving tiny patients",
+      "Cutting-edge intensive care",
+      "Close-knit team environment"
+    ],
+    "cons": [
+      "Emotionally intense",
+      "High-stakes decision-making",
+      "Can be devastating outcomes"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Extreme Prematurity",
+        "description": "Care of extremely low birth weight and very preterm infants.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Neonatal Cardiology",
+        "description": "Management of congenital heart disease in newborns.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pediatric Cardiology",
+    "category": "doctor",
+    "description": "Diagnosis and management of congenital and acquired heart disease in children.",
+    "icon": "heart-pulse",
+    "order": 28,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCPCH (Paediatrics)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Fascinating physiology",
+      "Mix of noninvasive and interventional",
+      "Long-term patient relationships"
+    ],
+    "cons": [
+      "Very long training",
+      "Complex life-changing diagnoses",
+      "Small job market"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 6,
+    "branches": [
+      {
+        "name": "Pediatric Interventional Cardiology",
+        "description": "Catheter-based interventions for congenital heart disease.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pediatric Cardiac Imaging",
+        "description": "Echocardiography, MRI, and CT for congenital heart disease.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Psychiatry",
+    "category": "doctor",
+    "description": "Diagnosis and treatment of mental health disorders — from depression and anxiety to severe psychotic illness.",
+    "icon": "brain",
+    "order": 29,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCPsych (Psychiatry)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Good lifestyle",
+      "Fascinating patient stories",
+      "Growing demand and recognition"
+    ],
+    "cons": [
+      "Emotionally demanding",
+      "Can be physically unsafe in acute settings",
+      "Stigma from other medical colleagues"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "General Adult Psychiatry",
+        "description": "Outpatient and inpatient management of adult mental health disorders.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Addiction Psychiatry",
+        "description": "Management of substance use disorders and dual diagnosis.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "low",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Child & Adolescent Psychiatry",
+    "category": "doctor",
+    "description": "Specialized mental health care for children, adolescents, and their families.",
+    "icon": "brain",
+    "order": 30,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCPsych (Psychiatry)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Deep impact on young lives",
+      "Growing demand",
+      "Multidisciplinary teamwork"
+    ],
+    "cons": [
+      "Additional training years",
+      "Dealing with family dynamics",
+      "Emotionally draining cases"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 5,
+    "branches": [
+      {
+        "name": "Developmental Psychiatry",
+        "description": "Management of autism, ADHD, and intellectual disability.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Adolescent Psychiatry",
+        "description": "Mental health care for teenagers including eating disorders and mood disorders.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Neurology",
+    "category": "doctor",
+    "description": "Diagnosis and management of disorders of the nervous system — brain, spinal cord, peripheral nerves, and muscles.",
+    "icon": "brain",
+    "order": 31,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Intellectually challenging diagnoses",
+      "Rapid therapeutic advances",
+      "Mix of acute and chronic care"
+    ],
+    "cons": [
+      "Limited procedural work",
+      "Large volume of chronic incurable conditions",
+      "Moderate income compared to procedural fields"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Stroke & Neurocritical Care",
+        "description": "Acute stroke management, thrombolysis, and neurological ICU care.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Epilepsy & Clinical Neurophysiology",
+        "description": "Seizure management, EEG interpretation, and epilepsy surgery evaluation.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Radiology",
+    "category": "doctor",
+    "description": "Medical imaging for diagnosis — X-ray, CT, MRI, ultrasound, and nuclear medicine.",
+    "icon": "scan",
+    "order": 32,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — FRCR (Radiology)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Good lifestyle and income",
+      "Technology-forward field",
+      "Essential to all clinical decision-making"
+    ],
+    "cons": [
+      "Limited patient contact",
+      "High screen-time fatigue",
+      "Remote reporting and competition from teleradiology"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Interventional Radiology",
+        "description": "Image-guided minimally invasive procedures (biopsies, drainages, embolizations).",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Diagnostic Radiology",
+        "description": "Interpretation of all imaging modalities across body systems.",
+        "weight": 0.9,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pathology",
+    "category": "doctor",
+    "description": "Diagnosis of disease through laboratory analysis of tissue, blood, and body fluids.",
+    "icon": "microscope",
+    "order": 33,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCPath (Pathology)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Excellent lifestyle",
+      "Intellectually challenging",
+      "Low patient interaction (pro for some)"
+    ],
+    "cons": [
+      "No direct patient contact",
+      "Can be isolating",
+      "Lower income than clinical specialties"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Surgical Pathology",
+        "description": "Microscopic diagnosis of surgical biopsy and resection specimens.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Clinical Pathology",
+        "description": "Laboratory medicine including hematopathology, microbiology, and chemistry.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "low",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Clinical Laboratory Medicine",
+    "category": "doctor",
+    "description": "Management and interpretation of clinical laboratory tests — from blood banks to molecular diagnostics.",
+    "icon": "flask",
+    "order": 34,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCPath (Pathology)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Behind-the-scenes impact",
+      "Mix of science and management",
+      "Regular hours"
+    ],
+    "cons": [
+      "No patient contact",
+      "Regulatory and administrative burden",
+      "Often underappreciated"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Clinical Chemistry & Immunology",
+        "description": "Biochemical and immunological test interpretation and lab management.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Transfusion Medicine",
+        "description": "Blood banking, donor management, and transfusion safety.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Family Medicine",
+    "category": "doctor",
+    "description": "Comprehensive primary care for patients of all ages — from newborns to the elderly, across all disease areas.",
+    "icon": "users",
+    "order": 35,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCGP (General Practice)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Broad scope and variety",
+      "Longitudinal relationships across generations",
+      "Good lifestyle options"
+    ],
+    "cons": [
+      "Lower income",
+      "High administrative burden",
+      "Often undervalued in hospital systems"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 3,
+    "branches": [
+      {
+        "name": "Community Family Medicine",
+        "description": "Outpatient comprehensive care for families in community settings.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Sports & Exercise Medicine",
+        "description": "Management of sports injuries and exercise-related health.",
+        "weight": 0.5,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "low",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Community/Public Health Medicine",
+    "category": "doctor",
+    "description": "Population-level health management — epidemiology, disease prevention, health promotion, and health policy.",
+    "icon": "globe",
+    "order": 36,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MFPH (Public Health)",
+      "International Organization Track (WHO/UN)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Wide population impact",
+      "Regular hours",
+      "Varied work (policy, research, field)"
+    ],
+    "cons": [
+      "Not direct patient care",
+      "Often government or NGO salaries",
+      "Slow to see results"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Epidemiology & Disease Surveillance",
+        "description": "Tracking and controlling disease outbreaks and health trends.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Health Promotion & Policy",
+        "description": "Designing and implementing public health programs and health policy.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Occupational Medicine",
+    "category": "doctor",
+    "description": "Prevention and management of work-related injuries and illnesses, and workplace health and safety.",
+    "icon": "shield",
+    "order": 37,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Excellent lifestyle",
+      "Mix of clinical and preventive",
+      "Corporate sector opportunities"
+    ],
+    "cons": [
+      "Can be perceived as less exciting than acute fields",
+      "Limited procedures",
+      "May involve administrative work"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Workplace Health Management",
+        "description": "Employee health assessments, fitness-for-work evaluations, and occupational hazard management.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Environmental Medicine",
+        "description": "Health effects of environmental exposures and toxins.",
+        "weight": 0.5,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Dermatology",
+    "category": "doctor",
+    "description": "Diagnosis and treatment of skin, hair, and nail disorders — from acne to melanoma.",
+    "icon": "sparkles",
+    "order": 38,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Excellent lifestyle",
+      "High income",
+      "Mix of medical, surgical, and cosmetic work"
+    ],
+    "cons": [
+      "Extremely competitive training entry",
+      "High patient volume expectations",
+      "Monotonous case mix in some settings"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Medical Dermatology",
+        "description": "Diagnosis and management of inflammatory skin disease, psoriasis, eczema, and skin infections.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Dermatologic Surgery",
+        "description": "Surgical removal of skin cancers, reconstruction, and cosmetic procedures.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Physical Medicine & Rehabilitation",
+    "category": "doctor",
+    "description": "Restoration of function and quality of life for patients with physical impairments from injury, illness, or congenital conditions.",
+    "icon": "activity",
+    "order": 39,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Meaningful functional improvements",
+      "Longitudinal patient relationships",
+      "Good lifestyle"
+    ],
+    "cons": [
+      "Low reimbursement",
+      "Limited procedures",
+      "Often underrecognized by other specialists"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Spinal Cord Injury Rehabilitation",
+        "description": "Comprehensive rehabilitation for patients with spinal cord injuries.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Musculoskeletal Rehabilitation",
+        "description": "Non-surgical management of musculoskeletal conditions and sports injuries.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "low",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Allergy & Immunology",
+    "category": "doctor",
+    "description": "Diagnosis and management of allergic diseases, asthma, and immune system disorders.",
+    "icon": "shield",
+    "order": 40,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — MRCP (Internal Medicine)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "UAE — DHA (Dubai)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Good lifestyle",
+      "Mix of adult and pediatric patients",
+      "Satisfying improvement with treatment"
+    ],
+    "cons": [
+      "Long treatment course for immunotherapy",
+      "Can be repetitive case mix",
+      "Limited procedures"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Allergic Rhinitis & Asthma",
+        "description": "Management of seasonal allergies, chronic rhinitis, and allergic asthma.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Immunodeficiency & Autoimmunity",
+        "description": "Diagnosis and management of primary immunodeficiencies and autoimmune conditions.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Quality Management & Patient Safety",
+    "category": "doctor",
+    "description": "System-level improvement of healthcare quality, patient safety, and clinical outcomes.",
+    "icon": "shield",
+    "order": 41,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "International Organization Track (WHO/UN)"
+    ],
+    "pros": [
+      "Systems-level impact",
+      "Growing field",
+      "Regular hours"
+    ],
+    "cons": [
+      "Non-clinical (not direct patient care)",
+      "Requires diplomacy and change management skills",
+      "Budget-dependent role"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Clinical Audit & Accreditation",
+        "description": "Managing hospital accreditation, clinical standards, and quality indicators.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Patient Safety & Risk Management",
+        "description": "Incident analysis, safety culture improvement, and medicolegal risk reduction.",
+        "weight": 0.9,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Infection Control & Hospital Epidemiology",
+    "category": "doctor",
+    "description": "Prevention and control of hospital-acquired infections and management of outbreaks.",
+    "icon": "shield",
+    "order": 42,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — PLAB",
+      "Saudi Arabia — Prometric/SCFHS",
+      "USA — USMLE",
+      "Germany — Approbation"
+    ],
+    "pros": [
+      "Critical public health impact",
+      "Mix of clinical and administrative",
+      "Growing importance post-pandemic"
+    ],
+    "cons": [
+      "Often consult-only without primary patients",
+      "Can be contentious with clinical teams",
+      "Frequently budget-constrained"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Antimicrobial Stewardship",
+        "description": "Optimizing antibiotic use to reduce resistance and improve outcomes.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Outbreak Management",
+        "description": "Investigation and control of hospital outbreaks of infectious diseases.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Health Informatics / Medical Informatics",
+    "category": "doctor",
+    "description": "Application of information technology and data science to improve healthcare delivery and outcomes.",
+    "icon": "monitor",
+    "order": 43,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Health Informatics Track (Non-Clinical)"
+    ],
+    "pros": [
+      "Technology-forward field",
+      "Growing demand",
+      "Flexible work arrangements"
+    ],
+    "cons": [
+      "Non-clinical",
+      "Requires technical skills alongside medical knowledge",
+      "Often misunderstood by clinical colleagues"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Clinical Decision Support",
+        "description": "Designing and implementing CDS tools within electronic health records.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Health Data Analytics",
+        "description": "Analysis of clinical data for quality improvement, research, and operational efficiency.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Medical Education / Academic Faculty",
+    "category": "doctor",
+    "description": "Teaching and training the next generation of doctors — curriculum design, simulation, and assessment.",
+    "icon": "book",
+    "order": 44,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Medical Education Track (Non-Clinical)"
+    ],
+    "pros": [
+      "Shaping future physicians",
+      "Intellectually stimulating",
+      "Research opportunities"
+    ],
+    "cons": [
+      "Often lower clinical income",
+      "Administrative workload",
+      "Academic politics"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Undergraduate Medical Education",
+        "description": "Teaching medical students in classroom, simulation, and clinical settings.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Postgraduate Training & Curriculum",
+        "description": "Designing residency training programs, assessments, and faculty development.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Hospital Administration / Medical Directorship",
+    "category": "doctor",
+    "description": "Leadership and management of healthcare organizations — from hospital departments to entire facilities.",
+    "icon": "building",
+    "order": 45,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Hospital Administration Track (Non-Clinical)"
+    ],
+    "pros": [
+      "Organizational impact",
+      "High income potential",
+      "Power to shape care delivery"
+    ],
+    "cons": [
+      "Non-clinical",
+      "High stress from competing priorities",
+      "Budget and staffing pressures"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Medical Directorship",
+        "description": "Clinical leadership of a hospital department or division.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Healthcare Operations",
+        "description": "Operational management of clinical services, patient flow, and resource allocation.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Public Health / Epidemiology (non-clinical)",
+    "category": "doctor",
+    "description": "Population health research, disease surveillance, and health policy at regional, national, or global level.",
+    "icon": "globe",
+    "order": 46,
+    "content_status": "stub",
+    "recommended_paths": [
+      "International Organization Track (WHO/UN)",
+      "UK — MFPH (Public Health)",
+      "USA — USMLE",
+      "Germany — Approbation",
+      "Public Health Track (Non-Clinical)"
+    ],
+    "pros": [
+      "Broad population impact",
+      "Research and policy opportunities",
+      "Global career options"
+    ],
+    "cons": [
+      "Non-clinical",
+      "Often grant-funded or government positions",
+      "Slow policy cycles"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Epidemiology & Biostatistics",
+        "description": "Study of disease patterns, causes, and statistical analysis of health data.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Health Policy & Management",
+        "description": "Analysis and development of health policy, financing, and health system design.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Health Insurance / Medical Underwriting",
+    "category": "doctor",
+    "description": "Medical assessment of insurance risk, claims review, and healthcare financing within insurance organizations.",
+    "icon": "file-text",
+    "order": 47,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Health Insurance Track (Non-Clinical)"
+    ],
+    "pros": [
+      "Excellent income",
+      "Regular business hours",
+      "Low clinical stress"
+    ],
+    "cons": [
+      "Non-clinical",
+      "Office-based",
+      "May feel disconnected from patient care"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Medical Underwriting",
+        "description": "Assessment of medical risk for insurance policy applicants.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Claims Medical Review",
+        "description": "Review and adjudication of medical insurance claims.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pharmaceutical / Clinical Research Medicine",
+    "category": "doctor",
+    "description": "Medical oversight of clinical trials, drug development, and pharmacovigilance in the pharmaceutical industry.",
+    "icon": "flask",
+    "order": 48,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "USA — USMLE",
+      "UK — PLAB",
+      "Germany — Approbation",
+      "Pharmaceutical Medicine Track (Non-Clinical)"
+    ],
+    "pros": [
+      "Excellent income",
+      "Research-driven",
+      "Global career opportunities"
+    ],
+    "cons": [
+      "Non-clinical",
+      "Corporate environment",
+      "Regulatory pressure and deadlines"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 0,
+    "branches": [
+      {
+        "name": "Clinical Development",
+        "description": "Design and oversight of clinical trial programs for new drugs.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pharmacovigilance & Drug Safety",
+        "description": "Monitoring and reporting of adverse drug reactions and safety signals.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Forensic Medicine",
+    "category": "doctor",
+    "description": "Application of medical knowledge to legal investigations — autopsy, injury interpretation, and medicolegal reporting.",
+    "icon": "search",
+    "order": 49,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Stay-Egypt (Egyptian Fellowship — MOH Board)",
+      "UK — Diploma in Medical Jurisprudence (DMJ)",
+      "Saudi Arabia — Prometric/SCFHS",
+      "Germany — Approbation",
+      "Forensic Medicine Track (Non-Clinical)"
+    ],
+    "pros": [
+      "Fascinating detective work",
+      "Regular hours",
+      "Low patient interaction"
+    ],
+    "cons": [
+      "Emotionally challenging (violent death)",
+      "Often isolated from clinical medicine",
+      "Limited job positions"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "low",
+    "training_duration_years": 4,
+    "branches": [
+      {
+        "name": "Clinical Forensic Medicine",
+        "description": "Examination of living victims of assault, abuse, and medicolegal cases.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Forensic Pathology",
+        "description": "Autopsy and determination of cause and manner of death.",
+        "weight": 0.9,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "GMC registration via PLAB or Royal College exams",
+      "USA": "USMLE + ACGME residency",
+      "Germany": "Approbation + Facharzt training",
+      "UAE": "DHA/DoH/MOHAP licensing exam",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "ICU / Critical Care Nursing",
+    "category": "nurse",
+    "description": "Specialized nursing care for critically ill patients.",
+    "icon": "monitor",
+    "order": 1,
+    "content_status": "verified",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "High acuity learning",
+      "Close-knit teams",
+      "Advanced skills"
+    ],
+    "cons": [
+      "Emotionally draining",
+      "12-hour shifts",
+      "High burnout rate"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Adult ICU",
+        "description": "Critical care for adult patients.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Neonatal ICU",
+        "description": "Critical care for newborn infants.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "high",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Emergency Room Nursing",
+    "category": "nurse",
+    "description": "Nursing care for patients presenting with acute illness and injury in the emergency department.",
+    "icon": "ambulance",
+    "order": 2,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Fast-paced and varied",
+      "Broad skill development",
+      "Shift work"
+    ],
+    "cons": [
+      "High stress",
+      "Frequent exposure to trauma",
+      "Burnout risk"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Trauma Nursing",
+        "description": "Care of major trauma patients in the resuscitation bay.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Emergency Triage & Fast Track",
+        "description": "Rapid assessment and care for lower-acuity emergency patients.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Neonatal ICU Nursing",
+    "category": "nurse",
+    "description": "Specialized nursing care for critically ill newborn infants, including premature and congenital anomaly cases.",
+    "icon": "baby",
+    "order": 3,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Highly skilled care",
+      "Deep bonds with families",
+      "Advanced neonatal monitoring"
+    ],
+    "cons": [
+      "Emotionally intense",
+      "High-stakes decisions",
+      "Devastating outcomes possible"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Extreme Prematurity Care",
+        "description": "Nursing care for extremely low birth weight and micro-preemies.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Neonatal Surgical Nursing",
+        "description": "Post-operative nursing care for neonates after congenital anomaly surgery.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Cardiac Care Nursing",
+    "category": "nurse",
+    "description": "Nursing care for patients with heart disease — from acute coronary syndromes to heart failure management.",
+    "icon": "heart-pulse",
+    "order": 4,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Specialized cardiac skills",
+      "Telemetry and monitoring expertise",
+      "Structured protocols"
+    ],
+    "cons": [
+      "High patient acuity",
+      "Frequent rapid deterioration",
+      "Long shifts on your feet"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Coronary Care Unit (CCU)",
+        "description": "Intensive nursing care for acute myocardial infarction and post-PCI patients.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Heart Failure Nursing",
+        "description": "Management of chronic heart failure patients, including IV inotropes and transplant workup.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Flight/Transport Nursing",
+    "category": "nurse",
+    "description": "Critical care nursing during air and ground medical transport of critically ill or injured patients.",
+    "icon": "plane",
+    "order": 5,
+    "content_status": "stub",
+    "recommended_paths": [
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Australia — AHPRA (Nurse)",
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)"
+    ],
+    "pros": [
+      "Excitement and variety",
+      "Autonomous practice",
+      "Advanced critical care skills"
+    ],
+    "cons": [
+      "Irregular schedule",
+      "Physical demands of transport environment",
+      "Limited job positions"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 3,
+    "branches": [
+      {
+        "name": "Helicopter EMS (HEMS)",
+        "description": "Air medical transport and scene response for trauma and critical patients.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Fixed-Wing Transport",
+        "description": "Long-distance inter-facility transport of critically ill patients.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "OR / Surgical (Perioperative) Nursing",
+    "category": "nurse",
+    "description": "Nursing care in the operating room — circulating, scrubbing, and assisting during surgical procedures.",
+    "icon": "scissors",
+    "order": 6,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Focused one-on-one patient care",
+      "Technical skill development",
+      "Team environment"
+    ],
+    "cons": [
+      "Long hours standing",
+      "Limited patient interaction (anesthetized)",
+      "On-call for emergencies"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Scrub Nursing",
+        "description": "Sterile field management and instrument handling during surgery.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Circulating Nursing",
+        "description": "Non-sterile OR coordination, patient positioning, and documentation.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Post-Anesthesia Care (PACU) Nursing",
+    "category": "nurse",
+    "description": "Nursing care of patients recovering from anesthesia after surgical procedures.",
+    "icon": "monitor",
+    "order": 7,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "One-on-one patient focus",
+      "Critical monitoring skills",
+      "Fast-paced recovery environment"
+    ],
+    "cons": [
+      "Rapid patient turnover",
+      "Managing emergence from anesthesia",
+      "Airway emergencies"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Adult PACU",
+        "description": "Recovery care for adult post-surgical patients.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pediatric PACU",
+        "description": "Specialized recovery care for children after surgery.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pediatric Nursing",
+    "category": "nurse",
+    "description": "Nursing care for infants, children, and adolescents.",
+    "icon": "baby",
+    "order": 8,
+    "content_status": "verified",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Rewarding patient population",
+      "Family-centered care",
+      "Varied settings"
+    ],
+    "cons": [
+      "Emotionally challenging",
+      "Dealing with distraught parents",
+      "Lower pay than ICU"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "General Pediatrics",
+        "description": "General medical-surgical nursing for children.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pediatric Oncology",
+        "description": "Nursing care for children with cancer.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Pediatric Oncology Nursing",
+    "category": "nurse",
+    "description": "Specialized nursing care for children undergoing cancer treatment — chemotherapy, supportive care, and long-term follow-up.",
+    "icon": "baby",
+    "order": 9,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Australia — AHPRA (Nurse)",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Deep family bonds",
+      "Advanced oncology skills",
+      "Rewarding outcomes"
+    ],
+    "cons": [
+      "Emotionally devastating losses",
+      "Complex medication management",
+      "High burnout"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Pediatric Chemotherapy",
+        "description": "Administration of chemotherapy and management of side effects in children.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Pediatric BMT/Stem Cell",
+        "description": "Nursing care for children undergoing bone marrow and stem cell transplantation.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Labor & Delivery / Obstetric Nursing",
+    "category": "nurse",
+    "description": "Nursing care during childbirth — labor support, delivery, and immediate postpartum care.",
+    "icon": "baby",
+    "order": 10,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Witnessing childbirth",
+      "Active and dynamic work",
+      "Strong patient relationships"
+    ],
+    "cons": [
+      "Unpredictable schedule",
+      "High liability",
+      "Emotional distress from losses"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Intrapartum Nursing",
+        "description": "Labor management, fetal monitoring, and delivery room nursing.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Postpartum & Newborn Nursing",
+        "description": "Mother-baby care after delivery, breastfeeding support, and newborn assessment.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Midwifery-track Nursing",
+    "category": "nurse",
+    "description": "Advanced nursing practice focused on pregnancy, childbirth, postpartum, and women's reproductive health.",
+    "icon": "baby",
+    "order": 11,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "UK — NMC OSCE (Nurse)",
+      "USA — NCLEX-RN",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Autonomous practice",
+      "Holistic care approach",
+      "Strong patient relationships"
+    ],
+    "cons": [
+      "Legal and regulatory variability",
+      "High liability",
+      "On-call for deliveries"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 3,
+    "branches": [
+      {
+        "name": "Community Midwifery",
+        "description": "Prenatal, delivery, and postpartum care in community and home settings.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Hospital-Based Midwifery",
+        "description": "Midwifery care within hospital labor and delivery units.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Psychiatric/Mental Health Nursing",
+    "category": "nurse",
+    "description": "Nursing care for patients with mental health disorders — from acute psychiatric crises to long-term community support.",
+    "icon": "brain",
+    "order": 12,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Therapeutic relationship building",
+      "Growing demand",
+      "Varied settings (inpatient, community)"
+    ],
+    "cons": [
+      "Can be physically unsafe",
+      "Slow progress",
+      "Stigma within healthcare"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Acute Inpatient Psychiatry",
+        "description": "Nursing care in locked psychiatric units for acute crisis stabilization.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Community Mental Health Nursing",
+        "description": "Outreach and long-term support for patients in community settings.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Community/Public Health Nursing",
+    "category": "nurse",
+    "description": "Population-focused nursing in community settings — health promotion, disease prevention, and school health.",
+    "icon": "globe",
+    "order": 13,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "UK — NMC OSCE (Nurse)",
+      "USA — NCLEX-RN",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Regular hours",
+      "Preventive focus",
+      "Community impact"
+    ],
+    "cons": [
+      "Limited acute care skills",
+      "Often lower pay",
+      "Can be administratively heavy"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "School Health Nursing",
+        "description": "Health screening, immunization programs, and health education in schools.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Community Outreach & Home Visiting",
+        "description": "Home visits for vulnerable populations, maternal-child health, and chronic disease support.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Home Health Nursing",
+    "category": "nurse",
+    "description": "Skilled nursing care provided in patients' homes — wound care, medication management, chronic disease monitoring.",
+    "icon": "home",
+    "order": 14,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Autonomous practice",
+      "One-on-one patient care",
+      "Flexible scheduling"
+    ],
+    "cons": [
+      "Travel between visits",
+      "Unpredictable home environments",
+      "Limited colleague support"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Chronic Disease Home Management",
+        "description": "Home-based management of diabetes, heart failure, and COPD.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Post-Surgical Home Care",
+        "description": "Wound care, drain management, and recovery support after hospital discharge.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "low",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Geriatric/Long-Term Care Nursing",
+    "category": "nurse",
+    "description": "Nursing care for older adults in long-term care facilities, nursing homes, and assisted living settings.",
+    "icon": "heart",
+    "order": 15,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Long-term relationships",
+      "Holistic care",
+      "Regular hours"
+    ],
+    "cons": [
+      "High patient dependency",
+      "Lower pay",
+      "Can be emotionally and physically demanding"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Skilled Nursing Facility Care",
+        "description": "24-hour nursing care for complex chronic conditions and post-hospital rehabilitation.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Dementia & Alzheimer's Care",
+        "description": "Specialized nursing for patients with cognitive impairment and behavioral symptoms.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Rehabilitation Nursing",
+    "category": "nurse",
+    "description": "Nursing care focused on restoring function and independence after stroke, injury, or surgery.",
+    "icon": "activity",
+    "order": 16,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Seeing functional improvements",
+      "Multidisciplinary teamwork",
+      "Longitudinal relationships"
+    ],
+    "cons": [
+      "Slow progress",
+      "Can be physically demanding",
+      "Emotional attachment to patients"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Stroke Rehabilitation Nursing",
+        "description": "Post-stroke care focused on neurological recovery and functional independence.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Orthopedic Rehabilitation Nursing",
+        "description": "Post-surgical rehabilitation for joint replacement and fracture recovery.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Oncology Nursing (adult)",
+    "category": "nurse",
+    "description": "Nursing care for adult patients undergoing cancer treatment — chemotherapy, radiation, immunotherapy, and palliative support.",
+    "icon": "activity",
+    "order": 17,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Deep patient relationships",
+      "Advanced skills in chemotherapy and symptom management",
+      "Rewarding moments of survivorship"
+    ],
+    "cons": [
+      "Emotionally intense",
+      "Frequent exposure to death and dying",
+      "High burnout risk"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Medical Oncology Nursing",
+        "description": "Administration of chemotherapy, immunotherapy, and management of treatment side effects.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Palliative & Supportive Care",
+        "description": "Symptom management, pain control, and end-of-life support for cancer patients.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Dialysis/Nephrology Nursing",
+    "category": "nurse",
+    "description": "Specialized nursing care for patients with end-stage renal disease requiring hemodialysis, peritoneal dialysis, or related therapies.",
+    "icon": "droplets",
+    "order": 18,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Technical skill development",
+      "Longitudinal patient relationships",
+      "Structured work environment"
+    ],
+    "cons": [
+      "Chronic patient population with frequent complications",
+      "May become repetitive",
+      "High patient dependency"
+    ],
+    "market_demand_egypt": "high",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Hemodialysis Nursing",
+        "description": "In-center hemodialysis access, initiation, monitoring, and complication management.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Peritoneal Dialysis Nursing",
+        "description": "Training and support for patients on home peritoneal dialysis.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Nurse Management / Charge Nurse",
+    "category": "nurse",
+    "description": "Leadership and operational management of nursing units — staffing, budgeting, quality improvement, and team coordination.",
+    "icon": "users",
+    "order": 19,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Leadership role",
+      "System-level impact",
+      "Higher pay scale"
+    ],
+    "cons": [
+      "Administrative burden",
+      "Staffing and conflict management",
+      "Less direct patient care"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 3,
+    "branches": [
+      {
+        "name": "Unit Management",
+        "description": "Day-to-day operational management of a hospital nursing unit.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Nursing Administration",
+        "description": "Hospital-wide nursing policy, staffing strategy, and quality oversight.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Nurse Education / Clinical Instructor",
+    "category": "nurse",
+    "description": "Education and training of nursing students and practicing nurses — classroom instruction, simulation, and clinical preceptorship.",
+    "icon": "book",
+    "order": 20,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Shaping future nurses",
+      "Regular academic hours",
+      "Intellectually stimulating"
+    ],
+    "cons": [
+      "Lower clinical income",
+      "Academic bureaucracy",
+      "Limited patient contact"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 3,
+    "branches": [
+      {
+        "name": "Clinical Instruction",
+        "description": "Supervising nursing students during clinical rotations in hospital settings.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Simulation & Skills Lab",
+        "description": "Teaching clinical skills and simulation-based nursing education.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Case Management / Care Coordination",
+    "category": "nurse",
+    "description": "Coordination of patient care across the healthcare continuum — discharge planning, resource utilization, and care transitions.",
+    "icon": "file-text",
+    "order": 21,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Regular hours",
+      "Patient advocacy",
+      "Problem-solving role"
+    ],
+    "cons": [
+      "High administrative workload",
+      "Frequent phone calls and coordination",
+      "Can be stressful with complex cases"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Hospital Case Management",
+        "description": "Discharge planning, utilization review, and care coordination for inpatients.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Community Care Coordination",
+        "description": "Coordinating home health, outpatient services, and community resources for complex patients.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Infection Control Nursing",
+    "category": "nurse",
+    "description": "Prevention and control of healthcare-associated infections — surveillance, isolation practices, and staff education.",
+    "icon": "shield",
+    "order": 22,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "UK — NMC OSCE (Nurse)",
+      "USA — NCLEX-RN",
+      "Germany — Nursing Recognition",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Critical role in patient safety",
+      "Regular hours",
+      "Growing importance"
+    ],
+    "cons": [
+      "Can be contentious enforcing compliance",
+      "Administrative heavy",
+      "Limited patient contact"
+    ],
+    "market_demand_egypt": "medium",
+    "market_demand_abroad": "high",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Infection Surveillance",
+        "description": "Monitoring and analysis of hospital infection rates and outbreak detection.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Isolation & Prevention Practices",
+        "description": "Implementation of isolation protocols, hand hygiene programs, and PPE management.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Quality Management / Patient Safety Nursing",
+    "category": "nurse",
+    "description": "System-level improvement of nursing care quality, safety protocols, and patient outcomes.",
+    "icon": "shield",
+    "order": 23,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "UK — NMC OSCE (Nurse)",
+      "USA — NCLEX-RN",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "System-level impact",
+      "Regular hours",
+      "Growing field"
+    ],
+    "cons": [
+      "Non-bedside",
+      "Data and metrics heavy",
+      "Requires change management skills"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Quality Improvement Nursing",
+        "description": "Leading quality improvement projects, audits, and clinical standards development.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Patient Safety & Risk Management",
+        "description": "Incident reporting, root cause analysis, and safety culture promotion.",
+        "weight": 0.8,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Nursing Informatics",
+    "category": "nurse",
+    "description": "Integration of nursing science with information technology — EHR optimization, clinical systems, and data analysis.",
+    "icon": "monitor",
+    "order": 24,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "USA — NCLEX-RN",
+      "UK — NMC OSCE (Nurse)",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)",
+      "Canada — NCLEX-RN (Canada)"
+    ],
+    "pros": [
+      "Technology-forward role",
+      "Flexible work",
+      "Growing demand"
+    ],
+    "cons": [
+      "Non-bedside",
+      "Requires technical skills",
+      "Bridging clinical and IT can be challenging"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Clinical Systems Management",
+        "description": "Implementation, training, and optimization of electronic health record systems.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Nursing Data Analytics",
+        "description": "Analysis of nursing-sensitive quality indicators and operational data.",
+        "weight": 0.7,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "medium",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  },
+  {
+    "name": "Occupational Health Nursing",
+    "category": "nurse",
+    "description": "Workplace health and safety — employee health assessments, injury prevention, and wellness programs.",
+    "icon": "shield",
+    "order": 25,
+    "content_status": "stub",
+    "recommended_paths": [
+      "Saudi Arabia — SCFHS (Nurse)",
+      "UAE — DHA/DoH (Nurse)",
+      "UK — NMC OSCE (Nurse)",
+      "USA — NCLEX-RN",
+      "Germany — Nursing Recognition",
+      "Australia — AHPRA (Nurse)"
+    ],
+    "pros": [
+      "Excellent work hours",
+      "Mix of clinical and preventive",
+      "Low stress"
+    ],
+    "cons": [
+      "Can be routine",
+      "Limited acute care skills use",
+      "Corporate environment"
+    ],
+    "market_demand_egypt": "low",
+    "market_demand_abroad": "medium",
+    "training_duration_years": 2,
+    "branches": [
+      {
+        "name": "Employee Health Services",
+        "description": "Pre-employment screening, vaccination programs, and workplace injury management.",
+        "weight": 1,
+        "order": 1
+      },
+      {
+        "name": "Wellness & Health Promotion",
+        "description": "Designing and delivering workplace wellness programs and health education.",
+        "weight": 0.6,
+        "order": 2
+      }
+    ],
+    "salary_ranges": {
+      "egypt": {
+        "min_monthly": 300,
+        "max_monthly": 1500,
+        "currency": "USD"
+      },
+      "abroad": {
+        "min_annual": 80000,
+        "max_annual": 250000,
+        "currency": "USD"
+      }
+    },
+    "competitiveness": "low",
+    "specialty_recognition": {
+      "UK": "NMC registration via OSCE/CBT",
+      "USA": "NCLEX-RN + CGFNS",
+      "Germany": "Anerkennung + Kenntnisprüfung",
+      "UAE": "DHA/DoH/MOHAP licensing",
+      "Saudi": "SCFHS classification + Prometric"
+    }
+  }
 ];

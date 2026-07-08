@@ -95,6 +95,36 @@ export const api = {
     path: (id: string) =>
       request<Record<string, unknown>>(`/catalog/paths/${id}`),
   },
+  compass: {
+    paths: (params?: { category?: string; path_type?: string; country?: string }) => {
+      const q = new URLSearchParams();
+      if (params?.category) q.set('category', params.category);
+      if (params?.path_type) q.set('path_type', params.path_type);
+      if (params?.country) q.set('country', params.country);
+      const qs = q.toString();
+      return request<Record<string, unknown>[]>(`/catalog/compass/paths${qs ? `?${qs}` : ''}`);
+    },
+    compare: (ids: string[]) =>
+      request<Record<string, unknown>>(`/catalog/compass/paths/compare?ids=${ids.join(',')}`),
+    costCalculator: (pathId?: string, currency?: string) => {
+      const q = new URLSearchParams();
+      if (pathId) q.set('path_id', pathId);
+      if (currency) q.set('currency', currency);
+      const qs = q.toString();
+      return request<Record<string, unknown> | Record<string, unknown>[]>(`/catalog/compass/cost-calculator${qs ? `?${qs}` : ''}`);
+    },
+    smartFind: (params: { budget_max?: number; duration_max?: number; category?: string; country?: string; path_type?: string; language?: string }) => {
+      const q = new URLSearchParams();
+      if (params.budget_max != null) q.set('budget_max', String(params.budget_max));
+      if (params.duration_max != null) q.set('duration_max', String(params.duration_max));
+      if (params.category) q.set('category', params.category);
+      if (params.country) q.set('country', params.country);
+      if (params.path_type) q.set('path_type', params.path_type);
+      if (params.language) q.set('language', params.language);
+      const qs = q.toString();
+      return request<Record<string, unknown>[]>(`/catalog/compass/smart-find${qs ? `?${qs}` : ''}`);
+    },
+  },
   quickpick: {
     create: (data: { specialty_id: string; path_id: string; preset_duration_months: number }) =>
       request<Record<string, unknown>>('/quickpick', {
