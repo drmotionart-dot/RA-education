@@ -5,7 +5,9 @@ const SALT_ROUNDS = 10;
 
 export function generateOTP() {
   const code = String(Math.floor(100000 + Math.random() * 900000));
-  console.log(`[DEV] OTP for testing: ${code}`);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[DEV] OTP for testing: ${code}`);
+  }
   return code;
 }
 

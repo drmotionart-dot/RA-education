@@ -33,7 +33,9 @@ export async function requestOTP(mobileNumber) {
   const code = generateOTP();
   const otpHash = await hashOTP(code);
 
-  console.log(`[DEV] OTP for ${normalized}: ${code}`);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[DEV] OTP for ${normalized}: ${code}`);
+  }
   try { writeFileSync(join(process.env.TMP || '/tmp', `otp_${normalized.replace(/[^0-9]/g, '')}.txt`), code, 'utf8'); } catch (_) { /* best-effort for tests */ }
 
   await OtpRequest.create({

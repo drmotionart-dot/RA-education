@@ -52,7 +52,7 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
-    if: false
+    timeout-minutes: 20
     services:
       mongodb:
         image: mongo:7
