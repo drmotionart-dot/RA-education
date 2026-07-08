@@ -44,26 +44,26 @@ export function SurveySessionPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  const loadSession = async () => {
+  useEffect(() => {
     if (!id) { navigate('/survey'); return; }
-    setPageState('loading');
-    setSelectedIndex(null);
-    try {
-      const state: SessionState = await api.survey.state(id);
-      if (state.status === 'completed') {
-        navigate(`/survey/${id}/results`, { replace: true });
-      } else if (state.question) {
-        setQuestion(state.question);
-        setProgress(state.progress || { answered: 0, total: 0 });
-        setPageState('answering');
+    (async () => {
+      setPageState('loading');
+      setSelectedIndex(null);
+      try {
+        const state: SessionState = await api.survey.state(id);
+        if (state.status === 'completed') {
+          navigate(`/survey/${id}/results`, { replace: true });
+        } else if (state.question) {
+          setQuestion(state.question);
+          setProgress(state.progress || { answered: 0, total: 0 });
+          setPageState('answering');
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load survey');
+        setPageState('error');
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load survey');
-      setPageState('error');
-    }
-  };
-
-  useEffect(() => { loadSession(); }, [id]);
+    })();
+  }, [id, navigate]);
 
   const handleAnswer = async () => {
     if (!id || !question || selectedIndex === null) return;
@@ -99,7 +99,7 @@ export function SurveySessionPage() {
         <h2 className="font-heading text-xl font-bold">Something went wrong</h2>
         <p className="text-sm text-[var(--color-text-secondary)]">{error}</p>
         <div className="flex justify-center gap-2">
-          <Button onClick={loadSession}>Try Again</Button>
+          <Button onClick={() => window.location.reload()}>Try Again</Button>
           <Button variant="ghost" onClick={() => navigate('/survey')}>Back to Survey</Button>
         </div>
       </div>

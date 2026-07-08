@@ -14,7 +14,7 @@ export function CompanionPage() {
   const [sending, setSending] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const loadAll = useCallback(async () => {
+  const loadAll = useCallback(async (currentTab: string) => {
     setLoading(true);
     try {
       const [c, reqs] = await Promise.all([
@@ -23,32 +23,32 @@ export function CompanionPage() {
       ]);
       setCompanion(c as Record<string, unknown> | null);
       setRequests(reqs as { incoming: Record<string, unknown>[]; outgoing: Record<string, unknown>[] });
-      if (!c && tab === 'companion') setTab('find');
+      if (!c && currentTab === 'companion') setTab('find');
     } catch {
       setCompanion(null);
     } finally {
       setLoading(false);
     }
-  }, [tab]);
+  }, []);
 
-  useEffect(() => { loadAll(); }, []);
+  useEffect(() => { loadAll(tab); }, [loadAll, tab]);
 
-  const loadMatches = async () => {
+  const loadMatches = useCallback(async () => {
     try {
       const m = await api.companion.match();
       setMatches(m as Record<string, unknown>[]);
     } catch { setMatches([]); }
-  };
+  }, []);
 
   useEffect(() => {
     if (tab === 'find') loadMatches();
-  }, [tab]);
+  }, [tab, loadMatches]);
 
   const sendRequest = async (toUserId: string) => {
     setSending(toUserId);
     try {
       await api.companion.request(toUserId);
-      await loadAll();
+      await loadAll(tab);
     } finally {
       setSending(null);
     }
@@ -57,7 +57,7 @@ export function CompanionPage() {
   const respond = async (requestId: string, action: 'accept' | 'decline') => {
     try {
       await api.companion.respond(requestId, action);
-      await loadAll();
+      await loadAll(tab);
     } catch { }
   };
 

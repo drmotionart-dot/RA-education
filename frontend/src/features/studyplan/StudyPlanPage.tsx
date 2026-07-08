@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { BookOpen, CheckCircle, Clock, Lock, RefreshCw, Brain, AlertTriangle, History } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -13,7 +13,7 @@ export function StudyPlanPage() {
   const [restarting, setRestarting] = useState(false);
   const navigate = useNavigate();
 
-  const loadPlan = async () => {
+  const loadPlan = useCallback(async () => {
     try {
       const p = await api.plan.current();
       setPlan(p);
@@ -24,9 +24,9 @@ export function StudyPlanPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  useEffect(() => { loadPlan(); }, []);
+  useEffect(() => { loadPlan(); }, [loadPlan]);
 
   if (loading) return <p className="text-center text-[var(--color-text-secondary)]">Loading...</p>;
 

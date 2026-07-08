@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CheckCircle, RefreshCw, XCircle } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -21,15 +21,28 @@ export function LessonExamPage() {
   const [completing, setCompleting] = useState(false);
   const [error, setError] = useState('');
 
-  const loadNext = async () => {
-    if (!assessmentId) return;
+  const handleComplete = useCallback(async (lId: string, aId: string) => {
+    setCompleting(true);
+    try {
+      const result = await api.lessons.complete(lId, aId);
+      setCompleteResult(result);
+      setState(result.passed ? 'completed' : 'failed');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to complete lesson');
+      setState('error');
+    } finally {
+      setCompleting(false);
+    }
+  }, []);
+
+  const loadNext = useCallback(async (aId: string, pId: string) => {
     setState('loading');
     setSelectedOption(null);
     setFeedback(null);
     try {
-      const result = await api.assessment.nextQuestion(assessmentId);
+      const result = await api.assessment.nextQuestion(aId);
       if (result.status === 'completed') {
-        await handleComplete();
+        await handleComplete(pId, aId);
       } else if (result.question) {
         setQuestion(result.question);
         setProgress(result.progress || { answered: 0, total: 0 });
@@ -39,24 +52,9 @@ export function LessonExamPage() {
       setError(err instanceof Error ? err.message : 'Failed to load question');
       setState('error');
     }
-  };
+  }, [handleComplete]);
 
-  const handleComplete = async () => {
-    if (!planLessonId || !assessmentId) return;
-    setCompleting(true);
-    try {
-      const result = await api.lessons.complete(planLessonId, assessmentId);
-      setCompleteResult(result);
-      setState(result.passed ? 'completed' : 'failed');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to complete lesson');
-      setState('error');
-    } finally {
-      setCompleting(false);
-    }
-  };
-
-  useEffect(() => { loadNext(); }, [assessmentId]);
+  useEffect(() => { if (assessmentId && planLessonId) loadNext(assessmentId, planLessonId); }, [assessmentId, planLessonId, loadNext]);
 
   const handleAnswer = async () => {
     if (!assessmentId || !question || !selectedOption) return;
@@ -64,7 +62,7 @@ export function LessonExamPage() {
     try {
       const result = await api.assessment.submitAnswer(assessmentId, question._id as string, [selectedOption]);
       setFeedback({ is_correct: !!result.is_correct });
-      setTimeout(() => { loadNext(); }, 1000);
+      setTimeout(() => { if (assessmentId && planLessonId) loadNext(assessmentId, planLessonId); }, 1000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to submit answer');
     } finally {
@@ -82,7 +80,7 @@ export function LessonExamPage() {
         <h2 className="font-heading text-xl font-bold">Something went wrong</h2>
         <p className="text-sm text-[var(--color-text-secondary)]">{error}</p>
         <div className="flex justify-center gap-2">
-          <Button onClick={loadNext}>Try Again</Button>
+          <Button onClick={() => { if (assessmentId && planLessonId) loadNext(assessmentId, planLessonId); }}>Try Again</Button>
           <Button variant="ghost" onClick={() => navigate(`/plan/lessons/${planLessonId}`)}>Back to Lesson</Button>
         </div>
       </div>
@@ -140,7 +138,7 @@ export function LessonExamPage() {
         )}
 
         <div className="flex justify-center gap-2">
-          <Button onClick={() => { setState('loading'); loadNext(); }}>
+          <Button onClick={() => { if (assessmentId && planLessonId) { setState('loading'); loadNext(assessmentId, planLessonId); } }}>
             <RefreshCw size={14} /> Retry Exam
           </Button>
           <Button variant="ghost" onClick={() => navigate(`/plan/lessons/${planLessonId}`)}>Back to Lesson</Button>

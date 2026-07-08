@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, BarChart3, RefreshCw } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -23,15 +23,14 @@ export function AssessmentSession() {
   const [reallocating, setReallocating] = useState(false);
   const [error, setError] = useState('');
 
-  const loadNext = async () => {
-    if (!id) return;
+  const loadNext = useCallback(async (assessmentId: string) => {
     setState('loading');
     setSelectedOption(null);
     setFeedback(null);
     try {
-      const result = await api.assessment.nextQuestion(id);
+      const result = await api.assessment.nextQuestion(assessmentId);
       if (result.status === 'completed') {
-        const r = await api.assessment.results(id);
+        const r = await api.assessment.results(assessmentId);
         setResults(r);
         setState('completed');
       } else if (result.question) {
@@ -43,9 +42,9 @@ export function AssessmentSession() {
       setError(err instanceof Error ? err.message : 'Failed to load question');
       setState('error');
     }
-  };
+  }, []);
 
-  useEffect(() => { loadNext(); }, [id]);
+  useEffect(() => { if (id) loadNext(id); }, [id, loadNext]);
 
   const handleAnswer = async () => {
     if (!id || !question || !selectedOption) return;
@@ -53,9 +52,7 @@ export function AssessmentSession() {
     try {
       const result = await api.assessment.submitAnswer(id, question._id as string, [selectedOption]);
       setFeedback({ is_correct: !!result.is_correct });
-      setTimeout(() => {
-        loadNext();
-      }, 1000);
+      setTimeout(() => { if (id) loadNext(id); }, 1000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to submit answer');
     } finally {
@@ -85,7 +82,7 @@ export function AssessmentSession() {
         <h2 className="font-heading text-xl font-bold">Something went wrong</h2>
         <p className="text-sm text-[var(--color-text-secondary)]">{error}</p>
         <div className="flex justify-center gap-2">
-          <Button onClick={loadNext}>Try Again</Button>
+          <Button onClick={() => { if (id) loadNext(id); }}>Try Again</Button>
           <Button variant="ghost" onClick={() => navigate('/assessment')}>Pick Another Specialty</Button>
         </div>
       </div>
