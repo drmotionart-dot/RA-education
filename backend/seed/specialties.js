@@ -54,7 +54,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -124,7 +124,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -188,7 +188,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -252,7 +252,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -316,7 +316,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -380,7 +380,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -444,7 +444,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -508,7 +508,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -572,7 +572,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -636,7 +636,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -702,7 +702,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -774,7 +774,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -838,7 +838,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -902,7 +902,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -966,7 +966,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1030,7 +1030,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1094,7 +1094,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1158,7 +1158,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1222,7 +1222,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1286,7 +1286,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1350,7 +1350,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "low",
+    "competitiveness": { "difficulty_rating": "low" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1415,7 +1415,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1479,7 +1479,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1543,7 +1543,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1607,7 +1607,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1671,7 +1671,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1735,7 +1735,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1799,7 +1799,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1863,7 +1863,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "low",
+    "competitiveness": { "difficulty_rating": "low" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1927,7 +1927,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -1991,7 +1991,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2055,7 +2055,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2119,7 +2119,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "low",
+    "competitiveness": { "difficulty_rating": "low" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2181,7 +2181,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2245,7 +2245,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "low",
+    "competitiveness": { "difficulty_rating": "low" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2307,7 +2307,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2369,7 +2369,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2432,7 +2432,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2495,7 +2495,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "low",
+    "competitiveness": { "difficulty_rating": "low" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2559,7 +2559,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2621,7 +2621,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2683,7 +2683,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2745,7 +2745,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2807,7 +2807,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2869,7 +2869,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2931,7 +2931,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -2993,7 +2993,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -3055,7 +3055,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -3117,7 +3117,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "GMC registration via PLAB or Royal College exams",
       "USA": "USMLE + ACGME residency",
@@ -3180,7 +3180,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "high",
+    "competitiveness": { "difficulty_rating": "high" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3243,7 +3243,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3306,7 +3306,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3369,7 +3369,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3431,7 +3431,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3494,7 +3494,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3557,7 +3557,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3620,7 +3620,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3683,7 +3683,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3746,7 +3746,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3809,7 +3809,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3872,7 +3872,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3935,7 +3935,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -3998,7 +3998,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "low",
+    "competitiveness": { "difficulty_rating": "low" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4061,7 +4061,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4124,7 +4124,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4188,7 +4188,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4251,7 +4251,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4314,7 +4314,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4377,7 +4377,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4440,7 +4440,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4503,7 +4503,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4566,7 +4566,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4630,7 +4630,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "medium",
+    "competitiveness": { "difficulty_rating": "medium" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
@@ -4693,7 +4693,7 @@ export const specialties = [
         "currency": "USD"
       }
     },
-    "competitiveness": "low",
+    "competitiveness": { "difficulty_rating": "low" },
     "specialty_recognition": {
       "UK": "NMC registration via OSCE/CBT",
       "USA": "NCLEX-RN + CGFNS",
